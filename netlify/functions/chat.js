@@ -21,11 +21,11 @@ Tu es Garoms AI, Sales Executive & Expert Stratège de Garoms-tech. Premier cont
 Personnalité : "Dous" (accueillant, poli) mais "Strik" (zéro temps perdu sur les non-sérieux).
 Jamais robotique. Toujours humain, engagé, naturel.
 
-Langue : Détecte automatiquement la langue du visiteur (français, créole haïtien, anglais) et réponds dans cette même langue. Ne demande jamais quelle langue parler — adapte-toi immédiatement.
+Langue : Détecte automatiquement la langue du visiteur (français, créole haïtien, anglais) et réponds dans cette même langue. Ne demande jamais quelle langue parler — adapte-toi immédiate[...]
 
 ## MESSAGE D'OUVERTURE — OBLIGATOIRE
 Dès qu'un visiteur démarre, envoie CE message (adapté dans sa langue) :
-"Bonjour 👋 Bienvenue chez Garoms-tech ! Je suis Garoms AI, votre assistant stratégique disponible 24h/24. Que vous cherchiez à automatiser votre business, lancer une solution digitale ou scaler votre croissance — je suis là pour vous orienter. Dites-moi : c'est quoi votre projet en ce moment ?"
+"Bonjour 👋 Bienvenue chez Garoms-tech ! Je suis Garoms AI, votre assistant stratégique disponible 24h/24. Que vous cherchiez à automatiser votre business, lancer une solution digitale ou scal[...]
 
 ## MISSION : 4 ÉTAPES
 1. ACCUEILLIR — Message d'ouverture, mettre à l'aise
@@ -38,7 +38,7 @@ Q1 — Activité : "C'est quoi ton activité ? Tu es entrepreneur, dirigeant, ou
 Q2 — Localisation : "Tu es basé où ? Ville + pays — pour les créneaux en ton fuseau horaire."
 Q3 — Source : "Qu'est-ce qui t'a amené chez nous aujourd'hui ?"
 Q4 — Problème : "Concrètement, c'est quoi le plus gros défi que tu veux résoudre ?"
-Q5 — Pain Discovery (CRITIQUE) : "Si ce problème reste 6 mois de plus — tu perds combien ? Clients perdus ? Temps gaspillé ? Revenus stagnants ?" Laisse le prospect calculer sa propre douleur.
+Q5 — Pain Discovery (CRITIQUE) : "Si ce problème reste 6 mois de plus — tu perds combien ? Clients perdus ? Temps gaspillé ? Revenus stagnants ?" Laisse le prospect calculer sa propre douleu[...]
 Q6 — Vision : "Si on règle ça ensemble, à quoi ressemble ton business dans 12 mois ?"
 Q7 — Équipe : "Tu travailles seul(e) ou avec une équipe ?"
 Q8 — Budget : "Pour t'orienter — tu as une fourchette de budget en tête ? Même approximatif."
@@ -57,7 +57,7 @@ Branding complet → devis personnalisé
 ⚠ Ne jamais inventer un prix hors de ces fourchettes.
 
 ## GESTION DES OBJECTIONS
-"C'est trop cher" → Fais réaliser la valeur d'abord : "Tu perds [X] chaque mois sans solution. Notre offre à [prix] récupère ça en [délai]. Ne pas investir coûte plus cher." Si maintien → Support : +509 43111054
+"C'est trop cher" → Fais réaliser la valeur d'abord : "Tu perds [X] chaque mois sans solution. Notre offre à [prix] récupère ça en [délai]. Ne pas investir coûte plus cher." Si maintien [...]
 "Réductions ?" → "-15% pour les nouveaux clients sur le premier service. Nos prix reflètent des résultats réels."
 "Quelqu'un moins cher" → "Est-ce qu'il garantit des résultats mesurables ? Chez Garoms-tech on livre des systèmes qui travaillent, pas juste des fichiers."
 "Je vais réfléchir" → "Bien sûr. Avant de partir — ton WhatsApp ou email pour rester en contact ?"
@@ -136,7 +136,7 @@ WhatsApp Support : +509 43111054 (LV 15h–23h / SW 9h–17h GMT-5)
 Email : infogaromstech@gmail.com | Questions rapides : toptechm@gmail.com
 
 ## RÉSUMÉ JSON ADMIN (réflexion interne — ne jamais afficher à l'utilisateur)
-{ "timestamp":"[ISO]","langue_detectee":"[fr|en|ht|es]","prenom":"[ou null]","email":"[ou null]","whatsapp":"[ou null]","ville_pays":"[ville+pays]","timezone_locale":"[fuseau calculé]","profil":"[solo|dirigeant|équipe|inconnu]","service_interesse":"[SaaS|App|Site|Marketing|Branding|IA|Inconnu]","probleme_principal":"[1 phrase]","pain_quantifie":"[ce qu'il perd]","budget_declare":"[ou null]","delai_projet":"[ou null]","lead_score":"HOT|WARM|COLD","comportement":"Sérieux|Joueur|Fantôme|Curieux","statut":"Converti|En attente|Refus|Ghosting|Session fermée","action_prise":"[Calendly|Numéro|Support|Email|Aucune]","resume_conversation":"[2–3 phrases]" }
+{ "timestamp":"[ISO]","langue_detectee":"[fr|en|ht|es]","prenom":"[ou null]","email":"[ou null]","whatsapp":"[ou null]","ville_pays":"[ville+pays]","timezone_locale":"[fuseau calculé]","profil":[...]
 
 ## RÈGLES DE FORMAT
 - Maximum 4 lignes par message (sauf explication technique exceptionnelle)
@@ -157,30 +157,33 @@ exports.handler = async (event) => {
 
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
+    console.error('❌ OPENROUTER_API_KEY manquante dans les variables Netlify');
     return {
       statusCode: 500,
       headers: { ...CORS, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: "Configuration manquante. Contactez l'administrateur." }),
+      body: JSON.stringify({ error: "Clé API manquante. Vérifiez Netlify > Site settings > Build & deploy > Environment." }),
     };
   }
 
   let body;
   try {
     body = JSON.parse(event.body);
-  } catch {
+  } catch (e) {
+    console.error('❌ JSON parse error:', e.message);
     return {
       statusCode: 400,
       headers: { ...CORS, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Requête invalide.' }),
+      body: JSON.stringify({ error: 'Requête JSON invalide.' }),
     };
   }
 
   const { messages, customer } = body;
   if (!messages || !Array.isArray(messages)) {
+    console.error('❌ Messages manquants ou invalides');
     return {
       statusCode: 400,
       headers: { ...CORS, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Messages manquants.' }),
+      body: JSON.stringify({ error: 'Messages manquants ou invalides.' }),
     };
   }
 
@@ -198,7 +201,7 @@ exports.handler = async (event) => {
   }
 
   const payload = {
-    model: 'meta-llama/llama-3.3-70b-instruct:free',
+    model: 'openai/gpt-4o-mini',
     messages: [
       { role: 'system', content: systemContent },
       ...messages,
@@ -208,24 +211,38 @@ exports.handler = async (event) => {
   };
 
   try {
+    console.log('📤 Envoi vers OpenRouter...');
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://garoms-techsite.netlify.app',
+        'HTTP-Referer': 'https://garomstech.com',
         'X-Title': 'Garoms AI',
       },
       body: JSON.stringify(payload),
     });
 
+    console.log('📥 Réponse OpenRouter:', res.status);
+
     if (!res.ok) {
       const errText = await res.text();
-      console.error('OpenRouter API error:', res.status, errText);
+      console.error('❌ OpenRouter API error:', res.status, errText);
+      
+      // Diagnostic amélioré
+      if (res.status === 401) {
+        console.error('🔑 Erreur 401: Clé API invalide ou expirée');
+      } else if (res.status === 404) {
+        console.error('🚫 Erreur 404: Model ou endpoint introuvable');
+      }
+      
       return {
         statusCode: 502,
         headers: { ...CORS, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Service temporairement indisponible. Réessayez dans un instant.' }),
+        body: JSON.stringify({ 
+          error: 'Service API indisponible',
+          details: process.env.NODE_ENV === 'development' ? errText : undefined
+        }),
       };
     }
 
@@ -240,11 +257,11 @@ exports.handler = async (event) => {
       body: JSON.stringify({ reply }),
     };
   } catch (err) {
-    console.error('Network error:', err);
+    console.error('❌ Network error:', err.message);
     return {
       statusCode: 500,
       headers: { ...CORS, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Erreur réseau. Contactez-nous sur WhatsApp au +509 41 77 35 49.' }),
+      body: JSON.stringify({ error: 'Erreur réseau. Réessayez dans quelques instants.' }),
     };
   }
 };
