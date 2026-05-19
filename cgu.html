@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Conditions Générales d'Utilisation — GAROMS-TECH</title>
+  <meta name="description" content="Conditions Générales d'Utilisation de GAROMS-TECH — agence IA &amp; automatisation."/>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+  :root{--p:#E85D04;--blue:#0057FF;--dark:#0A1628;--w:#fff;--g5:#64748B;--g2:#f1f5f9;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:#1e293b;background:#F4F7FF;line-height:1.75;}
+  .topbar{background:var(--dark);padding:1rem 0;border-bottom:2px solid var(--p);}
+  .topbar-in{max-width:900px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
+  .topbar-brand{display:flex;align-items:center;gap:.6rem;}
+  .topbar-brand img{width:36px;height:36px;object-fit:contain;}
+  .topbar-brand span{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;}
+  .topbar-brand span b{color:#FB923C;}
+  .topbar-back{font-size:.8rem;color:rgba(255,255,255,.6);text-decoration:none;border:1px solid rgba(255,255,255,.15);padding:.3rem .8rem;border-radius:6px;transition:all .2s;}
+  .topbar-back:hover{color:#fff;border-color:var(--p);}
+  .hero-doc{background:linear-gradient(135deg,var(--dark),#0d1f3c);color:#fff;padding:3.5rem 0 3rem;}
+  .hero-doc-in{max-width:900px;margin:0 auto;padding:0 1.5rem;}
+  .hero-doc h1{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:.6rem;}
+  .hero-doc .meta{font-size:.85rem;color:rgba(255,255,255,.5);display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:.75rem;}
+  .hero-doc .meta span{display:flex;align-items:center;gap:.35rem;}
+  .wrap{max-width:900px;margin:0 auto;padding:3rem 1.5rem 5rem;display:grid;grid-template-columns:1fr;gap:0;}
+  @media(min-width:900px){.wrap{grid-template-columns:220px 1fr;gap:3rem;align-items:start;}}
+  .toc{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:1.5rem;position:sticky;top:1.5rem;}
+  .toc h3{font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--p);}
+  .toc ol{counter-reset:toc;padding:0;}
+  .toc ol li{counter-increment:toc;margin-bottom:.4rem;}
+  .toc ol li a{font-size:.8rem;color:var(--g5);text-decoration:none;transition:color .2s;display:block;padding:.2rem 0;}
+  .toc ol li a:hover{color:var(--p);}
+  .content section{margin-bottom:2.5rem;}
+  .content section:first-child{margin-top:0;}
+  h2{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:var(--dark);margin-bottom:1rem;padding:1rem 1.25rem;background:#fff;border-left:4px solid var(--p);border-radius:0 10px 10px 0;display:flex;align-items:center;gap:.6rem;}
+  h2 .num{font-size:.75rem;font-weight:700;color:var(--p);background:rgba(232,93,4,.1);padding:.2rem .55rem;border-radius:9999px;white-space:nowrap;}
+  p{margin-bottom:.9rem;font-size:.95rem;color:#334155;line-height:1.8;}
+  ul,ol{padding-left:1.4rem;margin-bottom:.9rem;}
+  ul li,ol li{font-size:.92rem;color:#334155;margin-bottom:.45rem;line-height:1.7;}
+  ul li::marker{color:var(--p);}
+  .box{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;}
+  .box-warn{background:#FFF7ED;border-color:#FED7AA;border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.25rem;}
+  .box-warn p{color:#92400E;font-size:.88rem;margin:0;}
+  .box-info{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.25rem;}
+  .box-info p{color:#1D4ED8;font-size:.88rem;margin:0;}
+  table{width:100%;border-collapse:collapse;margin-bottom:1.25rem;font-size:.88rem;}
+  th{background:var(--dark);color:#fff;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:700;padding:.7rem 1rem;text-align:left;}
+  td{padding:.65rem 1rem;border-bottom:1px solid #e2e8f0;color:#334155;vertical-align:top;}
+  tr:nth-child(even) td{background:var(--g2);}
+  a{color:var(--p);text-decoration:underline;transition:color .2s;}
+  a:hover{color:#C84B00;}
+  .cta-bar{background:linear-gradient(135deg,var(--dark),#0d1f3c);border-radius:16px;padding:2rem;text-align:center;margin-top:3rem;color:#fff;}
+  .cta-bar h3{font-family:'Poppins',sans-serif;font-weight:800;margin-bottom:.5rem;}
+  .cta-bar p{color:rgba(255,255,255,.6);font-size:.88rem;margin-bottom:1.25rem;}
+  .cta-bar a{display:inline-flex;align-items:center;gap:.4rem;background:var(--p);color:#fff;padding:.65rem 1.5rem;border-radius:9999px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s;}
+  .cta-bar a:hover{background:#C84B00;color:#fff;}
+  @media(max-width:899px){.toc{margin-bottom:2rem;position:static;}}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="topbar-brand">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" onerror="this.style.display='none'"/>
+      <span>GAROMS<b>-TECH</b></span>
+    </div>
+    <a href="index.html" class="topbar-back">← Retour au site</a>
+  </div>
+</div>
+
+<div class="hero-doc">
+  <div class="hero-doc-in">
+    <h1>📋 Conditions Générales d'Utilisation</h1>
+    <div class="meta">
+      <span>📅 Dernière mise à jour : 19 mai 2026</span>
+      <span>🏢 GAROMS-TECH</span>
+      <span>🌍 Applicable mondialement</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- TABLE DES MATIÈRES -->
+  <div class="toc">
+    <h3>Table des matières</h3>
+    <ol>
+      <li><a href="#s1">Objet et champ d'application</a></li>
+      <li><a href="#s2">Présentation de GAROMS-TECH</a></li>
+      <li><a href="#s3">Accès au site</a></li>
+      <li><a href="#s4">Définitions</a></li>
+      <li><a href="#s5">Utilisation des services</a></li>
+      <li><a href="#s6">Services proposés</a></li>
+      <li><a href="#s7">Tarification et paiement</a></li>
+      <li><a href="#s8">Engagements de GAROMS-TECH</a></li>
+      <li><a href="#s9">Obligations du client</a></li>
+      <li><a href="#s10">Propriété intellectuelle</a></li>
+      <li><a href="#s11">Confidentialité des données</a></li>
+      <li><a href="#s12">Responsabilité</a></li>
+      <li><a href="#s13">Agent IA &amp; Chatbot</a></li>
+      <li><a href="#s14">Programme Ambassadeur</a></li>
+      <li><a href="#s15">Newsletter et communications</a></li>
+      <li><a href="#s16">Liens et contenus tiers</a></li>
+      <li><a href="#s17">Modification des CGU</a></li>
+      <li><a href="#s18">Suspension et résiliation</a></li>
+      <li><a href="#s19">Droit applicable et litiges</a></li>
+      <li><a href="#s20">Contact</a></li>
+    </ol>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="content">
+
+    <section id="s1">
+      <h2><span class="num">Art. 1</span> Objet et champ d'application</h2>
+      <p>Les présentes Conditions Générales d'Utilisation (ci-après "CGU") ont pour objet de définir les conditions dans lesquelles GAROMS-TECH met à la disposition de toute personne physique ou morale (ci-après "l'Utilisateur") l'accès à son site web, à ses services numériques, à son agent conversationnel (chatbot IA), ainsi qu'à son programme d'ambassadeurs.</p>
+      <p>L'accès et l'utilisation du site <strong>garomstech.com</strong> (et de ses sous-pages) impliquent l'acceptation pleine et entière des présentes CGU. Si l'Utilisateur n'accepte pas ces conditions, il est invité à ne pas utiliser le site ni les services proposés.</p>
+      <div class="box-info">
+        <p>📌 Ces CGU s'appliquent à tous les visiteurs du site, aux clients, aux abonnés newsletter, aux candidats ambassadeurs et à toute personne interagissant avec l'agent IA de GAROMS-TECH.</p>
+      </div>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">Art. 2</span> Présentation de GAROMS-TECH</h2>
+      <div class="box">
+        <table>
+          <tr><td><strong>Dénomination</strong></td><td>GAROMS-TECH</td></tr>
+          <tr><td><strong>Activité</strong></td><td>Agence spécialisée en intelligence artificielle, automatisation et génie numérique</td></tr>
+          <tr><td><strong>Fondée en</strong></td><td>2023</td></tr>
+          <tr><td><strong>Mode opératoire</strong></td><td>100% en ligne, présence internationale</td></tr>
+          <tr><td><strong>Email</strong></td><td><a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a></td></tr>
+          <tr><td><strong>WhatsApp</strong></td><td><a href="https://wa.me/50941773549">+509 41 77 35 49</a></td></tr>
+          <tr><td><strong>Site web</strong></td><td>garomstech.com</td></tr>
+        </table>
+      </div>
+      <p>GAROMS-TECH accompagne les entrepreneurs, PME et organisations dans leur transformation digitale, avec une expertise spécifique sur les marchés haïtien et caribéen, ainsi que la diaspora mondiale.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">Art. 3</span> Accès au site</h2>
+      <p>L'accès au site est libre et gratuit pour tout utilisateur disposant d'un accès à Internet. Les frais liés à la connexion Internet et aux équipements informatiques sont à la charge exclusive de l'Utilisateur.</p>
+      <p>GAROMS-TECH se réserve le droit, sans préavis ni indemnité, de :</p>
+      <ul>
+        <li>Fermer temporairement le site pour maintenance, mise à jour ou amélioration</li>
+        <li>Modifier le contenu du site ou l'architecture des services</li>
+        <li>Interrompre l'accès à certaines sections ou fonctionnalités</li>
+        <li>Suspendre l'accès d'un utilisateur en cas de violation des présentes CGU</li>
+      </ul>
+      <p>La disponibilité du site est visée à hauteur de 99% sur une base mensuelle, hors périodes de maintenance planifiées. GAROMS-TECH ne saurait être tenue responsable de toute interruption technique indépendante de sa volonté.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">Art. 4</span> Définitions</h2>
+      <div class="box">
+        <ul>
+          <li><strong>Site :</strong> l'ensemble des pages et ressources accessibles sur garomstech.com</li>
+          <li><strong>Services :</strong> toutes les prestations proposées par GAROMS-TECH (développement, chatbot, automatisation, marketing, etc.)</li>
+          <li><strong>Utilisateur :</strong> toute personne physique ou morale accédant au site</li>
+          <li><strong>Client :</strong> tout utilisateur ayant signé un devis ou passé commande</li>
+          <li><strong>Agent IA :</strong> le chatbot conversationnel intégré au site</li>
+          <li><strong>Ambassadeur :</strong> partenaire commercial agréé par GAROMS-TECH</li>
+          <li><strong>Prestation :</strong> service commandé et facturé selon devis accepté</li>
+          <li><strong>Contenu :</strong> textes, images, vidéos, codes et tout élément publié sur le site</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">Art. 5</span> Utilisation des services</h2>
+      <p>En accédant au site et en utilisant nos services, l'Utilisateur s'engage à :</p>
+      <ul>
+        <li>Fournir des informations exactes, complètes et à jour lors de toute demande ou inscription</li>
+        <li>Ne pas usurper l'identité d'un tiers ou utiliser un nom d'entreprise fictif</li>
+        <li>Ne pas utiliser le site ou les services à des fins illicites, frauduleuses ou contraires à l'ordre public</li>
+        <li>Ne pas tenter d'accéder aux zones sécurisées du site sans autorisation</li>
+        <li>Ne pas diffuser de virus, malwares ou tout code malveillant via le site</li>
+        <li>Ne pas reproduire, copier ou exploiter commercialement le contenu du site sans autorisation écrite</li>
+        <li>Respecter les droits de propriété intellectuelle de GAROMS-TECH et de ses partenaires</li>
+        <li>Ne pas perturber le bon fonctionnement du site (attaque DDoS, scraping abusif, injection, etc.)</li>
+      </ul>
+      <div class="box-warn">
+        <p>⚠️ Tout manquement à ces obligations pourra entraîner la suspension immédiate de l'accès aux services, sans préavis et sans remboursement des sommes éventuellement versées.</p>
+      </div>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">Art. 6</span> Services proposés</h2>
+      <p>GAROMS-TECH propose les catégories de services suivantes :</p>
+      <table>
+        <thead><tr><th>Catégorie</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>🤖 Chatbot & Agent IA</td><td>Développement de chatbots IA personnalisés, intégrés WhatsApp, web, Instagram</td></tr>
+          <tr><td>🌐 Développement Web & App</td><td>Sites web, applications mobiles, plateformes e-commerce, SaaS</td></tr>
+          <tr><td>⚙️ Automatisation</td><td>Automatisation de processus métier, intégrations API, flux de travail intelligents</td></tr>
+          <tr><td>📣 Marketing Digital</td><td>Stratégie sociale, contenu, campagnes publicitaires, SEO</td></tr>
+          <tr><td>📊 Audit IA</td><td>Évaluation des processus existants et recommandations IA personnalisées</td></tr>
+          <tr><td>🎓 Formation</td><td>Formation équipes sur l'usage des outils IA et l'automatisation</td></tr>
+        </tbody>
+      </table>
+      <p>La liste des services peut évoluer. GAROMS-TECH se réserve le droit d'ajouter, modifier ou supprimer des services à tout moment, sans obligation d'en informer préalablement les utilisateurs non-clients.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">Art. 7</span> Tarification et paiement</h2>
+      <p>Les tarifs des services de GAROMS-TECH sont établis sur devis personnalisé, en fonction de la nature, de la complexité et de la durée du projet. Aucun prix fixe n'est affiché publiquement pour les prestations sur mesure.</p>
+      <p><strong>Modalités générales :</strong></p>
+      <ul>
+        <li>Tout démarrage de prestation est conditionné à la signature d'un devis écrit par les deux parties</li>
+        <li>Un acompte de <strong>50% minimum</strong> est exigé avant le début des travaux</li>
+        <li>Le solde est exigible à la livraison ou selon l'échéancier défini dans le devis</li>
+        <li>Les paiements sont acceptés via virement bancaire, MonCash, NatCash ou tout autre moyen convenu par écrit</li>
+        <li>Les prix sont exprimés en USD, sauf mention contraire</li>
+        <li>Les acomptes versés ne sont pas remboursables si le client annule la commande après démarrage des travaux</li>
+      </ul>
+      <p><strong>Retard de paiement :</strong> Tout retard de paiement au-delà de 7 jours après la date d'échéance pourra entraîner la suspension des livraisons et des accès aux outils fournis, sans préjudice de toute autre action.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">Art. 8</span> Engagements de GAROMS-TECH</h2>
+      <p>GAROMS-TECH s'engage à :</p>
+      <ul>
+        <li>Fournir les services commandés avec sérieux, diligence et compétence professionnelle</li>
+        <li>Respecter les délais convenus dans la mesure où le client fournit les éléments nécessaires en temps voulu</li>
+        <li>Tenir le client informé de l'avancement des travaux</li>
+        <li>Traiter les données du client avec la plus stricte confidentialité</li>
+        <li>Proposer des révisions raisonnables dans le cadre défini par le devis</li>
+        <li>Maintenir une communication réactive via WhatsApp ou email dans les 24 heures ouvrables</li>
+      </ul>
+      <div class="box-info">
+        <p>💡 Les délais de livraison peuvent être affectés par des retards dans la transmission des informations, contenus ou validations de la part du client. Dans ce cas, GAROMS-TECH ne pourra être tenue responsable du retard.</p>
+      </div>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">Art. 9</span> Obligations du client</h2>
+      <p>Pour permettre la bonne exécution des prestations, le client s'engage à :</p>
+      <ul>
+        <li>Fournir dans les délais tous les éléments nécessaires (textes, images, accès, informations)</li>
+        <li>Valider ou commenter les livrables intermédiaires dans un délai de <strong>5 jours ouvrables</strong></li>
+        <li>Désigner un interlocuteur unique pour les échanges avec GAROMS-TECH</li>
+        <li>Ne pas divulguer à des tiers les informations techniques, méthodologiques ou commerciales communiquées</li>
+        <li>S'assurer de détenir les droits sur tous les contenus (textes, photos, logos) fournis à GAROMS-TECH</li>
+        <li>Régler les factures dans les délais convenus</li>
+      </ul>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">Art. 10</span> Propriété intellectuelle</h2>
+      <p>L'ensemble des éléments constituant le site garomstech.com (textes, graphismes, logos, icônes, images, vidéos, codes sources, architecture, etc.) sont la propriété exclusive de GAROMS-TECH ou de ses partenaires autorisés, et sont protégés par les lois applicables en matière de propriété intellectuelle.</p>
+      <p><strong>Droits accordés au client :</strong> À la réception du paiement intégral, GAROMS-TECH cède au client les droits d'exploitation sur les livrables spécifiquement développés pour lui, selon les modalités définies dans le devis. Ces droits sont non exclusifs sauf mention contraire écrite.</p>
+      <p><strong>Restrictions :</strong> Il est strictement interdit, sans autorisation préalable écrite de GAROMS-TECH, de :</p>
+      <ul>
+        <li>Reproduire, copier ou distribuer tout élément du site</li>
+        <li>Modifier, adapter ou décompiler les codes et outils développés</li>
+        <li>Utiliser les méthodologies, frameworks ou systèmes propriétaires de GAROMS-TECH</li>
+        <li>Présenter les travaux de GAROMS-TECH comme étant les siens sans accord écrit</li>
+      </ul>
+      <p>GAROMS-TECH se réserve le droit de mentionner le nom du client et de présenter les projets réalisés à titre de référence commerciale, sauf opposition écrite du client formulée avant la signature du devis.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">Art. 11</span> Confidentialité des données</h2>
+      <p>Le traitement des données personnelles collectées sur ce site est régi par la <a href="confidentialite.html">Politique de confidentialité</a> de GAROMS-TECH, qui fait partie intégrante des présentes CGU.</p>
+      <p>GAROMS-TECH utilise les outils tiers suivants pour le fonctionnement du site :</p>
+      <ul>
+        <li><strong>Supabase</strong> — base de données hébergée, conforme aux standards de sécurité</li>
+        <li><strong>Netlify</strong> — hébergement et déploiement du site</li>
+        <li><strong>Google Analytics (GA4)</strong> — analyse anonymisée du trafic</li>
+        <li><strong>Groq AI</strong> — moteur de l'agent IA conversationnel</li>
+      </ul>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">Art. 12</span> Responsabilité</h2>
+      <p>GAROMS-TECH met en œuvre tous les moyens raisonnables pour assurer la qualité de ses services. Cependant, sa responsabilité ne saurait être engagée dans les cas suivants :</p>
+      <ul>
+        <li>Interruption du site due à des causes techniques indépendantes (panne serveur, attaque externe, force majeure)</li>
+        <li>Dommages résultant de l'usage fait par le client des livrables fournis</li>
+        <li>Perte de données due à un incident chez un prestataire tiers (Supabase, Netlify, etc.)</li>
+        <li>Erreurs ou omissions dans les informations fournies par le client</li>
+        <li>Résultats commerciaux non atteints suite à l'utilisation des services</li>
+        <li>Incompatibilité des outils développés avec des systèmes tiers non mentionnés dans le devis</li>
+      </ul>
+      <p>En tout état de cause, la responsabilité totale de GAROMS-TECH ne pourra excéder le montant effectivement perçu pour la prestation en cause au cours des 3 derniers mois précédant le sinistre.</p>
+    </section>
+
+    <section id="s13">
+      <h2><span class="num">Art. 13</span> Agent IA &amp; Chatbot</h2>
+      <p>Le site garomstech.com intègre un agent conversationnel alimenté par intelligence artificielle (Groq AI). L'Utilisateur est informé que :</p>
+      <ul>
+        <li>Les réponses générées par l'agent IA sont automatiques et peuvent contenir des inexactitudes</li>
+        <li>L'agent IA peut collecter le nom, l'email et le WhatsApp de l'Utilisateur dans le cadre d'une demande de contact — ces données sont stockées de façon sécurisée sur Supabase</li>
+        <li>L'agent IA ne remplace pas le conseil professionnel — toute décision commerciale doit être validée par un membre de l'équipe GAROMS-TECH</li>
+        <li>Les conversations ne sont pas enregistrées de manière permanente et ne sont pas partagées avec des tiers</li>
+        <li>GAROMS-TECH se réserve le droit de modifier ou interrompre l'accès à l'agent IA à tout moment</li>
+      </ul>
+      <div class="box-warn">
+        <p>⚠️ L'agent IA n'est pas habilité à conclure de contrat au nom de GAROMS-TECH. Seul un devis signé par les deux parties vaut engagement commercial.</p>
+      </div>
+    </section>
+
+    <section id="s14">
+      <h2><span class="num">Art. 14</span> Programme Ambassadeur</h2>
+      <p>Le Programme Ambassadeur de GAROMS-TECH permet à des partenaires agréés de présenter les services de l'agence à des prospects en échange d'une commission sur les ventes réalisées.</p>
+      <p><strong>Conditions générales du programme :</strong></p>
+      <ul>
+        <li>La candidature doit être soumise via le formulaire officiel sur la page <a href="ambassadeur.html">ambassadeur.html</a></li>
+        <li>GAROMS-TECH se réserve le droit d'accepter ou de refuser toute candidature sans obligation de justification</li>
+        <li>Les commissions sont calculées selon le tableau officiel communiqué après acceptation de la candidature</li>
+        <li>Les commissions sont versées le 5 du mois suivant la signature + premier paiement du client</li>
+        <li>L'ambassadeur ne peut pas se présenter comme employé ou représentant légal de GAROMS-TECH</li>
+        <li>GAROMS-TECH peut mettre fin au partenariat à tout moment en cas de non-respect des règles éthiques ou commerciales</li>
+        <li>Les prospects soumis restent la propriété commerciale de GAROMS-TECH après soumission</li>
+      </ul>
+    </section>
+
+    <section id="s15">
+      <h2><span class="num">Art. 15</span> Newsletter et communications</h2>
+      <p>En s'abonnant à la newsletter de GAROMS-TECH, l'Utilisateur accepte de recevoir des communications commerciales, des actualités et des offres promotionnelles par email.</p>
+      <ul>
+        <li>L'inscription est volontaire et peut être annulée à tout moment via le lien de désabonnement</li>
+        <li>L'email fourni est utilisé uniquement à des fins de communication GAROMS-TECH</li>
+        <li>GAROMS-TECH s'engage à ne pas vendre ni céder les adresses email abonnées</li>
+        <li>La fréquence d'envoi est variable et non contractuelle</li>
+      </ul>
+    </section>
+
+    <section id="s16">
+      <h2><span class="num">Art. 16</span> Liens et contenus tiers</h2>
+      <p>Le site garomstech.com peut contenir des liens hypertextes vers des sites tiers. GAROMS-TECH ne contrôle pas le contenu de ces sites et décline toute responsabilité quant à leur disponibilité, leur exactitude ou leurs pratiques en matière de données personnelles.</p>
+      <p>La présence d'un lien vers un site tiers ne constitue pas une recommandation ou un partenariat de la part de GAROMS-TECH, sauf mention expresse contraire.</p>
+    </section>
+
+    <section id="s17">
+      <h2><span class="num">Art. 17</span> Modification des CGU</h2>
+      <p>GAROMS-TECH se réserve le droit de modifier les présentes CGU à tout moment. Les modifications prennent effet dès leur publication sur le site. Il appartient à l'Utilisateur de consulter régulièrement les CGU.</p>
+      <p>En cas de modification substantielle, un avis sera publié en haut de cette page avec la date de mise à jour. La poursuite de l'utilisation du site après modification vaut acceptation des nouvelles CGU.</p>
+    </section>
+
+    <section id="s18">
+      <h2><span class="num">Art. 18</span> Suspension et résiliation</h2>
+      <p>GAROMS-TECH peut suspendre ou résilier l'accès d'un utilisateur (compte, portail ambassadeur, newsletter) dans les cas suivants :</p>
+      <ul>
+        <li>Violation des présentes CGU</li>
+        <li>Comportement frauduleux, abusif ou contraire à l'éthique</li>
+        <li>Non-paiement des sommes dues</li>
+        <li>Utilisation des services à des fins illégales</li>
+        <li>Demande expresse de l'utilisateur</li>
+      </ul>
+      <p>En cas de résiliation d'un contrat de prestation à l'initiative du client après démarrage des travaux, l'acompte versé reste acquis à GAROMS-TECH. Une facturation au prorata du travail effectué pourra s'appliquer si le montant réalisé dépasse l'acompte.</p>
+    </section>
+
+    <section id="s19">
+      <h2><span class="num">Art. 19</span> Droit applicable et litiges</h2>
+      <p>Les présentes CGU sont rédigées en français et régies par les principes généraux du droit commercial international, GAROMS-TECH opérant en tant qu'entité numérique internationale.</p>
+      <p>En cas de litige entre GAROMS-TECH et un utilisateur ou client, les parties s'engagent à rechercher une solution amiable dans un délai de <strong>30 jours</strong> à compter de la notification du différend par écrit (email ou WhatsApp).</p>
+      <p>À défaut de résolution amiable, le litige pourra être soumis à une médiation ou à toute juridiction compétente déterminée d'un commun accord.</p>
+      <div class="box-info">
+        <p>📧 Pour tout différend, contactez-nous d'abord à : <a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a></p>
+      </div>
+    </section>
+
+    <section id="s20">
+      <h2><span class="num">Art. 20</span> Contact</h2>
+      <p>Pour toute question relative aux présentes CGU ou à l'utilisation de nos services :</p>
+      <div class="box">
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:.6rem;">📧 <strong>Email :</strong> <a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a></li>
+          <li style="margin-bottom:.6rem;">💬 <strong>WhatsApp :</strong> <a href="https://wa.me/50941773549">+509 41 77 35 49</a></li>
+          <li style="margin-bottom:.6rem;">🌐 <strong>Site :</strong> <a href="index.html">garomstech.com</a></li>
+          <li>⏰ <strong>Disponibilité :</strong> Réponse sous 24h ouvrables</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="cta-bar">
+      <h3>Des questions sur nos services ?</h3>
+      <p>Notre équipe est disponible pour vous accompagner dans votre projet digital.</p>
+      <a href="index.html#contact">Démarrer un projet →</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

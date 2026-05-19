@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programme Ambassadeur — Garoms-Tech</title>
+  <meta name="description" content="Rejoignez le réseau d'ambassadeurs Garoms-Tech. Identifiez des entrepreneurs, transmettez-les à notre équipe, et touchez des commissions allant jusqu'à 20%." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-70VF95VJ9M"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-70VF95VJ9M');</script>
+
+<style>
+/* ================================================================
+   GAROMS-TECH — AMBASSADEUR.HTML — CSS COMPLET
+================================================================ */
+:root {
+  --primary:#E85D04;--primary-dark:#C84B00;--dark:#0A1628;
+  --accent:#FB923C;--light:#FFF7ED;--white:#FFFFFF;
+  --gray-200:#E2E8F0;--gray-300:#CBD5E1;--gray-400:#94A3B8;
+  --gray-500:#64748B;--gray-600:#475569;
+  --green:#22C55E;--green-dark:#16A34A;--wa:#25D366;
+  --font-h:'Poppins',sans-serif;--font-b:'Inter',sans-serif;
+  --r:12px;--r-sm:8px;--r-lg:20px;--r-full:9999px;
+  --sh-xl:0 16px 48px rgba(232,93,4,0.16);
+  --sh-lg:0 8px 32px rgba(232,93,4,0.12);
+  --sh-blue:0 8px 30px rgba(232,93,4,0.35);
+  --tr:all 0.3s cubic-bezier(0.4,0,0.2,1);
+  --tr-spring:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;height:100%;overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}
+@supports(padding:max(0px)){.site-header{padding-top:env(safe-area-inset-top);}body{padding-bottom:env(safe-area-inset-bottom);}}
+body{min-height:100dvh;}
+body{font-family:var(--font-b);color:var(--dark);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;transition:var(--tr);}button{cursor:pointer;border:none;background:none;font-family:var(--font-b);transition:var(--tr);}ul{list-style:none;}
+
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 1rem;}
+@media(min-width:768px){.container{padding:0 2rem;}}
+@media(min-width:1024px){.container{padding:0 3rem;}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.8rem;border-radius:var(--r);font-family:var(--font-h);font-weight:600;font-size:1rem;transition:var(--tr-spring);cursor:pointer;border:2px solid transparent;white-space:nowrap;}
+.btn-primary{background:var(--primary);color:var(--white);box-shadow:0 4px 20px rgba(0,87,255,.3);}
+.btn-primary:hover{background:var(--primary-dark);box-shadow:var(--sh-blue);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--primary);border-color:var(--primary);}
+.btn-outline:hover{background:var(--primary);color:var(--white);transform:translateY(-2px);}
+.btn-green{background:#25D366;color:var(--white);box-shadow:0 4px 20px rgba(37,211,102,.4);}
+.btn-green:hover{background:#1ebe5d;box-shadow:0 8px 30px rgba(37,211,102,.5);transform:translateY(-2px);}
+.badge{display:inline-block;font-size:.75rem;font-weight:600;color:var(--primary);background:rgba(0,87,255,.08);border:1px solid rgba(0,87,255,.18);padding:.3rem .9rem;border-radius:var(--r-full);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;}
+
+/* HEADER */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:var(--tr);}
+.site-header.scrolled{border-bottom-color:var(--gray-200);box-shadow:0 2px 20px rgba(0,87,255,.06);}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:88px;gap:1.5rem;}
+.hdr-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;flex-shrink:0;}
+.hdr-logo-txt{font-family:var(--font-h);font-size:1.25rem;font-weight:800;color:var(--dark);letter-spacing:-.02em;}
+.hdr-logo-txt span{color:var(--primary);}
+.hdr-nav{display:none;align-items:center;gap:1.5rem;}
+@media(min-width:1024px){.hdr-nav{display:flex;}}
+.hdr-nav a{font-family:var(--font-h);font-size:.875rem;font-weight:500;color:var(--gray-600);position:relative;}
+.hdr-nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--primary);border-radius:2px;transition:width .25s;}
+.hdr-nav a:hover{color:var(--primary);}
+.hdr-nav a:hover::after{width:100%;}
+.hdr-acts{display:flex;align-items:center;gap:.75rem;}
+.hdr-cta{display:none;padding:.6rem 1.2rem;font-size:.875rem;}
+@media(min-width:768px){.hdr-cta{display:inline-flex;}}
+.hamburger{display:flex;flex-direction:column;justify-content:space-between;width:28px;height:20px;padding:0;flex-shrink:0;}
+@media(min-width:1024px){.hamburger{display:none;}}
+.hamburger span{display:block;height:2px;background:var(--dark);border-radius:2px;transition:var(--tr);transform-origin:left center;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translateY(-1px);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translateY(1px);}
+.mob-menu{display:none;flex-direction:column;gap:1rem;padding:1.5rem 1rem;background:var(--white);border-top:1px solid var(--gray-200);box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.mob-menu.open{display:flex;animation:slideDown .3s ease;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.mob-menu nav{display:flex;flex-direction:column;gap:.25rem;}
+.mob-menu nav a{font-family:var(--font-h);font-size:1rem;font-weight:500;color:var(--gray-600);padding:.75rem .5rem;border-radius:var(--r-sm);}
+.mob-menu nav a:hover{color:var(--primary);background:var(--light);}
+.mob-menu .btn{align-self:flex-start;font-size:.875rem;}
+
+/* ── HERO AMBASSADEUR ──────────────────────────────────── */
+.amb-hero{position:relative;min-height:90vh;display:flex;align-items:center;padding-top:72px;overflow:hidden;background:var(--dark);}
+.amb-hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.ab1{position:absolute;width:600px;height:600px;background:radial-gradient(circle,#E85D04,#C84B00);border-radius:50%;filter:blur(100px);opacity:.12;top:-200px;right:-100px;animation:blobF 10s infinite ease-in-out;}
+.ab2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,#FB923C,#E85D04);border-radius:50%;filter:blur(100px);opacity:.08;bottom:-100px;left:-100px;animation:blobF 10s infinite ease-in-out;animation-delay:3s;}
+@keyframes blobF{0%,100%{transform:scale(1) translate(0,0);}33%{transform:scale(1.05) translate(20px,-20px);}66%{transform:scale(.97) translate(-10px,15px);}}
+/* ── AMBASSADOR HERO IMAGE ─────────────────────────────── */
+.amb-hero-visual{width:100%;max-width:480px;margin:0 auto;position:relative;}
+.amb-img-scene{position:relative;width:360px;height:360px;margin:0 auto;}
+@media(min-width:768px){.amb-img-scene{width:420px;height:420px;}}
+.amb-img-ring{position:absolute;border-radius:50%;border:1.5px solid transparent;pointer-events:none;}
+.amb-img-ring.r1{inset:-20px;border-top-color:rgba(251,146,60,.6);border-right-color:rgba(232,93,4,.4);animation:ambRing 5s linear infinite;}
+.amb-img-ring.r2{inset:-36px;border-bottom-color:rgba(251,146,60,.3);border-left-color:rgba(232,93,4,.2);animation:ambRing 8s linear infinite reverse;}
+.amb-img-ring.r3{inset:-54px;border-top-color:rgba(232,93,4,.15);animation:ambRing 12s linear infinite;}
+@keyframes ambRing{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.amb-img-glow{position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,rgba(232,93,4,.4) 0%,transparent 70%);animation:ambGlow 4s ease-in-out infinite alternate;pointer-events:none;}
+@keyframes ambGlow{0%{opacity:.4;transform:scale(1);}100%{opacity:.9;transform:scale(1.08);}}
+.amb-main-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid rgba(232,93,4,.5);box-shadow:0 0 50px rgba(232,93,4,.5),inset 0 0 20px rgba(0,87,255,.1);animation:ambFloat 4s ease-in-out infinite;}
+@keyframes ambFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.amb-float-badge{position:absolute;background:rgba(10,22,40,.95);backdrop-filter:blur(14px);border:1px solid rgba(232,93,4,.35);border-radius:var(--r-sm);padding:.4rem .9rem;font-family:var(--font-h);font-size:.72rem;font-weight:700;color:var(--accent);white-space:nowrap;animation:abFloat 3s ease-in-out infinite alternate;box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.ab-b1{top:-8px;left:-10px;animation-delay:0s;}
+.ab-b2{bottom:10px;right:-10px;animation-delay:.7s;}
+.ab-b3{top:40%;right:-20px;animation-delay:1.4s;}
+@keyframes abFloat{0%{transform:translateY(0);}100%{transform:translateY(-7px);}}
+.amb-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,87,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,87,255,.05) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);}
+.amb-hero-in{position:relative;z-index:1;padding:5rem 0 4rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.75rem;}
+.amb-hero .badge{background:rgba(0,87,255,.15);color:var(--accent);border-color:rgba(0,212,255,.25);}
+.amb-hero-title{font-family:var(--font-h);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--white);max-width:760px;}
+.amb-hero-title span{background:linear-gradient(135deg,#FB923C,#E85D04);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.amb-hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.65);max-width:600px;line-height:1.75;}
+.amb-stats{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem;}
+.amb-stat{display:flex;flex-direction:column;align-items:center;gap:.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:1.25rem 2rem;border-radius:var(--r-lg);backdrop-filter:blur(8px);min-width:130px;}
+.amb-stat-n{font-family:var(--font-h);font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,#FB923C,#E85D04);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.amb-stat-l{font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;font-weight:600;text-align:center;}
+
+/* ── SECTION GÉNÉRIQUE ──────────────────────────────────── */
+section{padding:5rem 0;}
+.sec-badge{display:inline-block;font-size:.75rem;font-weight:600;color:var(--primary);background:rgba(0,87,255,.08);border:1px solid rgba(0,87,255,.18);padding:.3rem .9rem;border-radius:var(--r-full);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;}
+.sec-title{font-family:var(--font-h);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;color:var(--dark);margin-bottom:.75rem;}
+.sec-sub{font-size:1.05rem;color:var(--gray-500);max-width:560px;line-height:1.7;}
+.sec-head{margin-bottom:3rem;}
+.sec-head.center{text-align:center;display:flex;flex-direction:column;align-items:center;}
+
+/* ── CARDS AMBASSADEUR ──────────────────────────────────── */
+.amb-cards{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+@media(min-width:768px){.amb-cards{grid-template-columns:repeat(3,1fr);}}
+.amb-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:2rem;transition:var(--tr-spring);position:relative;overflow:hidden;}
+.amb-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,87,255,.03),rgba(0,212,255,.03));opacity:0;transition:opacity .3s;}
+.amb-card:hover{border-color:rgba(0,87,255,.3);box-shadow:var(--sh-lg);transform:translateY(-6px);}
+.amb-card:hover::before{opacity:1;}
+.amb-card-ico{font-size:3rem;margin-bottom:1rem;display:block;}
+.amb-card-title{font-family:var(--font-h);font-size:1.25rem;font-weight:700;color:var(--dark);margin-bottom:.75rem;}
+.amb-card-txt{font-size:.95rem;color:var(--gray-500);line-height:1.7;}
+
+/* ── TIMELINE ──────────────────────────────────────────── */
+.timeline{position:relative;max-width:800px;margin:0 auto;}
+.timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#E85D04,#FB923C);border-radius:var(--r-full);}
+@media(min-width:768px){.timeline::before{left:50%;transform:translateX(-1px);}}
+.tl-item{display:flex;gap:1.5rem;position:relative;padding-bottom:2.5rem;align-items:flex-start;}
+@media(min-width:768px){.tl-item{gap:2rem;}
+.tl-item:nth-child(even){flex-direction:row-reverse;}
+.tl-item:nth-child(even) .tl-content{text-align:right;}
+}
+.tl-num{flex-shrink:0;width:56px;height:56px;background:linear-gradient(135deg,#E85D04,#C84B00);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1.25rem;font-weight:800;color:var(--white);box-shadow:0 4px 16px rgba(232,93,4,.45);position:relative;z-index:1;border:3px solid var(--white);}
+.tl-content{flex:1;background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:1.25rem 1.5rem;transition:var(--tr);}
+.tl-content:hover{border-color:rgba(0,87,255,.25);box-shadow:var(--sh-lg);}
+.tl-step{font-size:.75rem;color:var(--primary);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;}
+.tl-title{font-family:var(--font-h);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:.4rem;}
+.tl-txt{font-size:.9rem;color:var(--gray-500);line-height:1.6;}
+
+/* ── TABLEAU COMMISSIONS ─────────────────────────────── */
+.comm-section{background:var(--dark);color:var(--white);}
+.comm-table-wrap{overflow-x:auto;border-radius:var(--r-lg);border:1px solid rgba(255,255,255,.08);}
+table{width:100%;border-collapse:collapse;}
+thead tr{background:rgba(232,93,4,.25);}
+th{font-family:var(--font-h);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7);padding:1rem 1.5rem;text-align:left;}
+td{padding:1rem 1.5rem;font-size:.95rem;color:rgba(255,255,255,.8);border-top:1px solid rgba(255,255,255,.06);}
+tr:hover td{background:rgba(0,87,255,.08);}
+.badge-comm{display:inline-block;font-family:var(--font-h);font-size:.875rem;font-weight:700;color:var(--accent);background:rgba(251,146,60,.1);padding:.2rem .7rem;border-radius:var(--r-full);border:1px solid rgba(251,146,60,.25);}
+.comm-note{color:rgba(255,255,255,.45);font-size:.85rem;margin-top:1rem;text-align:center;}
+.comm-example{background:rgba(0,87,255,.12);border:1px solid rgba(0,87,255,.25);border-radius:var(--r-lg);padding:1.75rem 2rem;margin-top:2rem;text-align:center;}
+.ce-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:.75rem;}
+.ce-title{font-family:var(--font-h);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:1rem;}
+.ce-rows{display:flex;flex-direction:column;gap:.5rem;align-items:center;}
+.ce-row{display:flex;align-items:center;gap:.75rem;font-size:1rem;}
+.ce-arrow{color:var(--accent);font-size:1.2rem;}
+.ce-val{font-family:var(--font-h);font-weight:700;color:var(--accent);font-size:1.1rem;}
+.ce-desc{color:rgba(255,255,255,.6);font-size:.9rem;}
+
+/* ── PROFILS ─────────────────────────────────────────── */
+.profils-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+@media(min-width:768px){.profils-grid{grid-template-columns:repeat(4,1fr);}}
+.profil-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:1.5rem 1rem;text-align:center;transition:var(--tr-spring);}
+.profil-card:hover{border-color:rgba(0,87,255,.3);box-shadow:var(--sh-lg);transform:translateY(-4px);}
+.profil-ico{font-size:2.5rem;display:block;margin-bottom:.75rem;}
+.profil-label{font-family:var(--font-h);font-size:.9rem;font-weight:700;color:var(--dark);line-height:1.3;}
+.cherche-list{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem;max-width:480px;}
+.cherche-item{display:flex;align-items:flex-start;gap:.75rem;font-size:.95rem;color:var(--gray-600);}
+.cherche-ico{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+
+/* ── FORMULAIRE ─────────────────────────────────────── */
+.form-section{background:var(--light);}
+.form-wrap{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:2.5rem;max-width:720px;margin:0 auto;box-shadow:var(--sh-lg);}
+.form-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
+@media(min-width:640px){.form-grid{grid-template-columns:repeat(2,1fr);}}
+.form-group{display:flex;flex-direction:column;gap:.4rem;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-family:var(--font-h);font-size:.85rem;font-weight:600;color:var(--dark);}
+.form-label span{color:#EF4444;margin-left:2px;}
+.form-input,.form-select,.form-textarea{width:100%;padding:.75rem 1rem;border:1.5px solid var(--gray-300);border-radius:var(--r-sm);font-family:var(--font-b);font-size:.95rem;color:var(--dark);background:var(--white);transition:var(--tr);outline:none;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(232,93,4,.12);}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--gray-400);}
+.form-textarea{resize:vertical;min-height:100px;}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394A3B8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;}
+.form-btn{width:100%;padding:1rem;font-size:1rem;margin-top:.5rem;}
+.form-success{display:none;text-align:center;padding:2rem;}
+.form-success-ico{font-size:3.5rem;display:block;margin-bottom:1rem;}
+.form-success-title{font-family:var(--font-h);font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:.5rem;}
+.form-success-txt{color:var(--gray-500);font-size:.95rem;}
+
+/* ── SOUMETTRE PROSPECT ─────────────────────────────── */
+.prospect-options{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:3rem;}
+@media(min-width:768px){.prospect-options{grid-template-columns:repeat(2,1fr);}}
+.p-option{border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:1.75rem;text-align:center;transition:var(--tr-spring);}
+.p-option:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);}
+.p-option.green{border-color:rgba(34,197,94,.2);background:rgba(34,197,94,.02);}
+.p-option.green:hover{border-color:var(--green);}
+.p-option.blue{border-color:rgba(0,87,255,.15);background:rgba(0,87,255,.02);}
+.p-option.blue:hover{border-color:var(--primary);}
+.p-ico{font-size:2.5rem;display:block;margin-bottom:.75rem;}
+.p-label{font-family:var(--font-h);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);margin-bottom:.4rem;}
+.p-title{font-family:var(--font-h);font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;}
+.p-txt{font-size:.875rem;color:var(--gray-500);margin-bottom:1.25rem;line-height:1.6;}
+.prospect-form-title{font-family:var(--font-h);font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:1.5rem;text-align:center;}
+
+/* ── FAQ ACCORDION ──────────────────────────────────── */
+.faq-section{background:var(--light);}
+.faq-list{display:flex;flex-direction:column;gap:.75rem;max-width:720px;margin:0 auto;}
+.faq-item{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden;transition:var(--tr);}
+.faq-item.open{border-color:rgba(232,93,4,.3);box-shadow:var(--sh-lg);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;cursor:pointer;gap:1rem;}
+.faq-q-txt{font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--dark);}
+.faq-item.open .faq-q-txt{color:var(--primary);}
+.faq-icon{flex-shrink:0;width:28px;height:28px;background:var(--light);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:transform .3s;color:var(--primary);}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(0,87,255,.1);}
+.faq-a{display:none;padding:0 1.5rem 1.25rem;font-size:.95rem;color:var(--gray-500);line-height:1.7;border-top:1px solid var(--gray-200);padding-top:1rem;}
+.faq-item.open .faq-a{display:block;}
+
+/* ── LIVRET PRINT ───────────────────────────────────── */
+.livret-section{background:linear-gradient(135deg,var(--dark),#0d1f3c);color:var(--white);padding:5rem 0;}
+.livret-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:3rem;max-width:800px;margin:0 auto;position:relative;overflow:hidden;}
+.livret-card::before{content:'CONFIDENTIEL';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-family:var(--font-h);font-size:5rem;font-weight:900;color:rgba(255,255,255,.02);white-space:nowrap;pointer-events:none;letter-spacing:.15em;}
+.livret-header{text-align:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:2rem;margin-bottom:2rem;}
+.livret-logo{font-family:var(--font-h);font-size:1.75rem;font-weight:900;margin-bottom:.5rem;}
+.livret-logo span{color:var(--accent);}
+.livret-title{font-size:.9rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.4);font-weight:700;}
+.livret-doc{font-size:.75rem;color:rgba(255,255,255,.25);margin-top:.25rem;letter-spacing:.12em;}
+.livret-sec{margin-bottom:2rem;}
+.livret-sec-num{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.5rem;}
+.livret-sec-title{font-family:var(--font-h);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.75rem;}
+.livret-sec p{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:.5rem;}
+.livret-list{display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem;}
+.livret-list li{font-size:.9rem;color:rgba(255,255,255,.6);padding-left:1.25rem;position:relative;}
+.livret-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;}
+.livret-sign{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;margin-top:2rem;}
+.sign-box{display:flex;flex-direction:column;gap:.5rem;}
+.sign-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);font-weight:600;}
+.sign-line{height:1px;background:rgba(255,255,255,.15);margin-top:2rem;}
+.print-btn{display:flex;justify-content:center;margin-top:2rem;}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.site-footer{background:var(--dark);color:rgba(255,255,255,.5);padding:2rem 0;text-align:center;font-size:.875rem;border-top:1px solid rgba(255,255,255,.06);}
+.footer-in{display:flex;flex-direction:column;gap:.5rem;align-items:center;}
+.footer-logo{font-family:var(--font-h);font-size:1rem;font-weight:800;color:var(--white);}
+.footer-logo span{color:var(--accent);}
+.footer-logo-img{height:38px;width:auto;object-fit:contain;}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;}
+.footer-links a{font-size:.8rem;color:rgba(255,255,255,.35);transition:color .2s;}
+.footer-links a:hover{color:var(--white);}
+
+/* PRINT STYLES */
+@media print{
+  .site-header,.site-footer,.print-btn,.btn,.faq-section,.prospect-section,.form-section,.amb-hero,.sec-2,.timeline-section,.profils-section,.comm-section{display:none!important;}
+  .livret-section{background:white!important;color:black!important;padding:0!important;}
+  .livret-card{border:none!important;padding:1rem!important;background:white!important;}
+  .livret-card::before{display:none!important;}
+  .livret-logo span,.livret-sec-num,.livret-list li::before{color:#0057FF!important;}
+  .livret-sec p,.livret-list li{color:#333!important;}
+  .livret-sec-title{color:black!important;}
+  .livret-sign{border-top:1px solid #ddd!important;}
+  .sign-label{color:#666!important;}
+  .sign-line{background:#ddd!important;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<header id="header" class="site-header">
+  <div class="container hdr-in">
+    <a href="index.html" class="hdr-logo" style="text-decoration:none;">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" style="height:68px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 14px rgba(232,93,4,.4));" />
+    </a>
+    <nav class="hdr-nav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#equipe">Équipe</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="ambassadeur.html" style="color:var(--primary)">Ambassadeur</a>
+    </nav>
+    <div class="hdr-acts">
+      <a href="ambassadeur-portail.html" class="btn btn-primary hdr-cta" style="background:transparent;border:1px solid rgba(232,93,4,.5);color:var(--primary);margin-right:.4rem;">🔐 Mon Portail</a>
+      <a href="#inscription" class="btn btn-primary hdr-cta">Devenir Ambassadeur →</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mob-menu" id="mob-menu">
+    <nav>
+      <a href="index.html#services" onclick="closeMenu()">Services</a>
+      <a href="index.html#equipe" onclick="closeMenu()">Équipe</a>
+      <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+    </nav>
+      <a href="ambassadeur-portail.html" class="btn" style="background:rgba(232,93,4,.12);border:1px solid rgba(232,93,4,.3);color:var(--primary);margin-bottom:.5rem;display:block;text-align:center;" onclick="closeMenu()">🔐 Mon Portail</a>
+    <a href="#inscription" class="btn btn-primary" onclick="closeMenu()">Devenir Ambassadeur →</a>
+  </div>
+</header>
+
+
+<!-- ══ SECTION 1 — HERO ════════════════════════════════════ -->
+<section class="amb-hero">
+  <div class="amb-hero-bg">
+    <div class="ab1"></div>
+    <div class="ab2"></div>
+    <div class="amb-hero-grid"></div>
+  </div>
+  <div class="container amb-hero-in">
+    <div class="badge" data-aos="fade-down">🤝 Programme Partenaire Officiel</div>
+    <h1 class="amb-hero-title" data-aos="fade-up">
+      Devenez <span>Ambassadeur</span><br>Garoms-Tech
+    </h1>
+    <p class="amb-hero-sub" data-aos="fade-up" data-aos-delay="150">
+      Identifiez des entrepreneurs qui ont besoin de nos services.
+      Nous gérons tout le reste. Vous touchez des commissions sur chaque vente.
+    </p>
+    <div class="amb-stats" data-aos="fade-up" data-aos-delay="250">
+      <div class="amb-stat">
+        <span class="amb-stat-n" id="stat-comm">0%</span>
+        <span class="amb-stat-l">Commission maximale</span>
+      </div>
+      <div class="amb-stat">
+        <span class="amb-stat-n">24h</span>
+        <span class="amb-stat-l">Traitement du dossier</span>
+      </div>
+      <div class="amb-stat">
+        <span class="amb-stat-n" id="stat-pay">0%</span>
+        <span class="amb-stat-l">Paiement garanti</span>
+      </div>
+    </div>
+    <!-- HERO IMAGE with orbit animations -->
+    <div class="amb-hero-visual" data-aos="zoom-in" data-aos-delay="200">
+      <div class="amb-img-scene">
+        <div class="amb-img-ring r1"></div>
+        <div class="amb-img-ring r2"></div>
+        <div class="amb-img-ring r3"></div>
+        <div class="amb-img-glow"></div>
+        <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/124e6c36-796b-4af4-9daf-96158864192c.png" alt="Programme Ambassadeur GAROMS-TECH" class="amb-main-img" style="object-position:top center;" />
+        <div class="amb-float-badge ab-b1">🌍 Réseau mondial actif</div>
+        <div class="amb-float-badge ab-b2">💰 Commission jusqu'à 20%</div>
+        <div class="amb-float-badge ab-b3">⚡ Paiement garanti</div>
+      </div>
+    </div>
+    <a href="#inscription" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 2.25rem;" data-aos="fade-up" data-aos-delay="350">
+      Je veux devenir Ambassadeur →
+    </a>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 2 — C'EST QUOI ? ════════════════════════════ -->
+<section class="sec-2">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge">💡 Le concept</span>
+      <h2 class="sec-title">C'est quoi un Ambassadeur ?</h2>
+      <p class="sec-sub">Trois rôles simples. Zéro besoin d'être expert en technologie.</p>
+    </div>
+    <div class="amb-cards">
+      <div class="amb-card" data-aos="fade-up" data-aos-delay="0">
+        <span class="amb-card-ico">🎯</span>
+        <h3 class="amb-card-title">Détecteur d'opportunités</h3>
+        <p class="amb-card-txt">Votre mission est simple : identifier des entrepreneurs débordés qui ont besoin d'automatisation, de site web, ou d'agent IA. Vous n'avez pas besoin d'être expert en technologie.</p>
+      </div>
+      <div class="amb-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="amb-card-ico">🤝</span>
+        <h3 class="amb-card-title">Connecter, pas vendre</h3>
+        <p class="amb-card-txt">Vous présentez l'opportunité, vous collectez les informations de base, et vous transmettez le prospect à Garoms-Tech. Notre équipe gère la démonstration, la négociation et la signature.</p>
+      </div>
+      <div class="amb-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="amb-card-ico">💰</span>
+        <h3 class="amb-card-title">Commission sur chaque vente</h3>
+        <p class="amb-card-txt">Dès que le client signe et effectue son premier paiement, vous recevez votre commission. Setup + récurrent mensuel tant que le client reste avec nous.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION COMMUNAUTÉ — VISUEL AMBASSADEURS ══════════════ -->
+<section class="comm-visuel-sec" style="background:var(--dark);padding:5rem 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,93,4,.06),rgba(251,146,60,.04));pointer-events:none;"></div>
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;max-width:1100px;margin:0 auto;">
+      <div data-aos="fade-up" style="text-align:center;">
+        <span class="badge" style="background:rgba(232,93,4,.12);color:var(--accent);border-color:rgba(232,93,4,.25);">🌍 Notre Communauté Mondiale</span>
+        <h2 style="font-family:var(--font-h);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:900;color:var(--white);margin:.75rem 0;line-height:1.1;">
+          Ambassadeurs &amp; Ambassadrices<br><span style="background:linear-gradient(135deg,#FB923C,#E85D04);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">partout dans le monde</span>
+        </h2>
+        <p style="color:rgba(255,255,255,.6);font-size:1rem;max-width:600px;margin:0 auto 2.5rem;line-height:1.75;">Hommes, femmes, entrepreneurs, créateurs de contenu, leaders d'opinion — notre réseau grandit chaque semaine. Rejoignez une communauté qui construit l'avenir du digital.</p>
+        <!-- Group image with frame animation -->
+        <div style="position:relative;max-width:900px;margin:0 auto;" data-aos="zoom-in" data-aos-delay="100">
+          <div style="position:absolute;inset:-3px;border-radius:24px;background:linear-gradient(135deg,rgba(232,93,4,.5),rgba(251,146,60,.3),rgba(232,93,4,.2));z-index:0;animation:ambGlow2 4s ease-in-out infinite alternate;"></div>
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/124e6c36-796b-4af4-9daf-96158864192c.png" alt="Programme Ambassadeur GAROMS-TECH — Communauté mondiale" loading="lazy" decoding="async"
+               style="width:100%;border-radius:20px;position:relative;z-index:1;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 60px rgba(232,93,4,.2);display:block;"
+               onerror="this.style.opacity='0.3';this.alt='Image en chargement...'" />
+          <!-- Floating stats -->
+          <div style="position:absolute;top:20px;left:20px;background:rgba(10,22,40,.95);backdrop-filter:blur(14px);border:1px solid rgba(232,93,4,.35);border-radius:12px;padding:.5rem 1rem;font-family:var(--font-h);font-size:.75rem;font-weight:700;color:#FB923C;z-index:2;animation:dFloat2 3s ease-in-out infinite alternate;">💰 Commissions jusqu'à 20%</div>
+          <div style="position:absolute;bottom:20px;right:20px;background:rgba(10,22,40,.95);backdrop-filter:blur(14px);border:1px solid rgba(232,93,4,.35);border-radius:12px;padding:.5rem 1rem;font-family:var(--font-h);font-size:.75rem;font-weight:700;color:#FB923C;z-index:2;animation:dFloat2 3s ease-in-out infinite alternate;animation-delay:.8s;">🌍 Réseau mondial actif</div>
+        </div>
+        <div style="margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#inscription" class="btn btn-primary" style="font-size:1rem;padding:.95rem 2.25rem;">Je veux rejoindre →</a>
+          <a href="https://wa.me/50941773549?text=Bonjour%20!%20Je%20veux%20rejoindre%20le%20programme%20ambassadeur%20GAROMS-TECH." target="_blank" rel="noopener" class="btn btn-green">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+@keyframes ambGlow2{0%{opacity:.6;transform:scale(1);}100%{opacity:1;transform:scale(1.01);}}
+@keyframes dFloat2{0%{transform:translateY(0);}100%{transform:translateY(-6px);}}
+</style>
+
+<!-- ══ SECTION 3 — COMMENT ÇA MARCHE ? ════════════════════ -->
+<section class="timeline-section" style="background:var(--light);">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge">⚙️ Le processus</span>
+      <h2 class="sec-title">Comment ça marche ?</h2>
+      <p class="sec-sub">5 étapes simples de l'inscription à l'encaissement.</p>
+    </div>
+    <div class="timeline" data-aos="fade-up">
+      <div class="tl-item">
+        <div class="tl-num">1</div>
+        <div class="tl-content">
+          <div class="tl-step">Étape 1</div>
+          <div class="tl-title">Vous vous inscrivez</div>
+          <p class="tl-txt">Formulaire simple sur cette page. Réponse sous 24h. Votre livret officiel vous est envoyé sur WhatsApp.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">2</div>
+        <div class="tl-content">
+          <div class="tl-step">Étape 2</div>
+          <div class="tl-title">Vous identifiez un prospect</div>
+          <p class="tl-txt">Entrepreneur avec des revenus réguliers qui a besoin de nos services : automatisation, site web, chatbot IA ou marketing.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">3</div>
+        <div class="tl-content">
+          <div class="tl-step">Étape 3</div>
+          <div class="tl-title">Vous qualifiez</div>
+          <p class="tl-txt">CA mensuel, budget disponible, besoin précis, délai de décision. Ce sont les 4 informations clés à collecter.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">4</div>
+        <div class="tl-content">
+          <div class="tl-step">Étape 4</div>
+          <div class="tl-title">Vous transmettez</div>
+          <p class="tl-txt">Via WhatsApp (+509 41773549), email (infogaromstech@gmail.com) ou le formulaire dédié ci-dessous.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">5</div>
+        <div class="tl-content">
+          <div class="tl-step">Étape 5</div>
+          <div class="tl-title">Vous encaissez 💰</div>
+          <p class="tl-txt">Commission versée dès la signature + premier paiement client. MonCash, virement, ou autre selon votre préférence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 4 — TABLEAU COMMISSIONS ═════════════════════ -->
+<section class="comm-section">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge" style="background:rgba(0,212,255,.1);color:var(--accent);border-color:rgba(0,212,255,.25);">💎 Rémunération</span>
+      <h2 class="sec-title" style="color:var(--white);">Tableau des commissions</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.5);">Transparence totale sur chaque service.</p>
+    </div>
+    <div class="comm-table-wrap" data-aos="fade-up">
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Commission Setup</th>
+            <th>Récurrent Mensuel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Chatbot IA Standard</td>
+            <td><span class="badge-comm">10%</span></td>
+            <td><span class="badge-comm">5% / mois</span></td>
+          </tr>
+          <tr>
+            <td>Automatisation Avancée</td>
+            <td><span class="badge-comm">12%</span></td>
+            <td><span class="badge-comm">6% / mois</span></td>
+          </tr>
+          <tr>
+            <td>Développement Web / App</td>
+            <td><span class="badge-comm">15%</span></td>
+            <td><span class="badge-comm">7% / mois</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent);">Pack Croissance Complet</strong></td>
+            <td><span class="badge-comm" style="background:rgba(0,212,255,.2);">20%</span></td>
+            <td><span class="badge-comm" style="background:rgba(0,212,255,.2);">10% / mois</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="comm-note" data-aos="fade-up">Les pourcentages sont calculés sur le montant total du contrat signé.<br>Paiement selon votre préférence : MonCash, virement, ou autre.</p>
+    <div class="comm-example" data-aos="fade-up">
+      <p class="ce-label">Exemple concret</p>
+      <p class="ce-title">Un client signe un Pack Croissance Complet à <strong style="color:var(--white);">2 000 USD</strong></p>
+      <div class="ce-rows">
+        <div class="ce-row"><span class="ce-arrow">→</span><span class="ce-val">400 USD</span><span class="ce-desc">au setup (commission une fois)</span></div>
+        <div class="ce-row"><span class="ce-arrow">+</span><span class="ce-val">10%</span><span class="ce-desc">chaque mois tant qu'il reste client</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 5 — QUI PEUT ? ══════════════════════════════ -->
+<section class="profils-section">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge">👥 Profils recherchés</span>
+      <h2 class="sec-title">Qui peut devenir Ambassadeur ?</h2>
+      <p class="sec-sub">Pas de diplôme requis. Juste du sérieux et un réseau.</p>
+    </div>
+    <div class="profils-grid" data-aos="fade-up">
+      <div class="profil-card">
+        <span class="profil-ico">🧑‍💼</span>
+        <div class="profil-label">Entrepreneur avec un réseau actif</div>
+      </div>
+      <div class="profil-card">
+        <span class="profil-ico">📱</span>
+        <div class="profil-label">Créateur de contenu / Influenceur</div>
+      </div>
+      <div class="profil-card">
+        <span class="profil-ico">🎓</span>
+        <div class="profil-label">Étudiant en business ou marketing</div>
+      </div>
+      <div class="profil-card">
+        <span class="profil-ico">💼</span>
+        <div class="profil-label">Commercial / Freelance</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <div class="cherche-list" data-aos="fade-up">
+        <div class="cherche-item"><span class="cherche-ico">✅</span><span>Sérieux et professionnel</span></div>
+        <div class="cherche-item"><span class="cherche-ico">✅</span><span>Réseau d'entrepreneurs actifs</span></div>
+        <div class="cherche-item"><span class="cherche-ico">✅</span><span>Capable de qualifier un prospect</span></div>
+        <div class="cherche-item"><span class="cherche-ico">✅</span><span>Intégrité totale — pas de fausses promesses</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 6 — FORMULAIRE INSCRIPTION ══════════════════ -->
+<section id="inscription" class="form-section">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge">📝 Candidature</span>
+      <h2 class="sec-title">Rejoindre le Réseau Ambassadeur</h2>
+      <p class="sec-sub">Remplissez ce formulaire. Notre équipe vous contacte sous 24h avec votre livret officiel.</p>
+    </div>
+    <div class="form-wrap" data-aos="fade-up">
+      <div id="form-amb-success" class="form-success">
+        <span class="form-success-ico">🎉</span>
+        <h3 class="form-success-title">Candidature reçue !</h3>
+        <p class="form-success-txt">Vous recevrez votre livret officiel sous 24h sur votre WhatsApp.</p>
+      </div>
+      <form id="form-amb" class="form-grid" onsubmit="submitAmbassadeur(event)">
+        <div class="form-group">
+          <label class="form-label">Prénom et Nom <span>*</span></label>
+          <input type="text" id="amb-nom" class="form-input" placeholder="GURU Gédéon" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email <span>*</span></label>
+          <input type="email" id="amb-email" class="form-input" placeholder="vous@exemple.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp / Téléphone <span>*</span></label>
+          <input type="tel" id="amb-phone" class="form-input" placeholder="+509 43111054" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pays / Ville <span>*</span></label>
+          <input type="text" id="amb-ville" class="form-input" placeholder="Haïti, Port-au-Prince" required />
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Vos réseaux sociaux <span style="color:var(--gray-400);font-weight:400;">(optionnel)</span></label>
+          <input type="text" id="amb-reseaux" class="form-input" placeholder="@votre_instagram, Facebook, LinkedIn..." />
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Votre motivation en 2-3 phrases <span>*</span></label>
+          <textarea id="amb-motivation" class="form-textarea" placeholder="Pourquoi voulez-vous rejoindre le réseau Garoms-Tech ?" required></textarea>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Comment avez-vous connu Garoms-Tech ? <span>*</span></label>
+          <select id="amb-source" class="form-select" required>
+            <option value="">Choisir une option...</option>
+            <option value="bouche_a_oreille">Bouche à oreille</option>
+            <option value="reseaux_sociaux">Réseaux sociaux</option>
+            <option value="google">Google / Recherche web</option>
+            <option value="ami">Un ami / collègue</option>
+            <option value="publicite">Publicité</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="btn btn-primary form-btn" id="btn-amb-submit">
+            Envoyer ma candidature →
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 7 — SOUMETTRE UN PROSPECT ═══════════════════ -->
+<section id="prospect" class="prospect-section">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge">📤 Dossier prospect</span>
+      <h2 class="sec-title">Vous avez déjà un prospect ?</h2>
+      <p class="sec-sub">Transmettez-nous le dossier directement.</p>
+    </div>
+    <div class="prospect-options" data-aos="fade-up">
+      <div class="p-option green">
+        <span class="p-ico">💬</span>
+        <div class="p-label">Option A</div>
+        <div class="p-title">Via WhatsApp</div>
+        <p class="p-txt">La façon la plus rapide. Envoyez les infos directement sur notre numéro de contact.</p>
+        <a href="https://wa.me/50941773549" target="_blank" rel="noopener" class="btn btn-green" style="width:100%;justify-content:center;">
+          Envoyer sur WhatsApp →
+        </a>
+      </div>
+      <div class="p-option blue">
+        <span class="p-ico">✉️</span>
+        <div class="p-label">Option B</div>
+        <div class="p-title">Par Email</div>
+        <p class="p-txt">Envoyez le dossier complet par email avec toutes les informations du prospect.</p>
+        <a href="mailto:infogaromstech@gmail.com" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Envoyer par Email →
+        </a>
+      </div>
+    </div>
+
+    <!-- Formulaire prospect -->
+    <div class="form-wrap" data-aos="fade-up">
+      <div id="form-pros-success" class="form-success">
+        <span class="form-success-ico">✅</span>
+        <h3 class="form-success-title">Dossier transmis !</h3>
+        <p class="form-success-txt">Notre équipe reviendra vers vous sous 24h. Merci pour ce prospect !</p>
+      </div>
+      <p class="prospect-form-title">Option C — Formulaire de soumission</p>
+      <form id="form-pros" class="form-grid" onsubmit="submitProspect(event)">
+        <div class="form-group">
+          <label class="form-label">Votre nom (ambassadeur) <span>*</span></label>
+          <input type="text" id="pros-amb-nom" class="form-input" placeholder="Votre nom complet" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nom du prospect <span>*</span></label>
+          <input type="text" id="pros-nom" class="form-input" placeholder="Nom ou entreprise" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Secteur d'activité <span>*</span></label>
+          <input type="text" id="pros-secteur" class="form-input" placeholder="Restaurant, Commerce, Santé..." required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">CA mensuel estimé</label>
+          <input type="text" id="pros-ca" class="form-input" placeholder="Ex : 5000 USD / mois" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Budget disponible</label>
+          <input type="text" id="pros-budget" class="form-input" placeholder="Ex : 500-1000 USD" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Besoin principal <span>*</span></label>
+          <select id="pros-besoin" class="form-select" required>
+            <option value="">Choisir...</option>
+            <option value="chatbot_ia">Chatbot IA</option>
+            <option value="site_web">Site Web</option>
+            <option value="app">Application Mobile/Web</option>
+            <option value="marketing">Marketing Digital</option>
+            <option value="pack_complet">Pack Croissance Complet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Délai de décision</label>
+          <input type="text" id="pros-delai" class="form-input" placeholder="Ex : Cette semaine, Ce mois" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp du prospect <span>*</span></label>
+          <input type="tel" id="pros-whatsapp" class="form-input" placeholder="+509 xxxxxxxx" required />
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Notes supplémentaires</label>
+          <textarea id="pros-notes" class="form-textarea" placeholder="Informations complémentaires utiles..."></textarea>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="btn btn-primary form-btn" id="btn-pros-submit">
+            Transmettre le dossier →
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 8 — FAQ ═════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge">❓ Questions fréquentes</span>
+      <h2 class="sec-title">FAQ Ambassadeur</h2>
+      <p class="sec-sub">Tout ce que vous devez savoir avant de vous lancer.</p>
+    </div>
+    <div class="faq-list" data-aos="fade-up">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-txt">Est-ce que je dois être expert en technologie ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Non. Votre rôle est de connecter, pas de vendre. Nous fournissons tous les outils et la formation nécessaires. Vous avez juste besoin de savoir écouter et identifier un besoin.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-txt">Quand est-ce que je reçois ma commission ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Dès que le client signe le contrat et effectue son premier paiement. Le délai moyen est de 3 à 7 jours après la signature.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-txt">Combien de prospects je peux soumettre ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Autant que vous voulez. Pas de limite. Plus vous soumettez de prospects qualifiés, plus vous gagnez. Certains ambassadeurs soumettent 5 à 10 prospects par mois.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-txt">Comment se passe le paiement de ma commission ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Selon votre préférence : MonCash, virement bancaire, ou tout autre moyen disponible dans votre pays. Nous nous adaptons à vous.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-txt">Que se passe-t-il si mon prospect ne signe pas ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Pas de commission si pas de vente. C'est un système basé sur la performance. Mais notre taux de conversion est élevé sur les prospects bien qualifiés — c'est pourquoi la qualification est essentielle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ LIVRET OFFICIEL (IMPRIMABLE) ════════════════════════ -->
+<section id="livret" class="livret-section">
+  <div class="container">
+    <div class="sec-head center" data-aos="fade-up">
+      <span class="sec-badge" style="background:rgba(0,212,255,.1);color:var(--accent);border-color:rgba(0,212,255,.25);">📋 Document officiel</span>
+      <h2 class="sec-title" style="color:var(--white);">Livret d'Accueil Ambassadeur</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.5);">Ce document vous sera envoyé après votre inscription. Aperçu ci-dessous.</p>
+    </div>
+    <div class="livret-card" data-aos="fade-up">
+      <div class="livret-header">
+        <div class="livret-logo">Garoms<span>-Tech</span></div>
+        <div class="livret-title">Livret d'Accueil & Règlement Officiel — Réseau Ambassadeur Partenaire</div>
+        <div class="livret-doc">DOCUMENT CONFIDENTIEL</div>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">01 — L'ENTREPRISE</div>
+        <div class="livret-sec-title">Qui est Garoms-Tech ?</div>
+        <p>Garoms-Tech est une force de transformation digitale spécialisée en IA et génie numérique. Nous bâtissons des systèmes de vente autonomes qui travaillent 24/7.</p>
+        <ul class="livret-list">
+          <li>Automatisation & IA</li>
+          <li>Développement Web & Apps</li>
+          <li>Marketing Digital & Branding</li>
+          <li>Systèmes de Croissance Intégrés</li>
+        </ul>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">02 — VOTRE MISSION</div>
+        <div class="livret-sec-title">Valeur ajoutée en 3 étapes</div>
+        <p>Détecter des entrepreneurs débordés avec un flux client actif et les connecter à Garoms-Tech.</p>
+        <ul class="livret-list">
+          <li><strong>IDENTIFIER</strong> — Repérer les entrepreneurs débordés</li>
+          <li><strong>QUALIFIER</strong> — Valider CA + budget + urgence</li>
+          <li><strong>CONNECTER</strong> — Transmettre à la direction sous 24h</li>
+        </ul>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">03 — CRITÈRES DE QUALIFICATION OBLIGATOIRES</div>
+        <div class="livret-sec-title">4 informations clés à collecter</div>
+        <ul class="livret-list">
+          <li><strong>CA Mensuel</strong> — Revenus stables confirmés</li>
+          <li><strong>Budget Digital</strong> — Montant disponible immédiatement</li>
+          <li><strong>Coût de l'Inaction</strong> — Ce que l'entreprise perd chaque mois</li>
+          <li><strong>Délai de Décision</strong> — Quand peut-il commencer ?</li>
+        </ul>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">04 — SYSTÈME DE RÉMUNÉRATION</div>
+        <div class="livret-sec-title">Commissions par service</div>
+        <ul class="livret-list">
+          <li>Chatbot IA Standard : 10% setup + 5%/mois</li>
+          <li>Automatisation Avancée : 12% setup + 6%/mois</li>
+          <li>Développement Web/App : 15% setup + 7%/mois</li>
+          <li>Pack Croissance Complet : 20% setup + 10%/mois</li>
+        </ul>
+        <p style="margin-top:.8rem;font-size:.85rem;color:rgba(255,255,255,.55);">La commission est déclenchée exclusivement lorsque le prospect signe le contrat ET effectue son paiement initial à Garoms-Tech.</p>
+        <div style="background:rgba(232,93,4,.08);border:1px solid rgba(232,93,4,.2);border-radius:10px;padding:.9rem 1rem;margin-top:.9rem;">
+          <div style="font-size:.75rem;font-weight:700;color:#FB923C;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;">📅 Calendrier de versement</div>
+          <p style="font-size:.85rem;margin:0;">Les commissions sont calculées et versées <strong>le 5 de chaque mois</strong> via Mobile Money (MonCash / Natcash) ou virement bancaire selon votre préférence indiquée à l'inscription.</p>
+        </div>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">05 — SYSTÈME DE POINTS & NIVEAUX</div>
+        <div class="livret-sec-title">Progressez, gagnez plus</div>
+        <p>Chaque action génère des points qui font progresser votre niveau et augmentent vos avantages.</p>
+        <ul class="livret-list" style="margin-top:.6rem;">
+          <li>+10 pts — Prospect qualifié soumis</li>
+          <li>+50 pts — Prospect qui signe et paie</li>
+          <li>+5 pts — Par client actif, chaque mois</li>
+        </ul>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.9rem;">
+          <div style="background:rgba(205,127,50,.1);border:1px solid rgba(205,127,50,.25);border-radius:10px;padding:.7rem;text-align:center;">
+            <div style="font-weight:800;color:#CD7F32;font-size:1rem;">🥉 Bronze</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.2rem;">0 – 99 pts</div>
+            <div style="font-size:.72rem;margin-top:.3rem;">Taux de base</div>
+          </div>
+          <div style="background:rgba(203,213,225,.08);border:1px solid rgba(203,213,225,.2);border-radius:10px;padding:.7rem;text-align:center;">
+            <div style="font-weight:800;color:#CBD5E1;font-size:1rem;">🥈 Silver</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.2rem;">100 – 299 pts</div>
+            <div style="font-size:.72rem;margin-top:.3rem;">+1% setup · +0.5%/mois</div>
+          </div>
+          <div style="background:rgba(255,195,0,.08);border:1px solid rgba(255,195,0,.2);border-radius:10px;padding:.7rem;text-align:center;">
+            <div style="font-weight:800;color:#FFC300;font-size:1rem;">🥇 Gold</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.2rem;">300+ pts</div>
+            <div style="font-size:.72rem;margin-top:.3rem;">+2% setup · +1%/mois</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">06 — CODE DE CONDUITE</div>
+        <div class="livret-sec-title">Nos valeurs fondamentales</div>
+        <ul class="livret-list">
+          <li>Intégrité totale — jamais de fausses promesses techniques</li>
+          <li>Confidentialité — tarifs et méthodes Garoms-Tech sont strictement confidentiels</li>
+          <li>Professionnalisme — représenter Garoms-Tech avec excellence en toutes circonstances</li>
+          <li>Délai 24h — transmettre chaque dossier qualifié sous 24 heures</li>
+          <li>Zéro pression — identifier et écouter, ne jamais forcer une vente</li>
+        </ul>
+        <div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:.8rem 1rem;margin-top:.8rem;">
+          <div style="font-size:.75rem;font-weight:700;color:#FCA5A5;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">⚠ Règle absolue</div>
+          <p style="font-size:.82rem;margin:0;">Toute fausse promesse faite à un prospect peut entraîner la résiliation immédiate du partenariat et engage votre responsabilité personnelle.</p>
+        </div>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">07 — VOTRE PORTAIL PERSONNEL</div>
+        <div class="livret-sec-title">Accès à votre espace ambassadeur</div>
+        <p>Après validation de votre dossier, vous recevrez par e-mail votre <strong>code d'accès personnel</strong> (format : GT-AAAA-XXX).</p>
+        <div style="background:rgba(232,93,4,.08);border:1px solid rgba(232,93,4,.2);border-radius:10px;padding:.9rem 1rem;margin-top:.8rem;">
+          <div style="font-size:.75rem;font-weight:700;color:#FB923C;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;">🔐 Accès Portail</div>
+          <ul class="livret-list" style="margin:0;">
+            <li>Consultez vos points et votre niveau en temps réel</li>
+            <li>Suivez vos clients : actifs, inactifs, en attente</li>
+            <li>Soumettez vos prospects directement depuis le portail</li>
+            <li>Accédez aux modules de formation progressifs</li>
+            <li>Visualisez vos commissions setup et récurrentes</li>
+          </ul>
+          <div style="margin-top:.8rem;font-size:.82rem;color:rgba(255,255,255,.6);">URL : <strong style="color:#FB923C;">garoms-tech.com/ambassadeur-portail.html</strong></div>
+        </div>
+      </div>
+
+      <div class="livret-sec">
+        <div class="livret-sec-num">08 — BIENVENUE DANS L'EXCELLENCE</div>
+        <div class="livret-sec-title">Le processus complet</div>
+        <ul class="livret-list">
+          <li>Rencontrer un prospect qualifié et identifier son problème</li>
+          <li>Collecter les 4 indicateurs obligatoires (CA, budget, perte, décideur)</li>
+          <li>Transmettre le dossier via le portail sous 24 heures</li>
+          <li>La direction prend en charge démo + négociation + signature</li>
+          <li>Recevoir votre commission le 5 du mois suivant la signature</li>
+        </ul>
+        <p style="margin-top:1rem;">Votre succès et celui de Garoms-Tech sont indissociables. Plus vous apportez des clients de qualité, plus vous construisez un revenu passif solide et durable.</p>
+      </div>
+
+      <div class="livret-sign">
+        <div class="sign-box">
+          <div class="sign-label">Nom de l'ambassadeur</div>
+          <div class="sign-line"></div>
+        </div>
+        <div class="sign-box">
+          <div class="sign-label">Date</div>
+          <div class="sign-line"></div>
+        </div>
+        <div class="sign-box">
+          <div class="sign-label">Signature</div>
+          <div class="sign-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-btn" data-aos="fade-up">
+      <button class="btn btn-outline" style="color:var(--accent);border-color:var(--accent);" onclick="window.print()">
+        🖨️ Imprimer le livret
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container footer-in">
+    <div class="footer-logo"><img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" class="footer-logo-img" /></div>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#services">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="ambassadeur.html">Ambassadeur</a>
+    </div>
+    <p>© 2023–2026 Garoms-Tech. Tous droits réservés.</p>
+  </div>
+</footer>
+
+
+<!-- ══ SCRIPTS ══════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+/* ================================================================
+   GAROMS-TECH — AMBASSADEUR.HTML — JS COMPLET
+================================================================ */
+const SUPA_URL = 'https://boelpuehvvuvddyyphpe.supabase.co';
+const SUPA_KEY = 'sb_publishable_tOjmLT97b3y2ou2P62a4vA_nlperttq';
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic', offset: 80 });
+  initHeader();
+  initScroll();
+  animateStats();
+});
+
+/* ── HEADER ── */
+function initHeader() {
+  const h = document.getElementById('header');
+  if (!h) return;
+  window.addEventListener('scroll', () => h.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+}
+function toggleMenu() {
+  const m = document.getElementById('mob-menu');
+  const b = document.getElementById('hamburger');
+  if (!m || !b) return;
+  const o = m.classList.toggle('open');
+  b.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+}
+function closeMenu() {
+  const m = document.getElementById('mob-menu');
+  const b = document.getElementById('hamburger');
+  if (!m || !b) return;
+  m.classList.remove('open'); b.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('click', e => {
+  const m = document.getElementById('mob-menu'), b = document.getElementById('hamburger');
+  if (!m || !b) return;
+  if (m.classList.contains('open') && !m.contains(e.target) && !b.contains(e.target)) closeMenu();
+});
+
+/* ── SMOOTH SCROLL ── */
+function initScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const h = a.getAttribute('href'); if (h === '#') return;
+      const t = document.querySelector(h); if (!t) return;
+      e.preventDefault();
+      const hh = document.getElementById('header')?.offsetHeight || 72;
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - hh - 16, behavior: 'smooth' });
+    });
+  });
+}
+
+/* ── ANIMATE STATS ── */
+function animateStats() {
+  if (typeof gsap === 'undefined') {
+    document.getElementById('stat-comm').textContent = '20%';
+    document.getElementById('stat-pay').textContent = '100%';
+    return;
+  }
+  const countUp = (el, target, suffix) => {
+    gsap.fromTo({ val: 0 }, { val: target }, {
+      duration: 2, ease: 'power2.out', delay: 0.5,
+      onUpdate: function () { if (el) el.textContent = Math.round(this.targets()[0].val) + suffix; }
+    });
+  };
+  countUp(document.getElementById('stat-comm'), 20, '%');
+  countUp(document.getElementById('stat-pay'), 100, '%');
+}
+
+/* ── FAQ TOGGLE ── */
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── SUPABASE HELPERS ── */
+async function supaInsert(table, data) {
+  const res = await fetch(`${SUPA_URL}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPA_KEY,
+      'Authorization': `Bearer ${SUPA_KEY}`,
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return true;
+}
+
+/* ── FORMULAIRE AMBASSADEUR ── */
+async function submitAmbassadeur(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-amb-submit');
+  btn.disabled = true; btn.textContent = 'Envoi en cours...';
+  try {
+    await supaInsert('ambassadeurs', {
+      nom:        document.getElementById('amb-nom').value.trim(),
+      email:      document.getElementById('amb-email').value.trim(),
+      telephone:  document.getElementById('amb-phone').value.trim(),
+      ville:      document.getElementById('amb-ville').value.trim(),
+      reseaux:    document.getElementById('amb-reseaux').value.trim(),
+      motivation: document.getElementById('amb-motivation').value.trim(),
+      source:     document.getElementById('amb-source').value,
+      statut:     'candidature'
+    });
+    document.getElementById('form-amb').style.display = 'none';
+    const s = document.getElementById('form-amb-success');
+    s.style.display = 'block';
+    if (typeof gsap !== 'undefined') gsap.from(s, { opacity: 0, y: 20, duration: 0.5 });
+    gtag('event', 'ambassadeur_inscription', { event_category: 'formulaire' });
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false; btn.textContent = 'Envoyer ma candidature →';
+    alert('Erreur lors de l\'envoi. Réessayez ou contactez-nous sur WhatsApp.');
+  }
+}
+
+/* ── FORMULAIRE PROSPECT ── */
+async function submitProspect(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-pros-submit');
+  btn.disabled = true; btn.textContent = 'Envoi en cours...';
+  try {
+    await supaInsert('prospects', {
+      ambassadeur_nom:    document.getElementById('pros-amb-nom').value.trim(),
+      prospect_nom:       document.getElementById('pros-nom').value.trim(),
+      prospect_secteur:   document.getElementById('pros-secteur').value.trim(),
+      prospect_ca:        document.getElementById('pros-ca').value.trim(),
+      prospect_budget:    document.getElementById('pros-budget').value.trim(),
+      prospect_besoin:    document.getElementById('pros-besoin').value,
+      prospect_delai:     document.getElementById('pros-delai').value.trim(),
+      prospect_whatsapp:  document.getElementById('pros-whatsapp').value.trim(),
+      notes:              document.getElementById('pros-notes').value.trim(),
+      statut:             'nouveau'
+    });
+    document.getElementById('form-pros').style.display = 'none';
+    const s = document.getElementById('form-pros-success');
+    s.style.display = 'block';
+    if (typeof gsap !== 'undefined') gsap.from(s, { opacity: 0, y: 20, duration: 0.5 });
+    gtag('event', 'prospect_soumis', { event_category: 'formulaire' });
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false; btn.textContent = 'Transmettre le dossier →';
+    alert('Erreur lors de l\'envoi. Réessayez ou envoyez directement sur WhatsApp.');
+  }
+}
+</script>
+
+<!-- SQL À EXÉCUTER DANS SUPABASE (1 SEULE FOIS) :
+CREATE TABLE IF NOT EXISTS prospects (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  ambassadeur_nom text,
+  ambassadeur_email text,
+  prospect_nom text,
+  prospect_secteur text,
+  prospect_ca text,
+  prospect_budget text,
+  prospect_besoin text,
+  prospect_delai text,
+  prospect_whatsapp text,
+  notes text,
+  statut text DEFAULT 'nouveau',
+  created_at timestamp DEFAULT now()
+);
+ALTER TABLE prospects ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "insert_prospects" ON prospects FOR INSERT WITH CHECK (true);
+CREATE POLICY "select_prospects" ON prospects FOR SELECT USING (false);
+-->
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page introuvable — GAROMS-TECH</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:#0A1628;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;overflow:hidden;position:relative;}
+    .bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(0,87,255,.12) 0%,transparent 70%);pointer-events:none;}
+    .logo{display:flex;align-items:center;gap:.6rem;margin-bottom:3rem;}
+    .logo img{width:40px;height:40px;object-fit:contain;}
+    .logo-t{font-family:'Poppins',sans-serif;font-size:1.4rem;font-weight:900;color:#fff;}
+    .logo-t span{color:#00D4FF;}
+    .code{font-family:'Poppins',sans-serif;font-size:8rem;font-weight:900;line-height:1;background:linear-gradient(135deg,#0057FF,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;}
+    h1{font-family:'Poppins',sans-serif;font-size:1.75rem;font-weight:800;color:#fff;margin-bottom:.75rem;}
+    p{font-size:1rem;color:rgba(255,255,255,.5);max-width:440px;line-height:1.7;margin-bottom:2.5rem;}
+    .btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.75rem;border-radius:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s;}
+    .btnp{background:#0057FF;color:#fff;box-shadow:0 4px 20px rgba(0,87,255,.3);}
+    .btnp:hover{background:#0040CC;transform:translateY(-2px);}
+    .btnw{background:#25D366;color:#fff;}
+    .btnw:hover{background:#1ebe5d;transform:translateY(-2px);}
+    .counter{margin-top:2rem;font-size:.85rem;color:rgba(255,255,255,.3);}
+    .counter span{color:#00D4FF;font-weight:700;}
+  </style>
+</head>
+<body>
+<div class="bg"></div>
+<a href="index.html" class="logo">
+  <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" />
+  <span class="logo-t">GAROMS<span>-TECH</span></span>
+</a>
+<div class="code">404</div>
+<h1>Oops ! Page introuvable</h1>
+<p>La page que vous cherchez n'existe pas ou a été déplacée. Retournez à l'accueil ou contactez-nous directement.</p>
+<div class="btns">
+  <a href="index.html" class="btn btnp">🏠 Retour à l'accueil</a>
+  <a href="https://wa.me/50941773549" target="_blank" class="btn btnw">💬 Nous contacter</a>
+</div>
+<div class="counter">Redirection automatique dans <span id="ct">10</span> secondes...</div>
+<script>
+  let n=10;
+  const el=document.getElementById('ct');
+  const t=setInterval(function(){
+    n--;
+    el.textContent=n;
+    if(n<=0){clearInterval(t);window.location.href='index.html';}
+  },1000);
+</script>
+</body>
+</html>

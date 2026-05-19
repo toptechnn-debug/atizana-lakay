@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Politique de Confidentialité — GAROMS-TECH</title>
+  <meta name="description" content="Politique de confidentialité de GAROMS-TECH — comment nous collectons, utilisons et protégeons vos données personnelles."/>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+  :root{--p:#E85D04;--blue:#0057FF;--dark:#0A1628;--w:#fff;--g5:#64748B;--g2:#f1f5f9;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:#1e293b;background:#F4F7FF;line-height:1.75;}
+  .topbar{background:var(--dark);padding:1rem 0;border-bottom:2px solid var(--p);}
+  .topbar-in{max-width:900px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
+  .topbar-brand{display:flex;align-items:center;gap:.6rem;}
+  .topbar-brand img{width:36px;height:36px;object-fit:contain;}
+  .topbar-brand span{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;}
+  .topbar-brand span b{color:#FB923C;}
+  .topbar-back{font-size:.8rem;color:rgba(255,255,255,.6);text-decoration:none;border:1px solid rgba(255,255,255,.15);padding:.3rem .8rem;border-radius:6px;transition:all .2s;}
+  .topbar-back:hover{color:#fff;border-color:var(--p);}
+  .hero-doc{background:linear-gradient(135deg,#0d1f3c,#0A1628);color:#fff;padding:3.5rem 0 3rem;}
+  .hero-doc-in{max-width:900px;margin:0 auto;padding:0 1.5rem;}
+  .hero-doc h1{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:.6rem;}
+  .hero-doc .meta{font-size:.85rem;color:rgba(255,255,255,.5);display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:.75rem;}
+  .wrap{max-width:900px;margin:0 auto;padding:3rem 1.5rem 5rem;display:grid;grid-template-columns:1fr;gap:0;}
+  @media(min-width:900px){.wrap{grid-template-columns:220px 1fr;gap:3rem;align-items:start;}}
+  .toc{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:1.5rem;position:sticky;top:1.5rem;}
+  .toc h3{font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--p);}
+  .toc ol{counter-reset:toc;padding:0;}
+  .toc ol li{counter-increment:toc;margin-bottom:.4rem;}
+  .toc ol li a{font-size:.8rem;color:var(--g5);text-decoration:none;transition:color .2s;display:block;padding:.2rem 0;}
+  .toc ol li a:hover{color:var(--p);}
+  .content section{margin-bottom:2.5rem;}
+  h2{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:var(--dark);margin-bottom:1rem;padding:1rem 1.25rem;background:#fff;border-left:4px solid var(--p);border-radius:0 10px 10px 0;display:flex;align-items:center;gap:.6rem;}
+  h2 .num{font-size:.75rem;font-weight:700;color:var(--p);background:rgba(232,93,4,.1);padding:.2rem .55rem;border-radius:9999px;white-space:nowrap;}
+  p{margin-bottom:.9rem;font-size:.95rem;color:#334155;line-height:1.8;}
+  ul,ol{padding-left:1.4rem;margin-bottom:.9rem;}
+  ul li,ol li{font-size:.92rem;color:#334155;margin-bottom:.45rem;line-height:1.7;}
+  ul li::marker{color:var(--p);}
+  .box{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;}
+  .box-warn{background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.25rem;}
+  .box-warn p{color:#92400E;font-size:.88rem;margin:0;}
+  .box-info{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.25rem;}
+  .box-info p{color:#1D4ED8;font-size:.88rem;margin:0;}
+  .box-green{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.25rem;}
+  .box-green p{color:#14532D;font-size:.88rem;margin:0;}
+  table{width:100%;border-collapse:collapse;margin-bottom:1.25rem;font-size:.88rem;}
+  th{background:var(--dark);color:#fff;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:700;padding:.7rem 1rem;text-align:left;}
+  td{padding:.65rem 1rem;border-bottom:1px solid #e2e8f0;color:#334155;vertical-align:top;}
+  tr:nth-child(even) td{background:var(--g2);}
+  a{color:var(--p);text-decoration:underline;transition:color .2s;}
+  a:hover{color:#C84B00;}
+  .rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:.875rem;margin-bottom:1.25rem;}
+  @media(max-width:600px){.rights-grid{grid-template-columns:1fr;}}
+  .right-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1rem 1.25rem;}
+  .right-card .icon{font-size:1.5rem;margin-bottom:.5rem;}
+  .right-card strong{font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:700;color:var(--dark);display:block;margin-bottom:.3rem;}
+  .right-card p{font-size:.82rem;color:var(--g5);margin:0;}
+  .cta-bar{background:linear-gradient(135deg,var(--dark),#0d1f3c);border-radius:16px;padding:2rem;text-align:center;margin-top:3rem;color:#fff;}
+  .cta-bar h3{font-family:'Poppins',sans-serif;font-weight:800;margin-bottom:.5rem;}
+  .cta-bar p{color:rgba(255,255,255,.6);font-size:.88rem;margin-bottom:1.25rem;}
+  .cta-bar a{display:inline-flex;align-items:center;gap:.4rem;background:var(--p);color:#fff;padding:.65rem 1.5rem;border-radius:9999px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s;}
+  .cta-bar a:hover{background:#C84B00;color:#fff;}
+  @media(max-width:899px){.toc{margin-bottom:2rem;position:static;}}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="topbar-brand">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" onerror="this.style.display='none'"/>
+      <span>GAROMS<b>-TECH</b></span>
+    </div>
+    <a href="index.html" class="topbar-back">← Retour au site</a>
+  </div>
+</div>
+
+<div class="hero-doc">
+  <div class="hero-doc-in">
+    <h1>🔒 Politique de Confidentialité</h1>
+    <div class="meta">
+      <span>📅 Dernière mise à jour : 19 mai 2026</span>
+      <span>🏢 GAROMS-TECH</span>
+      <span>🛡️ Données protégées</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- TABLE DES MATIÈRES -->
+  <div class="toc">
+    <h3>Table des matières</h3>
+    <ol>
+      <li><a href="#p1">Qui sommes-nous ?</a></li>
+      <li><a href="#p2">Données collectées</a></li>
+      <li><a href="#p3">Finalités du traitement</a></li>
+      <li><a href="#p4">Base légale</a></li>
+      <li><a href="#p5">Durée de conservation</a></li>
+      <li><a href="#p6">Partage des données</a></li>
+      <li><a href="#p7">Services tiers utilisés</a></li>
+      <li><a href="#p8">Cookies &amp; Traceurs</a></li>
+      <li><a href="#p9">Agent IA &amp; Chatbot</a></li>
+      <li><a href="#p10">Sécurité des données</a></li>
+      <li><a href="#p11">Transferts internationaux</a></li>
+      <li><a href="#p12">Droits des utilisateurs</a></li>
+      <li><a href="#p13">Mineurs</a></li>
+      <li><a href="#p14">Modifications</a></li>
+      <li><a href="#p15">Contact DPO</a></li>
+    </ol>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="content">
+
+    <section id="p1">
+      <h2><span class="num">§ 1</span> Qui sommes-nous ?</h2>
+      <div class="box">
+        <table>
+          <tr><td><strong>Responsable du traitement</strong></td><td>GAROMS-TECH</td></tr>
+          <tr><td><strong>Activité</strong></td><td>Agence IA, automatisation &amp; génie numérique</td></tr>
+          <tr><td><strong>Site web</strong></td><td>garomstech.com</td></tr>
+          <tr><td><strong>Email de contact</strong></td><td><a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a></td></tr>
+          <tr><td><strong>WhatsApp</strong></td><td><a href="https://wa.me/50941773549">+509 41 77 35 49</a></td></tr>
+        </table>
+      </div>
+      <p>La présente Politique de Confidentialité décrit la manière dont GAROMS-TECH collecte, utilise, stocke et protège les informations personnelles que vous nous communiquez lorsque vous utilisez notre site web, nos services ou que vous interagissez avec notre agent IA.</p>
+      <p>Nous nous engageons à traiter vos données avec transparence, sécurité et dans le respect de votre vie privée.</p>
+    </section>
+
+    <section id="p2">
+      <h2><span class="num">§ 2</span> Données collectées</h2>
+      <p>Nous collectons uniquement les données strictement nécessaires à la fourniture de nos services. Ces données proviennent de deux sources :</p>
+      <p><strong>A. Données que vous nous fournissez volontairement :</strong></p>
+      <table>
+        <thead><tr><th>Type de donnée</th><th>Contexte de collecte</th><th>Obligatoire</th></tr></thead>
+        <tbody>
+          <tr><td>Nom et prénom</td><td>Formulaire de contact, inscription ambassadeur, agent IA</td><td>✅ Oui</td></tr>
+          <tr><td>Adresse email</td><td>Formulaire de contact, newsletter, formulaire ambassadeur, agent IA</td><td>✅ Oui</td></tr>
+          <tr><td>Numéro WhatsApp / téléphone</td><td>Formulaire de contact, ambassadeur, agent IA</td><td>Partiel</td></tr>
+          <tr><td>Pays / ville</td><td>Formulaire ambassadeur, contact</td><td>Partiel</td></tr>
+          <tr><td>Réseaux sociaux</td><td>Formulaire ambassadeur</td><td>❌ Non</td></tr>
+          <tr><td>Motivation / message</td><td>Formulaire de contact, ambassadeur</td><td>✅ Oui</td></tr>
+          <tr><td>Informations de prospect</td><td>Formulaire prospect ambassadeur</td><td>✅ Oui (si applicable)</td></tr>
+        </tbody>
+      </table>
+      <p><strong>B. Données collectées automatiquement :</strong></p>
+      <ul>
+        <li>Données de navigation anonymisées (pages visitées, durée de session, type d'appareil) via Google Analytics</li>
+        <li>Adresse IP (anonymisée, non stockée de façon permanente)</li>
+        <li>Informations sur le navigateur et le système d'exploitation</li>
+        <li>Source de trafic (moteur de recherche, lien direct, réseau social)</li>
+      </ul>
+      <div class="box-green">
+        <p>✅ Nous ne collectons jamais de données bancaires, de numéro de carte de crédit, de mot de passe ni d'informations sensibles via notre site web.</p>
+      </div>
+    </section>
+
+    <section id="p3">
+      <h2><span class="num">§ 3</span> Finalités du traitement</h2>
+      <p>Vos données sont utilisées exclusivement pour les finalités suivantes :</p>
+      <table>
+        <thead><tr><th>Finalité</th><th>Données concernées</th></tr></thead>
+        <tbody>
+          <tr><td>Répondre à vos demandes de contact ou de devis</td><td>Nom, email, téléphone, message</td></tr>
+          <tr><td>Gérer les inscriptions au programme ambassadeur</td><td>Toutes les données du formulaire ambassadeur</td></tr>
+          <tr><td>Envoyer la newsletter et communications marketing</td><td>Email, source d'inscription</td></tr>
+          <tr><td>Améliorer nos services et le site web</td><td>Données analytiques anonymisées</td></tr>
+          <tr><td>Traiter les prospects soumis par les ambassadeurs</td><td>Données du formulaire prospect</td></tr>
+          <tr><td>Faire fonctionner l'agent IA conversationnel</td><td>Nom, email, WhatsApp (si fournis)</td></tr>
+          <tr><td>Assurer la sécurité du site et prévenir les fraudes</td><td>Données de navigation, IP</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="p4">
+      <h2><span class="num">§ 4</span> Base légale du traitement</h2>
+      <p>Le traitement de vos données repose sur les bases légales suivantes :</p>
+      <ul>
+        <li><strong>Consentement :</strong> pour la newsletter (vous vous inscrivez volontairement) et les cookies analytiques non essentiels</li>
+        <li><strong>Intérêt légitime :</strong> pour la sécurité du site, la prévention des fraudes et l'amélioration de nos services</li>
+        <li><strong>Exécution d'un contrat :</strong> pour traiter les données nécessaires à la fourniture d'un service commandé</li>
+        <li><strong>Obligation légale :</strong> si la loi applicable nous y oblige</li>
+      </ul>
+    </section>
+
+    <section id="p5">
+      <h2><span class="num">§ 5</span> Durée de conservation</h2>
+      <table>
+        <thead><tr><th>Catégorie de données</th><th>Durée de conservation</th></tr></thead>
+        <tbody>
+          <tr><td>Leads (demandes via agent IA)</td><td>24 mois à compter de la dernière interaction</td></tr>
+          <tr><td>Formulaires de contact</td><td>12 mois à compter de la réception</td></tr>
+          <tr><td>Abonnés newsletter</td><td>Jusqu'au désabonnement + 6 mois</td></tr>
+          <tr><td>Dossiers ambassadeurs</td><td>Durée du partenariat + 3 ans</td></tr>
+          <tr><td>Données analytiques (GA4)</td><td>14 mois (paramétrage Google)</td></tr>
+          <tr><td>Données clients (facturation)</td><td>5 ans (obligation légale comptable)</td></tr>
+        </tbody>
+      </table>
+      <p>À l'expiration de ces délais, les données sont supprimées ou anonymisées de façon permanente.</p>
+    </section>
+
+    <section id="p6">
+      <h2><span class="num">§ 6</span> Partage des données</h2>
+      <div class="box-green">
+        <p>✅ GAROMS-TECH ne vend jamais vos données personnelles à des tiers. Jamais.</p>
+      </div>
+      <p>Vos données peuvent être partagées uniquement avec :</p>
+      <ul>
+        <li><strong>Les membres de l'équipe GAROMS-TECH</strong> strictement autorisés (sur la base du besoin d'en connaître)</li>
+        <li><strong>Nos outils techniques</strong> (Supabase, Netlify, Google Analytics, Groq AI) — dans le strict cadre de leur fonctionnement — voir §7</li>
+        <li><strong>Les autorités compétentes</strong> si la loi applicable l'impose expressément</li>
+      </ul>
+      <p>Dans le cadre du programme ambassadeur, les informations des prospects que vous soumettez sont traitées par l'équipe commerciale de GAROMS-TECH uniquement.</p>
+    </section>
+
+    <section id="p7">
+      <h2><span class="num">§ 7</span> Services tiers utilisés</h2>
+      <table>
+        <thead><tr><th>Service</th><th>Rôle</th><th>Politique de confidentialité</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Supabase</strong></td><td>Base de données (formulaires, leads, ambassadeurs, newsletter)</td><td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></td></tr>
+          <tr><td><strong>Netlify</strong></td><td>Hébergement du site, fonctions serverless</td><td><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></td></tr>
+          <tr><td><strong>Google Analytics (GA4)</strong></td><td>Analyse anonymisée du trafic web</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+          <tr><td><strong>Groq AI</strong></td><td>Moteur de traitement des conversations de l'agent IA</td><td><a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">groq.com/privacy-policy</a></td></tr>
+          <tr><td><strong>Google Fonts</strong></td><td>Chargement des polices de caractères</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        </tbody>
+      </table>
+      <p>Chacun de ces prestataires est soumis à sa propre politique de confidentialité et applique des standards de sécurité modernes. GAROMS-TECH s'assure de ne partager avec eux que les données strictement nécessaires à leur fonctionnement.</p>
+    </section>
+
+    <section id="p8">
+      <h2><span class="num">§ 8</span> Cookies &amp; Traceurs</h2>
+      <p>Notre site utilise des cookies et technologies similaires. Voici les types de cookies utilisés :</p>
+      <table>
+        <thead><tr><th>Type</th><th>Finalité</th><th>Durée</th><th>Opt-out possible</th></tr></thead>
+        <tbody>
+          <tr><td>Cookies essentiels</td><td>Fonctionnement du site (session, sécurité)</td><td>Session</td><td>❌ Non (nécessaires)</td></tr>
+          <tr><td>Cookies analytiques (GA4)</td><td>Statistiques de fréquentation anonymisées</td><td>14 mois</td><td>✅ Oui</td></tr>
+          <tr><td>Cookies de préférence</td><td>Mémorisation de vos préférences d'affichage</td><td>30 jours</td><td>✅ Oui</td></tr>
+        </tbody>
+      </table>
+      <p>Vous pouvez gérer vos préférences de cookies via les paramètres de votre navigateur. La désactivation des cookies analytiques n'affecte pas le fonctionnement du site.</p>
+      <p><strong>Pour désactiver Google Analytics :</strong> installez le <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">module de désactivation Google Analytics</a>.</p>
+    </section>
+
+    <section id="p9">
+      <h2><span class="num">§ 9</span> Agent IA &amp; Chatbot</h2>
+      <p>Notre agent conversationnel IA traite les messages que vous lui envoyez afin de vous fournir des réponses personnalisées sur nos services.</p>
+      <p><strong>Ce que l'agent IA peut collecter :</strong></p>
+      <ul>
+        <li>Votre prénom (si vous le fournissez)</li>
+        <li>Votre adresse email (si vous souhaitez être recontacté)</li>
+        <li>Votre numéro WhatsApp (si vous le fournissez)</li>
+        <li>Le contenu de votre demande</li>
+      </ul>
+      <p><strong>Ce que l'agent IA ne fait pas :</strong></p>
+      <ul>
+        <li>Il ne stocke pas l'historique complet des conversations de manière permanente</li>
+        <li>Il ne partage pas vos données avec des tiers à des fins commerciales</li>
+        <li>Il ne prend pas de décisions automatisées ayant des effets juridiques sur vous</li>
+      </ul>
+      <div class="box-warn">
+        <p>⚠️ Ne partagez jamais de données très sensibles (mots de passe, numéros de carte bancaire, données médicales) via l'agent IA ou tout autre formulaire du site.</p>
+      </div>
+    </section>
+
+    <section id="p10">
+      <h2><span class="num">§ 10</span> Sécurité des données</h2>
+      <p>GAROMS-TECH met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre la perte, l'accès non autorisé, la divulgation ou la destruction :</p>
+      <ul>
+        <li>Transmission des données via HTTPS (chiffrement TLS)</li>
+        <li>Accès à la base de données protégé par des clés API sécurisées</li>
+        <li>Authentification sécurisée pour l'accès au tableau de bord administratif</li>
+        <li>Mots de passe jamais stockés en clair</li>
+        <li>Accès limité aux données selon le principe du moindre privilège</li>
+        <li>Hébergement sur des serveurs Supabase et Netlify avec chiffrement au repos</li>
+      </ul>
+      <div class="box-info">
+        <p>💡 Malgré ces mesures, aucun système ne peut garantir une sécurité absolue à 100%. En cas de violation de données vous concernant, nous nous engageons à vous en informer dans les meilleurs délais.</p>
+      </div>
+    </section>
+
+    <section id="p11">
+      <h2><span class="num">§ 11</span> Transferts internationaux de données</h2>
+      <p>GAROMS-TECH opère à l'échelle internationale. Vos données peuvent être traitées dans différents pays via nos prestataires :</p>
+      <ul>
+        <li><strong>Supabase</strong> — serveurs hébergés aux États-Unis et/ou en Europe</li>
+        <li><strong>Netlify</strong> — infrastructure cloud aux États-Unis</li>
+        <li><strong>Google Analytics</strong> — traitement aux États-Unis</li>
+        <li><strong>Groq AI</strong> — traitement aux États-Unis</li>
+      </ul>
+      <p>Ces prestataires s'engagent à traiter vos données conformément à des standards de sécurité reconnus. Nous veillons à ce que tout transfert international soit encadré par des garanties appropriées.</p>
+    </section>
+
+    <section id="p12">
+      <h2><span class="num">§ 12</span> Vos droits</h2>
+      <p>Conformément aux principes généraux de protection des données, vous disposez des droits suivants :</p>
+      <div class="rights-grid">
+        <div class="right-card">
+          <div class="icon">👁️</div>
+          <strong>Droit d'accès</strong>
+          <p>Obtenir une copie de toutes les données que nous détenons sur vous.</p>
+        </div>
+        <div class="right-card">
+          <div class="icon">✏️</div>
+          <strong>Droit de rectification</strong>
+          <p>Corriger toute donnée inexacte ou incomplète vous concernant.</p>
+        </div>
+        <div class="right-card">
+          <div class="icon">🗑️</div>
+          <strong>Droit à l'effacement</strong>
+          <p>Demander la suppression de vos données ("droit à l'oubli").</p>
+        </div>
+        <div class="right-card">
+          <div class="icon">🚫</div>
+          <strong>Droit d'opposition</strong>
+          <p>Vous opposer au traitement de vos données à des fins marketing.</p>
+        </div>
+        <div class="right-card">
+          <div class="icon">📦</div>
+          <strong>Droit à la portabilité</strong>
+          <p>Recevoir vos données dans un format structuré et lisible par machine.</p>
+        </div>
+        <div class="right-card">
+          <div class="icon">⏸️</div>
+          <strong>Droit à la limitation</strong>
+          <p>Demander la suspension temporaire du traitement de vos données.</p>
+        </div>
+      </div>
+      <p>Pour exercer l'un de ces droits, contactez-nous à <a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a> avec comme objet <strong>"Demande RGPD — [votre droit]"</strong>. Nous répondrons dans un délai de <strong>30 jours</strong>.</p>
+      <p><strong>Désabonnement newsletter :</strong> utilisez le lien de désabonnement présent dans chaque email reçu ou contactez-nous directement.</p>
+    </section>
+
+    <section id="p13">
+      <h2><span class="num">§ 13</span> Mineurs</h2>
+      <p>Les services de GAROMS-TECH sont destinés à des personnes majeures (18 ans et plus). Nous ne collectons pas sciemment de données personnelles de mineurs de moins de 18 ans.</p>
+      <p>Si vous êtes un parent ou tuteur légal et pensez que votre enfant nous a transmis des données personnelles, contactez-nous immédiatement à <a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a> afin que nous procédions à leur suppression.</p>
+    </section>
+
+    <section id="p14">
+      <h2><span class="num">§ 14</span> Modifications de la politique</h2>
+      <p>GAROMS-TECH se réserve le droit de modifier la présente Politique de Confidentialité à tout moment pour refléter les évolutions légales, techniques ou opérationnelles. Les modifications prennent effet dès leur publication sur cette page.</p>
+      <p>La date de la dernière mise à jour est indiquée en haut de cette page. Nous vous invitons à la consulter régulièrement. En cas de modification substantielle, nous en informerons les abonnés actifs par email.</p>
+    </section>
+
+    <section id="p15">
+      <h2><span class="num">§ 15</span> Contact &amp; Délégué à la protection des données</h2>
+      <p>Pour toute question relative à cette politique, pour exercer vos droits ou signaler une préoccupation concernant vos données personnelles :</p>
+      <div class="box">
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:.75rem;">📧 <strong>Email (DPO) :</strong> <a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a><br/><span style="font-size:.82rem;color:#64748B;">Objet suggéré : "Protection des données — [votre demande]"</span></li>
+          <li style="margin-bottom:.75rem;">💬 <strong>WhatsApp :</strong> <a href="https://wa.me/50941773549">+509 41 77 35 49</a></li>
+          <li style="margin-bottom:.75rem;">⏰ <strong>Délai de réponse :</strong> 30 jours maximum</li>
+          <li>📋 <strong>CGU :</strong> <a href="cgu.html">Consulter nos Conditions Générales d'Utilisation</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="cta-bar">
+      <h3>Vous avez des questions ?</h3>
+      <p>Notre équipe est disponible pour répondre à toutes vos questions sur la protection de vos données.</p>
+      <a href="mailto:infogaromstech@gmail.com">Nous contacter →</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

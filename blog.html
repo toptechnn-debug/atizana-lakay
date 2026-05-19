@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="description" content="Blog GAROMS-TECH — Stratégies IA, automatisation, digitalisation et croissance pour entrepreneurs haïtiens et internationaux.">
+<meta property="og:title" content="Blog — GAROMS-TECH">
+<meta property="og:description" content="Insights stratégiques sur l'IA, l'automatisation et la croissance digitale.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-70VF95VJ9M"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-70VF95VJ9M');</script>
+<title>Blog — GAROMS-TECH</title>
+<link rel="icon" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--p:#E85D04;--p2:#FB923C;--dark:#080808;--card:#111;--border:rgba(232,93,4,.15);--txt:#F0F0F0;--muted:#888;--white:#fff;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(8,8,8,.95);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 1.5rem;}
+.hdr-in{max-width:1060px;margin:0 auto;display:flex;align-items:center;height:68px;gap:1.5rem;}
+.hdr-logo{display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.hdr-logo img{height:42px;width:auto;object-fit:contain;}
+.hdr-logo span{font-weight:800;font-size:1rem;background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hdr-nav{flex:1;display:flex;gap:1.5rem;font-size:.88rem;}
+.hdr-nav a{color:var(--muted);transition:.2s;}
+.hdr-nav a:hover,.hdr-nav a.active{color:var(--txt);}
+.btn-cta{padding:.5rem 1.1rem;background:linear-gradient(135deg,var(--p),var(--p2));border-radius:9px;color:#fff;font-size:.82rem;font-weight:700;white-space:nowrap;flex-shrink:0;}
+
+/* HERO */
+.blog-hero{text-align:center;padding:4rem 1.5rem 2.5rem;background:radial-gradient(ellipse 70% 40% at 50% 0%,rgba(232,93,4,.1),transparent 70%);}
+.blog-tag{display:inline-block;background:rgba(232,93,4,.12);border:1px solid rgba(232,93,4,.3);color:var(--p2);border-radius:999px;padding:.3rem .9rem;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1.2rem;}
+.blog-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;max-width:600px;margin:0 auto .8rem;}
+.blog-hero p{color:var(--muted);max-width:500px;margin:0 auto;font-size:.95rem;}
+
+/* FILTERS */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;padding:0 1.5rem 2rem;max-width:960px;margin:0 auto;}
+.filter-btn{padding:.35rem .85rem;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--muted);font-size:.78rem;cursor:pointer;transition:.2s;}
+.filter-btn:hover,.filter-btn.active{background:rgba(232,93,4,.12);border-color:rgba(232,93,4,.4);color:var(--p2);}
+
+/* GRID */
+.articles-grid{display:grid;gap:1.5rem;padding:0 1.5rem 4rem;max-width:1060px;margin:0 auto;}
+@media(min-width:640px){.articles-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:900px){.articles-grid{grid-template-columns:repeat(3,1fr);}}
+
+/* CARD */
+.article-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:.25s;display:flex;flex-direction:column;}
+.article-card:hover{transform:translateY(-4px);border-color:rgba(232,93,4,.45);box-shadow:0 16px 40px rgba(232,93,4,.13);}
+.card-img{height:180px;overflow:hidden;background:#1a0800;flex-shrink:0;}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.article-card:hover .card-img img{transform:scale(1.06);}
+.card-body{padding:1.2rem;flex:1;display:flex;flex-direction:column;}
+.card-cat{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--p2);margin-bottom:.45rem;}
+.card-title{font-size:.94rem;font-weight:700;line-height:1.35;margin-bottom:.45rem;flex:1;}
+.card-excerpt{font-size:.78rem;color:var(--muted);line-height:1.55;margin-bottom:.8rem;}
+.card-meta{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:var(--muted);flex-wrap:wrap;}
+.card-meta span{background:rgba(255,255,255,.06);padding:.18rem .5rem;border-radius:999px;}
+.card-read{margin-left:auto;color:var(--p2);font-weight:700;font-size:.76rem;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);z-index:1000;overflow-y:auto;padding:1.5rem;}
+.modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+.modal-box{background:#0e0e0e;border:1px solid var(--border);border-radius:18px;max-width:740px;width:100%;margin:auto;}
+.modal-cover{width:100%;height:240px;object-fit:cover;border-radius:18px 18px 0 0;display:block;}
+.modal-cover-err{width:100%;height:240px;background:linear-gradient(135deg,#1a0800,#2d1200);border-radius:18px 18px 0 0;display:flex;align-items:center;justify-content:center;}
+.modal-content{padding:2rem;}
+.modal-back{color:var(--p2);font-size:.82rem;cursor:pointer;margin-bottom:1.2rem;display:inline-flex;align-items:center;gap:.3rem;opacity:.8;transition:.2s;}
+.modal-back:hover{opacity:1;}
+.modal-cat{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--p2);margin-bottom:.6rem;}
+.modal-title{font-size:clamp(1.25rem,3vw,1.85rem);font-weight:800;line-height:1.25;margin-bottom:.8rem;}
+.modal-meta{display:flex;gap:.6rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.modal-meta span{background:rgba(255,255,255,.06);padding:.25rem .7rem;border-radius:999px;font-size:.73rem;color:var(--muted);}
+.article-body h2{font-size:1.08rem;font-weight:700;margin:1.5rem 0 .6rem;color:var(--p2);}
+.article-body h3{font-size:.95rem;font-weight:700;margin:1.1rem 0 .4rem;color:rgba(240,240,240,.9);}
+.article-body p{font-size:.88rem;color:rgba(240,240,240,.8);margin-bottom:.9rem;line-height:1.72;}
+.article-body ul,.article-body ol{padding-left:1.3rem;margin-bottom:.9rem;}
+.article-body li{font-size:.88rem;color:rgba(240,240,240,.78);margin-bottom:.4rem;line-height:1.65;}
+.article-body strong{color:var(--p2);}
+.article-body blockquote{border-left:3px solid var(--p);padding:.5rem 1rem;margin:1rem 0;background:rgba(232,93,4,.05);border-radius:0 8px 8px 0;font-style:italic;color:rgba(240,240,240,.7);}
+.article-cta{background:rgba(232,93,4,.08);border:1px solid rgba(232,93,4,.22);border-radius:14px;padding:1.3rem;margin-top:1.8rem;text-align:center;}
+.article-cta p{font-size:.85rem;color:rgba(240,240,240,.7);margin-bottom:.8rem;}
+.btn-art{display:inline-block;padding:.65rem 1.4rem;background:linear-gradient(135deg,var(--p),var(--p2));border-radius:10px;color:#fff;font-weight:700;font-size:.85rem;transition:.2s;}
+.btn-art:hover{opacity:.9;transform:translateY(-1px);}
+
+/* NEWSLETTER */
+.nl-section{background:rgba(232,93,4,.05);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 1.5rem;text-align:center;margin:0 0 3rem;}
+.nl-section h2{font-size:1.35rem;font-weight:800;margin-bottom:.5rem;}
+.nl-section p{color:var(--muted);font-size:.9rem;margin-bottom:1.1rem;}
+.nl-form{display:flex;gap:.7rem;max-width:430px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+.nl-form input{flex:1;min-width:200px;padding:.75rem 1rem;background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--txt);font-size:.88rem;outline:none;transition:.2s;}
+.nl-form input:focus{border-color:var(--p);}
+.nl-form button{padding:.75rem 1.3rem;background:linear-gradient(135deg,var(--p),var(--p2));border:none;border-radius:10px;color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;white-space:nowrap;transition:.2s;}
+.nl-form button:hover{opacity:.9;}
+.nl-ok{display:none;color:var(--p2);font-size:.85rem;margin-top:.7rem;font-weight:600;}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem 1.5rem;font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);}
+footer a{color:var(--p2);transition:.2s;}
+footer a:hover{color:var(--p);}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:1.75rem;left:1.75rem;z-index:8000;}
+.wa-float a{display:flex;align-items:center;justify-content:center;width:54px;height:54px;background:#25D366;border-radius:50%;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:.25s;}
+.wa-float a:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,.6);}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:1.75rem;right:1.75rem;z-index:7000;width:44px;height:44px;background:rgba(232,93,4,.9);border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(232,93,4,.4);transition:.25s;border:none;color:#fff;font-size:1.1rem;}
+.back-top:hover{background:var(--p);transform:translateY(-2px);}
+.back-top.show{display:flex;}
+
+@media(max-width:640px){
+  .hdr-nav{display:none;}
+  .modal-cover{height:180px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="hdr-logo">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" onerror="this.style.display='none'">
+      <span>GAROMS-TECH</span>
+    </a>
+    <nav class="hdr-nav">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#services">Services</a>
+      <a href="ambassadeur.html">Ambassadeur</a>
+      <a href="blog.html" class="active">Blog</a>
+    </nav>
+    <a href="index.html#contact" class="btn-cta">Démarrer un projet →</a>
+  </div>
+</header>
+
+<div class="blog-hero">
+  <div class="blog-tag">Blog & Ressources</div>
+  <h1>Insights <span style="background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Garoms-Tech</span></h1>
+  <p>Stratégies IA, automatisation et conseils pour propulser votre business en Haïti et à l'international.</p>
+</div>
+
+<div class="filters" id="filters"></div>
+<div class="articles-grid" id="articleGrid"></div>
+
+<div class="nl-section">
+  <h2>Recevez nos insights chaque semaine</h2>
+  <p>Stratégies IA, cas clients et opportunités digitales — directement dans votre boîte mail.</p>
+  <div class="nl-form">
+    <input id="blNlEmail" type="email" placeholder="votre@email.com" autocomplete="email">
+    <button onclick="subBlogNL()">S'abonner →</button>
+  </div>
+  <div class="nl-ok" id="blNlOk">✓ Vous êtes abonné(e) ! Merci et bienvenue.</div>
+</div>
+
+<footer>
+  © 2023–2026 GAROMS-TECH — <a href="index.html">Accueil</a> · <a href="blog.html">Blog</a> · <a href="ambassadeur.html">Ambassadeur</a> · <a href="index.html#contact">Contact</a>
+</footer>
+
+<!-- ARTICLE MODAL -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <img class="modal-cover" id="mCover" src="" alt="" onerror="this.style.display='none';document.getElementById('mCoverErr').style.display='flex'">
+    <div class="modal-cover-err" id="mCoverErr" style="display:none;"></div>
+    <div class="modal-content">
+      <div class="modal-back" onclick="closeModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')closeModal()">← Retour au blog</div>
+      <div class="modal-cat" id="mCat"></div>
+      <h1 class="modal-title" id="mTitle"></h1>
+      <div class="modal-meta" id="mMeta"></div>
+      <div class="article-body" id="mBody"></div>
+      <div class="article-cta">
+        <p>Vous voulez implémenter ces stratégies dans votre business ?</p>
+        <a href="index.html#contact" class="btn-art">Parler à un expert →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+  <a href="https://wa.me/50941773549" target="_blank" rel="noopener" aria-label="WhatsApp GAROMS-TECH">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">↑</button>
+
+<script>
+const SB_URL='https://boelpuehvvuvddyyphpe.supabase.co';
+const SB_KEY='sb_publishable_tOjmLT97b3y2ou2P62a4vA_nlperttq';
+
+const ARTICLES=[
+  {
+    id:1,cat:'Intelligence Artificielle',
+    img:'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=700&q=80',
+    title:'Comment un chatbot IA peut doubler vos ventes — sans embaucher personne',
+    excerpt:'Chaque message sans réponse est une vente perdue. Découvrez comment nos clients récupèrent 30% de leads perdus grâce à l\'IA.',
+    date:'12 mai 2026',read:'6 min',
+    body:`
+      <p>En Haïti comme partout dans le monde, les entrepreneurs font face au même problème : <strong>trop de messages, pas assez de temps</strong>. Un client WhatsApp à 22h sans réponse avant le lendemain matin, c'est souvent un client perdu.</p>
+      <h2>Le problème réel</h2>
+      <p>Selon nos observations terrain, une PME reçoit en moyenne <strong>40 à 120 messages par semaine</strong> sur WhatsApp, Instagram et son site. Sans système automatisé, 30 à 50% de ces messages restent sans réponse dans les 2 premières heures — la fenêtre critique de conversion.</p>
+      <h2>Ce qu'un agent IA résout concrètement</h2>
+      <ul>
+        <li>Réponse immédiate 24h/24, 7j/7 — même à minuit</li>
+        <li>Qualification des prospects : le bot filtre les curieux des acheteurs sérieux</li>
+        <li>Prise de rendez-vous automatique dans votre agenda</li>
+        <li>Relance automatique des prospects qui n'ont pas finalisé leur achat</li>
+        <li>Collecte des contacts (nom, WhatsApp, email) sans effort humain</li>
+      </ul>
+      <h2>Résultats mesurables chez nos clients</h2>
+      <p>Un de nos clients dans le secteur de l'e-commerce a enregistré <strong>+38% de conversion</strong> dans les 60 premiers jours après déploiement. Le chatbot répondait en créole, en français et en anglais — automatiquement.</p>
+      <blockquote>"Avant, je perdais des clients la nuit. Maintenant le bot répond pour moi et je retrouve des leads qualifiés le matin." — Client GAROMS-TECH</blockquote>
+      <h2>Est-ce fait pour vous ?</h2>
+      <p>Si vous répondez OUI à au moins 2 de ces questions, un chatbot IA est rentable pour vous :</p>
+      <ul>
+        <li>Vous recevez plus de 20 messages clients par semaine ?</li>
+        <li>Vous manquez des demandes en dehors des heures de bureau ?</li>
+        <li>Vos équipes passent plus de 2h/jour à répondre aux mêmes questions ?</li>
+        <li>Votre taux de réponse dans la première heure est inférieur à 70% ?</li>
+      </ul>
+      <h2>Le retour sur investissement</h2>
+      <p>Un chatbot IA GAROMS-TECH commence à <strong>800 USD</strong>. Si vous générez 3 000 USD de revenus mensuels et que le bot récupère 30% des leads perdus, il se rembourse en moins de 2 mois — puis travaille gratuitement pour vous.</p>
+    `
+  },
+  {
+    id:2,cat:'Digitalisation',
+    img:'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80',
+    title:'5 raisons pour lesquelles votre entreprise haïtienne a besoin d\'un site web en 2026',
+    excerpt:'Un site web n\'est plus un luxe. C\'est la différence entre une entreprise invisible et une marque qui inspire confiance.',
+    date:'28 avril 2026',read:'5 min',
+    body:`
+      <p>En 2026, 78% des consommateurs haïtiens vérifient la présence en ligne d'une entreprise <strong>avant de lui faire confiance</strong>. Si vous n'avez pas de site web professionnel, vous perdez des clients sans même le savoir.</p>
+      <h2>1. La crédibilité avant tout</h2>
+      <p>Quand un entrepreneur cherche un partenaire ou un fournisseur, la première question est : "Ont-ils un site web ?" Un site professionnel signale sérieux, stabilité et engagement. Sans site, vous semblez informel — même si vous êtes excellent dans votre domaine.</p>
+      <h2>2. Être trouvable sur Google</h2>
+      <p>Chaque mois, des milliers de personnes cherchent des services sur Google en tapant "agence marketing Haïti", "restaurant Port-au-Prince livraison", "avocat droit des affaires Haïti". Votre concurrent avec un site apparaît. Vous, non.</p>
+      <h2>3. Vendre 24h/24 sans être présent</h2>
+      <p>Un site bien conçu avec un chatbot intégré continue à vendre pendant que vous dormez. Il présente vos services, répond aux questions, collecte les contacts et guide les visiteurs vers l'achat — automatiquement.</p>
+      <h2>4. Avoir une vitrine internationale</h2>
+      <p>La diaspora haïtienne représente un marché énorme. Un client à Miami ou Montréal qui cherche vos services ne peut vous trouver que si vous existez en ligne. Un site web supprime les frontières géographiques.</p>
+      <h2>5. Contrôler votre image</h2>
+      <p>Facebook et Instagram sont des plateformes que vous ne contrôlez pas. Votre compte peut être suspendu, votre portée réduite. Votre site web vous appartient à 100% — c'est votre terrain, vos règles.</p>
+      <h2>Combien ça coûte ?</h2>
+      <p>Un site web professionnel GAROMS-TECH commence à <strong>500 USD</strong> avec hébergement, domaine et mise en ligne inclus. C'est l'investissement le plus rentable qu'un entrepreneur peut faire — une fois, pour des années de résultats.</p>
+    `
+  },
+  {
+    id:3,cat:'Automatisation',
+    img:'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=80',
+    title:'Automatisation IA : les 3 processus à automatiser en priorité dans votre PME',
+    excerpt:'Les entrepreneurs qui réussissent ne travaillent pas plus — ils automatisent mieux. Voici par où commencer.',
+    date:'15 avril 2026',read:'7 min',
+    body:`
+      <p>L'automatisation n'est pas réservée aux grandes entreprises. Avec les outils IA d'aujourd'hui, une PME de 5 personnes peut automatiser des processus qui prenaient auparavant des heures chaque jour.</p>
+      <h2>Pourquoi commencer par 3 processus ?</h2>
+      <p>L'erreur classique est de vouloir tout automatiser d'un coup. Résultat : confusion, coûts excessifs, adoption difficile. La bonne approche : <strong>identifier les 3 processus les plus chronophages</strong> et les automatiser en premier.</p>
+      <h2>Processus #1 — La gestion des leads entrants</h2>
+      <p>Chaque prospect qui contacte votre entreprise doit être qualifié, enregistré et suivi. Manuellement, c'est 30 minutes par lead. Automatisé, c'est 0 seconde — le système gère tout, de la capture à la relance.</p>
+      <h2>Processus #2 — Les suivis et relances</h2>
+      <ul>
+        <li>Relance automatique J+1, J+3, J+7 après premier contact</li>
+        <li>Message personnalisé selon la réponse précédente</li>
+        <li>Alerte si un prospect "chaud" n'a pas répondu depuis 48h</li>
+      </ul>
+      <h2>Processus #3 — La facturation et les paiements</h2>
+      <p>Combien d'heures passez-vous à créer des factures, relancer pour les paiements, envoyer des reçus ? Un système automatisé gère tout ça — de la création de la facture à la confirmation du paiement.</p>
+      <h2>Le résultat cumulé</h2>
+      <p>Ces 3 automatisations libèrent en moyenne <strong>12 à 18 heures par semaine</strong> pour l'équipe dirigeante. Des heures qui peuvent être investies dans la stratégie, le développement produit, ou simplement dans une meilleure qualité de vie.</p>
+    `
+  },
+  {
+    id:4,cat:'Intelligence Artificielle',
+    img:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80',
+    title:'L\'IA générative en 2026 : comment les PME caribéennes transforment leur compétitivité',
+    excerpt:'GPT-4, Claude, Gemini — ces outils ne sont plus réservés aux géants de la tech. Les PME haïtiennes et caribéennes qui les adoptent maintenant prennent 3 ans d\'avance sur leurs concurrents.',
+    date:'10 mai 2026',read:'8 min',
+    body:`
+      <p>En 2026, l'IA générative n'est plus une technologie futuriste — c'est un avantage concurrentiel <strong>disponible dès aujourd'hui</strong> pour toute entreprise qui choisit d'agir. Les PME caribéennes qui adoptent ces outils maintenant ne font pas juste "moderniser" leur business. Elles le transforment en profondeur.</p>
+      <h2>Qu'est-ce que l'IA générative, concrètement ?</h2>
+      <p>C'est une catégorie d'intelligence artificielle capable de <strong>créer du contenu original</strong> — texte, image, code, audio — à partir d'instructions simples en langage naturel. GPT-4, Claude d'Anthropic, Gemini de Google : ces modèles comprennent le contexte, raisonnent et produisent des résultats que des experts humains mettent des heures à produire.</p>
+      <h2>5 applications concrètes pour une PME haïtienne</h2>
+      <ul>
+        <li><strong>Service client 24h/24</strong> : agent IA qui répond aux questions, gère les objections, qualifie les prospects en créole, français, anglais et espagnol simultanément</li>
+        <li><strong>Création de contenu marketing</strong> : posts réseaux sociaux, emails, textes publicitaires générés en quelques secondes — adaptés à votre audience</li>
+        <li><strong>Analyse de données commerciales</strong> : résumé automatique de vos ventes, identification des tendances, recommandations d'action</li>
+        <li><strong>Support interne</strong> : documentation, formation des employés, réponses aux questions fréquentes de votre équipe</li>
+        <li><strong>Développement accéléré</strong> : création de sites, d'apps et d'outils digitaux 3 à 5 fois plus vite qu'en développement traditionnel</li>
+      </ul>
+      <h2>Le défi haïtien : langue et connectivité</h2>
+      <p>La bonne nouvelle : les LLM modernes comprennent le créole haïtien avec une précision croissante. Chez GAROMS-TECH, nous configurons des agents IA <strong>multilingues nativement</strong> — créole, français, anglais, espagnol — pour atteindre chaque segment de votre marché.</p>
+      <h2>Par où commencer ?</h2>
+      <p>Ne commencez pas par "l'IA en général". Commencez par un problème précis : <strong>quel est votre processus le plus répétitif et chronophage ?</strong> C'est là que l'IA générative génère le ROI le plus rapide.</p>
+      <blockquote>"Les entreprises ne seront pas remplacées par l'IA. Elles seront remplacées par des entreprises qui utilisent l'IA." — Harvard Business Review, 2025</blockquote>
+      <h2>Le coût de l'inaction</h2>
+      <p>Chaque mois sans IA est un mois où vos concurrents prennent de l'avance. Dans 12 mois, l'écart entre les entreprises IA-first et les autres sera difficile à combler. <strong>La fenêtre d'adoption favorable se ferme.</strong></p>
+    `
+  },
+  {
+    id:5,cat:'Ventes & IA',
+    img:'https://images.unsplash.com/photo-1611262588024-d12430b98920?w=700&q=80',
+    title:'WhatsApp Business + IA : la combinaison gagnante pour vendre en Haïti et dans la diaspora',
+    excerpt:'WhatsApp est le canal #1 en Haïti. Quand on y ajoute l\'IA, on obtient un commercial disponible 24h/24 qui ne prend jamais de congés.',
+    date:'5 mai 2026',read:'7 min',
+    body:`
+      <p>En Haïti, <strong>WhatsApp n'est pas juste un outil de communication</strong> — c'est l'infrastructure commerciale de centaines de milliers d'entrepreneurs. Ventes, négociations, support client, factures : tout passe par WhatsApp. Mais la plupart des entrepreneurs l'utilisent encore manuellement, message par message.</p>
+      <h2>Le problème de la gestion manuelle WhatsApp</h2>
+      <p>Un entrepreneur haïtien actif reçoit en moyenne 80 à 200 messages WhatsApp par jour, tous canaux confondus. Répondre manuellement à tout cela représente <strong>3 à 5 heures de travail quotidien</strong> — sans compter les weekends et nuits. Résultat : messages manqués, prospects perdus, épuisement.</p>
+      <h2>Ce que WhatsApp Business API + IA change</h2>
+      <ul>
+        <li><strong>Réponse instantanée</strong> à toute heure, même à 2h du matin</li>
+        <li><strong>Qualification automatique</strong> : l'IA pose les bonnes questions et classe les prospects par niveau d'urgence</li>
+        <li><strong>Suivi CRM intégré</strong> : chaque conversation est enregistrée, analysée, relancée au bon moment</li>
+        <li><strong>Messages en masse personnalisés</strong> : promotions, relances, annonces — envoyées à des milliers de contacts avec personnalisation individuelle</li>
+        <li><strong>Prise de rendez-vous automatique</strong> directement depuis WhatsApp</li>
+      </ul>
+      <h2>Application pour la diaspora haïtienne</h2>
+      <p>La diaspora haïtienne aux USA, au Canada, en France représente un marché de plusieurs milliards de dollars. Ces communautés utilisent massivement WhatsApp pour maintenir des liens avec Haïti — et pour <strong>acheter des services haïtiens à distance</strong>. Un système WhatsApp IA bien configuré capture ce marché 24h/24, sans barrière linguistique.</p>
+      <h2>Les chiffres qui parlent</h2>
+      <ul>
+        <li>Taux d'ouverture des messages WhatsApp : <strong>98%</strong> (contre 21% pour l'email)</li>
+        <li>Taux de réponse dans les 3 premières minutes : <strong>40%</strong></li>
+        <li>Augmentation moyenne du taux de conversion après automatisation : <strong>+35%</strong></li>
+      </ul>
+      <h2>Comment démarrer ?</h2>
+      <p>GAROMS-TECH configure votre <strong>agent IA WhatsApp sur mesure</strong> en 2 à 4 semaines : audit de vos processus actuels, configuration de l'API, entraînement de l'agent, tests et lancement. Vous obtenez un commercial digital qui travaille pour vous tous les jours de l'année.</p>
+    `
+  },
+  {
+    id:6,cat:'SaaS & Tech',
+    img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80',
+    title:'Créer un SaaS depuis Haïti : de l\'idée au premier client en 90 jours',
+    excerpt:'Haïti produit des talents tech de classe mondiale. Voici comment transformer une idée locale en un produit SaaS vendu à l\'international.',
+    date:'1 mai 2026',read:'9 min',
+    body:`
+      <p>Le SaaS (Software as a Service) est le modèle d'affaires le plus scalable qui existe : vous créez un produit une fois, vous le vendez à des milliers de clients simultanément, et vos revenus sont récurrents chaque mois. Et contrairement à ce qu'on croit souvent, <strong>on peut bâtir un SaaS depuis Haïti</strong> et le vendre à l'international.</p>
+      <h2>Pourquoi le SaaS est particulièrement adapté au contexte haïtien</h2>
+      <ul>
+        <li><strong>Pas de stock, pas de logistique</strong> : un logiciel se distribue en ligne, sans frontières physiques</li>
+        <li><strong>Revenus en USD</strong> : vendre à des clients internationaux génère des revenus en devises fortes</li>
+        <li><strong>Scalabilité</strong> : 10 clients ou 10 000 clients — le coût marginal est quasi nul</li>
+        <li><strong>Indépendance géographique</strong> : votre équipe peut travailler de n'importe où</li>
+      </ul>
+      <h2>Les 5 étapes du lancement SaaS en 90 jours</h2>
+      <h3>Semaines 1-2 : Validation du problème</h3>
+      <p>Avant d'écrire une ligne de code, validez que votre idée résout un problème réel pour lequel des gens sont prêts à payer. Faites 20 entretiens avec des prospects potentiels. Si 3 d'entre eux offrent de payer maintenant — votre idée est validée.</p>
+      <h3>Semaines 3-6 : MVP (Produit Minimum Viable)</h3>
+      <p>Construisez la version la plus simple de votre produit qui délivre la valeur principale. Chez GAROMS-TECH, nous utilisons des stacks modernes (React, Node.js, Supabase) qui permettent de lancer un MVP fonctionnel en <strong>4 à 6 semaines</strong>.</p>
+      <h3>Semaines 7-9 : Premiers clients bêta</h3>
+      <p>Offrez 3 à 6 mois gratuits à 5-10 utilisateurs pionniers en échange de feedback détaillé. Ces premiers utilisateurs deviennent vos meilleurs ambassadeurs.</p>
+      <h3>Semaines 10-11 : Itération rapide</h3>
+      <p>Corrigez les frictions identifiées par les bêta-testeurs. Chaque semaine compte — la vitesse d'itération est votre avantage sur les grandes entreprises.</p>
+      <h3>Semaine 12 : Lancement officiel</h3>
+      <p>Product Hunt, LinkedIn, communautés haïtiennes tech, WhatsApp — activez tous vos canaux simultanément. Votre premier client payant peut arriver dès le jour 1 du lancement.</p>
+      <h2>Les opportunités SaaS spécifiques au marché haïtien</h2>
+      <ul>
+        <li>Gestion de microfinance et épargne tontine numérique</li>
+        <li>Plateforme de gestion pour commerces informels</li>
+        <li>Outils de formation professionnelle en ligne en créole</li>
+        <li>CRM adapté aux réalités des PME haïtiennes</li>
+        <li>Logistique et suivi de livraison locale</li>
+      </ul>
+      <h2>L'accompagnement GAROMS-TECH</h2>
+      <p>Nous accompagnons les entrepreneurs haïtiens de l'idée au lancement SaaS — design, développement, déploiement cloud, et stratégie de croissance. Le tout à un prix adapté au marché local, avec une qualité internationale.</p>
+    `
+  },
+  {
+    id:7,cat:'Intelligence Artificielle',
+    img:'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&q=80',
+    title:'Chatbot vs Agent IA : quelle solution choisir pour maximiser vos conversions en 2026 ?',
+    excerpt:'Tous les bots ne se valent pas. Comprendre la différence entre un chatbot basique et un agent IA peut faire la différence entre 5% et 40% de conversion.',
+    date:'25 avril 2026',read:'6 min',
+    body:`
+      <p>Beaucoup d'entrepreneurs pensent que "chatbot" et "agent IA" sont synonymes. Ce sont en réalité deux technologies très différentes, avec des capacités et des résultats radicalement distincts. <strong>Choisir la mauvaise peut vous coûter cher.</strong></p>
+      <h2>Le chatbot classique : utile mais limité</h2>
+      <p>Un chatbot traditionnel fonctionne sur un <strong>arbre de décision préprogrammé</strong> : si l'utilisateur dit X, répondre Y. Si l'utilisateur sort du script, le bot ne sait pas quoi faire. Résultat : frustration, abandon de conversation, prospect perdu.</p>
+      <p>Ces bots sont utiles pour :</p>
+      <ul>
+        <li>FAQ simples avec réponses fixes</li>
+        <li>Menus de navigation ("Appuyez sur 1 pour...")</li>
+        <li>Prise de rendez-vous avec créneaux prédéfinis</li>
+      </ul>
+      <h2>L'agent IA : une intelligence qui comprend vraiment</h2>
+      <p>Un agent IA basé sur des LLM (GPT-4, Claude, Llama) comprend <strong>le contexte, les nuances et les intentions</strong>. Il s'adapte à chaque conversation de manière unique, pose des questions pertinentes, gère les objections et guide le prospect vers l'achat — exactement comme un commercial expert.</p>
+      <p>Un agent IA peut :</p>
+      <ul>
+        <li>Comprendre une question formulée de 10 façons différentes</li>
+        <li>Mémoriser le contexte de la conversation entière</li>
+        <li>Détecter les signaux d'achat et adapter son approche</li>
+        <li>Répondre en créole, français, anglais ou espagnol selon la langue du prospect</li>
+        <li>Générer des réponses personnalisées qui semblent humaines</li>
+        <li>Savoir quand escalader vers un humain</li>
+      </ul>
+      <h2>Comparaison directe des résultats</h2>
+      <ul>
+        <li>Chatbot classique — taux de complétion de conversation : <strong>25-35%</strong></li>
+        <li>Agent IA — taux de complétion de conversation : <strong>65-80%</strong></li>
+        <li>Chatbot classique — satisfaction utilisateur : <strong>3.1/5</strong></li>
+        <li>Agent IA — satisfaction utilisateur : <strong>4.4/5</strong></li>
+      </ul>
+      <h2>Quand choisir quoi ?</h2>
+      <p>Si votre budget est limité et vos besoins simples (FAQ, horaires, prix fixes) → un chatbot suffit. Si vous voulez qualifier des prospects, gérer des objections complexes, vendre des services personnalisés → <strong>un agent IA est l'investissement qui se rembourse</strong>.</p>
+      <h2>Ce que nous construisons chez GAROMS-TECH</h2>
+      <p>Nous ne proposons que des agents IA. Pas de bots à menus. Chaque agent que nous déployons est entraîné sur votre business spécifique, vos objections réelles, vos tarifs et vos valeurs — pour qu'il représente votre marque avec excellence.</p>
+    `
+  },
+  {
+    id:8,cat:'Marketing Digital',
+    img:'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80',
+    title:'Marketing digital en 2026 : les stratégies qui dominent les marchés africains et caribéens',
+    excerpt:'Les règles du marketing ont changé. Ce qui fonctionnait en 2020 est obsolète. Voici les stratégies qui génèrent du ROI réel sur les marchés émergents.',
+    date:'20 avril 2026',read:'8 min',
+    body:`
+      <p>Le marketing digital sur les marchés africains et caribéens a ses propres règles. Copier les stratégies occidentales sans adaptation est l'erreur la plus courante — et la plus coûteuse. En 2026, les entreprises qui gagnent sont celles qui <strong>combinent connaissance locale et outils globaux</strong>.</p>
+      <h2>La réalité des marchés caribéens en 2026</h2>
+      <ul>
+        <li><strong>Mobile-first obligatoire</strong> : 94% des internautes haïtiens naviguent sur mobile. Un site non optimisé mobile perd 94% de son trafic potentiel.</li>
+        <li><strong>WhatsApp > Email</strong> : le taux d'ouverture WhatsApp est 4x supérieur à l'email sur ces marchés</li>
+        <li><strong>Vidéo courte domine</strong> : TikTok et Reels Instagram génèrent 60% de l'engagement organique</li>
+        <li><strong>La confiance prime</strong> : les témoignages et preuves sociales convertissent 3x plus que les publicités traditionnelles</li>
+      </ul>
+      <h2>Les 5 stratégies qui génèrent le meilleur ROI</h2>
+      <h3>1. Content Marketing en créole et français</h3>
+      <p>Créez du contenu qui parle directement aux réalités de votre audience. Un article en créole sur les défis des entrepreneurs haïtiens aura 10x plus d'engagement qu'une traduction générique d'un article américain.</p>
+      <h3>2. Stratégie WhatsApp Marketing</h3>
+      <p>Construisez une liste WhatsApp de prospects qualifiés et envoyez des messages à haute valeur ajoutée — pas du spam. Un bon message WhatsApp à 500 prospects qualifiés peut générer 50 ventes en 48h.</p>
+      <h3>3. SEO Local Haïti + Diaspora</h3>
+      <p>Optimisez votre site pour des requêtes comme "agence digitale Haïti", "développement web Port-au-Prince" et des équivalents ciblant la diaspora. Ce trafic est qualifié et convertit mieux que le trafic froid.</p>
+      <h3>4. Partenariats avec influenceurs locaux</h3>
+      <p>Un créateur haïtien avec 50 000 abonnés engagés convertit mieux pour votre marché qu'une célébrité internationale avec 5 millions. L'authenticité et la proximité culturelle sont des actifs marketing majeurs.</p>
+      <h3>5. Retargeting intelligent</h3>
+      <p>Seulement 2% des visiteurs achètent à la première visite. Le retargeting Facebook/Instagram permet de relancer les 98% restants avec des messages adaptés à leur niveau d'intérêt.</p>
+      <h2>L'erreur à éviter absolument</h2>
+      <p>Investir dans la publicité payante <strong>avant d'avoir une offre claire et un site qui convertit</strong>. Vous pouvez dépenser 1 000 USD en publicité et générer 0 vente si votre landing page ne convainc pas. Commencez par optimiser votre tunnel de vente.</p>
+    `
+  },
+  {
+    id:9,cat:'Branding & Design',
+    img:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=80',
+    title:'Branding stratégique : pourquoi les marques qui investissent dans leur image dominent leur marché',
+    excerpt:'Le branding n\'est pas de la décoration. C\'est de la stratégie pure. Les entreprises haïtiennes qui le comprennent prennent une longueur d\'avance décisive.',
+    date:'18 avril 2026',read:'7 min',
+    body:`
+      <p>En Haïti, le branding est souvent considéré comme un "luxe" réservé aux grandes entreprises. C'est une erreur fondamentale. <strong>Le branding est l'outil de différenciation le plus puissant accessible à n'importe quelle entreprise</strong> — indépendamment de sa taille ou de son budget.</p>
+      <h2>Qu'est-ce que le branding vraiment ?</h2>
+      <p>Le branding n'est pas votre logo. C'est la <strong>perception totale qu'ont vos clients</strong> de votre entreprise : ce qu'ils ressentent quand ils voient votre nom, ce qu'ils disent de vous à leurs amis, la confiance ou la méfiance que vous inspirez instinctivement. Tout communique : vos couleurs, votre police, votre ton de communication, votre façon de répondre aux messages.</p>
+      <h2>Les 3 niveaux du branding</h2>
+      <h3>Niveau 1 — Identité visuelle</h3>
+      <p>Logo professionnel, palette de couleurs cohérente, typographies, iconographie. C'est le minimum. Sans ça, votre entreprise semble amateur même si vos services sont excellents.</p>
+      <h3>Niveau 2 — Identité verbale</h3>
+      <p>Votre ton de communication, votre vocabulaire, votre slogan, la façon dont vous décrivez vos services. Une marque forte parle d'une voix reconnaissable et cohérente sur tous ses canaux.</p>
+      <h3>Niveau 3 — Expérience de marque</h3>
+      <p>Chaque point de contact avec votre client est une opportunité de renforcer (ou détruire) votre marque : l'accueil sur votre site, la rapidité de votre réponse WhatsApp, la présentation de vos propositions commerciales, vos factures.</p>
+      <h2>Impact mesurable du branding sur les ventes</h2>
+      <ul>
+        <li>Clients prêts à payer <strong>20 à 30% de plus</strong> pour une marque qu'ils reconnaissent et en qui ils ont confiance</li>
+        <li>Taux de recommandation <strong>2x supérieur</strong> pour les entreprises avec une identité visuelle forte</li>
+        <li>Temps de décision d'achat réduit de <strong>40%</strong> quand la confiance est établie visuellement</li>
+      </ul>
+      <h2>Le branding haïtien qui fonctionne à l'international</h2>
+      <p>Les marques haïtiennes qui réussissent à l'international ne cachent pas leur origine — elles l'assument avec fierté et sophistication. La culture haïtienne est un actif de branding unique : richesse artistique, résilience, créativité. Une marque qui intègre cette identité de manière professionnelle <strong>se distingue immédiatement dans un marché mondial homogène</strong>.</p>
+      <h2>Par où commencer ?</h2>
+      <p>Commencez par auditer votre identité actuelle : votre logo fait-il professionnel ? Votre ton est-il cohérent partout ? Votre site reflète-t-il la qualité de vos services ? Si la réponse à l'une de ces questions est non, c'est par là que vous commencez.</p>
+    `
+  },
+  {
+    id:10,cat:'Développement Mobile',
+    img:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&q=80',
+    title:'Application mobile en 2026 : est-ce vraiment rentable pour votre business haïtien ?',
+    excerpt:'Pas tout le monde a besoin d\'une app. Mais ceux qui en ont vraiment besoin et n\'en ont pas perdent chaque jour. Voici comment trancher.',
+    date:'14 avril 2026',read:'6 min',
+    body:`
+      <p>La question revient constamment : "Est-ce que j'ai besoin d'une application mobile ?" La réponse honnête : <strong>ça dépend</strong>. Mais la bonne nouvelle, c'est qu'il existe des critères précis pour le déterminer — et que le coût de développement a considérablement baissé en 2026 grâce aux nouvelles technologies.</p>
+      <h2>Quand une application mobile est un investissement stratégique</h2>
+      <ul>
+        <li><strong>Votre service est utilisé régulièrement</strong> (au moins 2-3 fois par semaine par vos clients)</li>
+        <li><strong>Vous avez besoin d'accéder à des fonctions du téléphone</strong> : GPS, caméra, notifications push, accès hors ligne</li>
+        <li><strong>Vous gérez une communauté ou un réseau</strong> dont l'engagement est clé pour votre modèle économique</li>
+        <li><strong>Votre service nécessite une expérience ultra-fluide</strong> que le navigateur mobile ne peut pas offrir</li>
+        <li><strong>Vous voulez fidéliser</strong> : une app sur l'écran d'accueil = présence permanente dans la vie du client</li>
+      </ul>
+      <h2>Quand un site web responsive suffit</h2>
+      <ul>
+        <li>Service utilisé occasionnellement (moins d'une fois par semaine)</li>
+        <li>Pas besoin de fonctionnalités natives du téléphone</li>
+        <li>Budget limité et priorité à l'acquisition de clients</li>
+        <li>Marché B2B où les décisions se prennent sur desktop</li>
+      </ul>
+      <h2>Les coûts réels en 2026</h2>
+      <p>Grâce aux frameworks modernes (React Native, Expo), une application mobile fonctionnelle pour iOS et Android peut être développée à partir de <strong>2 000 USD pour une app simple</strong> et <strong>5 000 à 15 000 USD pour une app complexe</strong> — avec toutes les fonctionnalités d'une app native.</p>
+      <h2>Le cas d'usage haïtien</h2>
+      <p>Les secteurs où une app mobile génère le plus de valeur en Haïti :</p>
+      <ul>
+        <li><strong>Transport et livraison</strong> : suivi en temps réel, matching chauffeur-passager</li>
+        <li><strong>Commerce de détail</strong> : catalogue produits, commande, paiement mobile</li>
+        <li><strong>Services financiers</strong> : épargne, transfert d'argent, microfinance</li>
+        <li><strong>Santé</strong> : téléconsultation, suivi patient, rappels médicaments</li>
+        <li><strong>Éducation</strong> : cours en ligne, quiz, certifications</li>
+      </ul>
+      <h2>Notre recommandation</h2>
+      <p>Avant de développer une app, lancez d'abord un MVP web. Validez votre marché, construisez votre base d'utilisateurs, puis investissez dans une app mobile quand vous avez la preuve que vos utilisateurs la demandent. <strong>Les meilleures apps sont bâties pour des utilisateurs réels, pas pour des utilisateurs imaginaires.</strong></p>
+    `
+  },
+  {
+    id:11,cat:'Cybersécurité',
+    img:'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80',
+    title:'Sécurité digitale pour PME : 10 règles que tout entrepreneur doit appliquer en 2026',
+    excerpt:'Les PME sont les cibles préférées des hackers — pas les grandes entreprises. 60% des petites entreprises touchées par une cyberattaque ferment dans les 6 mois. Voici comment vous protéger.',
+    date:'10 avril 2026',read:'7 min',
+    body:`
+      <p>La cybersécurité n'est plus un sujet réservé aux grandes entreprises. En 2026, les PME représentent <strong>43% des cibles de cyberattaques</strong> — précisément parce qu'elles ont des données de valeur et des défenses insuffisantes. En Haïti et dans la Caraïbe, la numérisation rapide crée de nouvelles vulnérabilités que peu d'entrepreneurs anticipent.</p>
+      <h2>Les 10 règles fondamentales</h2>
+      <h3>1. Mots de passe robustes + gestionnaire de mots de passe</h3>
+      <p>Utilisez un gestionnaire (Bitwarden, 1Password) pour générer et stocker des mots de passe de 16+ caractères uniques pour chaque service. Ne réutilisez jamais un mot de passe.</p>
+      <h3>2. Authentification à deux facteurs (2FA) partout</h3>
+      <p>Activez le 2FA sur tous vos comptes critiques : email, banque, réseaux sociaux, hébergement web. Même si votre mot de passe est compromis, le 2FA bloque l'accès.</p>
+      <h3>3. Sauvegardes automatiques et distantes</h3>
+      <p>La règle 3-2-1 : 3 copies de vos données, sur 2 supports différents, dont 1 hors site (cloud). Testez la restauration de vos sauvegardes régulièrement.</p>
+      <h3>4. Mises à jour immédiates</h3>
+      <p>80% des cyberattaques exploitent des vulnérabilités connues pour lesquelles des mises à jour existent. Activez les mises à jour automatiques sur tous vos appareils et logiciels.</p>
+      <h3>5. Formation de l'équipe anti-phishing</h3>
+      <p>Le phishing (emails frauduleux) est le vecteur #1 d'intrusion. Formez votre équipe à identifier les emails suspects : urgence artificielle, expéditeur inconnu, liens étranges.</p>
+      <h3>6. VPN sur les réseaux publics</h3>
+      <p>Interdisez à votre équipe de se connecter à des ressources d'entreprise via WiFi public sans VPN. Les réseaux publics sont des terrains de chasse pour les hackers.</p>
+      <h3>7. Politique de contrôle d'accès</h3>
+      <p>Chaque employé n'accède qu'aux ressources nécessaires à son poste. Quand un employé quitte l'entreprise, révoquez immédiatement tous ses accès.</p>
+      <h3>8. Chiffrement des données sensibles</h3>
+      <p>Toutes les données clients, financières et stratégiques doivent être chiffrées — en transit (HTTPS obligatoire) et au repos (disques chiffrés).</p>
+      <h3>9. Plan de réponse aux incidents</h3>
+      <p>Que faites-vous si votre site est hacké demain ? Si vos données sont volées ? Avoir un plan précis réduit le temps de réponse de 70% et limite les dégâts.</p>
+      <h3>10. Audit de sécurité annuel</h3>
+      <p>Faites auditer votre infrastructure digitale par un professionnel au moins une fois par an. Un audit préventif coûte 10 à 100 fois moins cher qu'une réponse à une cyberattaque.</p>
+      <h2>La réalité haïtienne</h2>
+      <p>Les transactions MonCash, les données clients WhatsApp, les bases de données de contacts — ces actifs ont une valeur réelle pour les cybercriminels. <strong>Protéger votre business digital, c'est protéger votre revenu.</strong></p>
+    `
+  },
+  {
+    id:12,cat:'Stratégie & Croissance',
+    img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80',
+    title:'De 0 à 10 000 clients : la roadmap digitale d\'une entreprise haïtienne ambitieuse',
+    excerpt:'La croissance digitale n\'est pas magique. C\'est un processus structuré, étape par étape. Voici la roadmap que nous appliquons avec nos clients qui passent à l\'échelle.',
+    date:'8 avril 2026',read:'9 min',
+    body:`
+      <p>Toutes les entreprises haïtiennes qui ont réussi leur transformation digitale ont suivi — consciemment ou non — un chemin similaire. Nous avons synthétisé ces parcours en une roadmap en 4 phases que nous appliquons avec nos clients depuis 2023. <strong>Voici exactement ce que ça donne.</strong></p>
+      <h2>Phase 1 : Fondations (Mois 1-3)</h2>
+      <p>La plupart des entrepreneurs veulent sauter directement à la publicité et l'acquisition. C'est l'erreur. Sans fondations solides, chaque euro/dollar investi en marketing est gaspillé.</p>
+      <ul>
+        <li><strong>Site web professionnel</strong> optimisé mobile avec tunnel de vente clair</li>
+        <li><strong>Google Analytics + Google Search Console</strong> pour mesurer le trafic réel</li>
+        <li><strong>CRM basique</strong> pour centraliser tous vos contacts et interactions clients</li>
+        <li><strong>Présence réseaux sociaux cohérente</strong> (pas besoin d'être partout — choisissez 2 plateformes et excellez)</li>
+        <li><strong>Agent IA ou chatbot</strong> pour ne manquer aucune opportunité entrante</li>
+      </ul>
+      <h2>Phase 2 : Acquisition (Mois 4-8)</h2>
+      <p>Une fois les fondations en place, commencez à générer du trafic qualifié de manière systématique.</p>
+      <ul>
+        <li><strong>SEO</strong> : contenu stratégique ciblant les requêtes de vos prospects (blog, guides, études de cas)</li>
+        <li><strong>Publicité payante ciblée</strong> : Facebook/Instagram Ads avec budgets progressifs et A/B testing constant</li>
+        <li><strong>WhatsApp Marketing</strong> : construction et activation de votre liste de contacts qualifiés</li>
+        <li><strong>Programme de référencement</strong> : transformez vos clients satisfaits en source d'acquisition</li>
+      </ul>
+      <h2>Phase 3 : Conversion (Mois 9-15)</h2>
+      <p>Vous avez du trafic. Maintenant, convertissez-le en chiffre d'affaires de manière systématique.</p>
+      <ul>
+        <li><strong>Optimisation du tunnel de vente</strong> : réduction des frictions à chaque étape du parcours client</li>
+        <li><strong>Automatisation des suivis</strong> : aucun prospect chaud ne doit être laissé sans relance</li>
+        <li><strong>Preuve sociale</strong> : témoignages vidéo, études de cas, résultats mesurables</li>
+        <li><strong>Offres d'entrée à faible risque</strong> : consultation gratuite, audit, démo — réduisez la barrière à l'achat</li>
+      </ul>
+      <h2>Phase 4 : Rétention & Scale (Mois 16+)</h2>
+      <p>Acquérir un client coûte 5 à 7 fois plus cher que retenir un client existant. À cette phase, l'objectif est de maximiser la valeur vie client.</p>
+      <ul>
+        <li><strong>Programme de fidélité</strong> automatisé avec points et récompenses</li>
+        <li><strong>Upsell et cross-sell</strong> systématiques dans votre catalogue</li>
+        <li><strong>Communauté de clients</strong> : créer un sentiment d'appartenance génère de la rétention naturelle</li>
+        <li><strong>Expansion géographique</strong> : une fois le modèle validé localement, répliquer dans la diaspora et à l'international</li>
+      </ul>
+      <h2>Les métriques qui comptent vraiment</h2>
+      <p>Oubliez les likes et les followers. Les métriques qui déterminent la santé de votre business digital :</p>
+      <ul>
+        <li><strong>CAC (Coût d'Acquisition Client)</strong> : combien vous coûte chaque nouveau client ?</li>
+        <li><strong>LTV (Valeur Vie Client)</strong> : combien rapporte un client sur toute sa durée de vie ?</li>
+        <li><strong>Taux de conversion</strong> : % de visiteurs qui deviennent clients</li>
+        <li><strong>Taux de rétention à 90 jours</strong> : % de clients qui reviennent après 3 mois</li>
+        <li><strong>NPS (Net Promoter Score)</strong> : vos clients vous recommandent-ils activement ?</li>
+      </ul>
+      <blockquote>"Une stratégie digitale sans métriques claires est une stratégie sans direction. Mesurez tout, optimisez sans cesse." — GURU Gédéon, CEO GAROMS-TECH</blockquote>
+    `
+  },
+  {
+    id:13,cat:'Agritech & Innovation',
+    img:'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80',
+    title:'Agritech en Haïti : comment la technologie peut révolutionner l\'agriculture haïtienne',
+    excerpt:'L\'agriculture représente 25% du PIB haïtien. La technologie peut doubler sa productivité. Voici les solutions concrètes qui existent déjà.',
+    date:'5 avril 2026',read:'8 min',
+    body:`
+      <p>L'agriculture haïtienne souffre de défis structurels importants : accès limité aux marchés, manque d'information sur les prix, absence de traçabilité, difficulté à accéder au financement. La bonne nouvelle : <strong>la technologie peut résoudre chacun de ces problèmes</strong> — et des entreprises haïtiennes le font déjà.</p>
+      <h2>Le potentiel inexploité</h2>
+      <p>Haïti possède un patrimoine agricole diversifié : café, cacao, mangues, vétiver, haricots noirs. La qualité de ces produits est reconnue internationalement. Ce qui manque, c'est la <strong>connexion efficace entre producteurs, marchés locaux et marchés d'exportation</strong> — et c'est exactement ce que la technologie permet.</p>
+      <h2>Les solutions technologiques qui transforment l'agriculture haïtienne</h2>
+      <h3>1. Plateformes de mise en relation producteur-acheteur</h3>
+      <p>Des applications mobiles simples permettent aux agriculteurs de publier leurs stocks, leurs prix et leur localisation. Les acheteurs (marchés, restaurants, exportateurs) trouvent les fournisseurs en quelques clics — sans intermédiaires qui captent la marge.</p>
+      <h3>2. Information météo et agricole en temps réel</h3>
+      <p>Des SMS ou notifications WhatsApp alertent les agriculteurs sur les prévisions météo, les périodes optimales de plantation et les risques de maladies. Ces informations, autrefois réservées aux grandes exploitations, sont maintenant accessibles à tous via smartphone.</p>
+      <h3>3. Traçabilité blockchain pour l'export</h3>
+      <p>Le café et le cacao haïtien de qualité supérieure peuvent atteindre des prix premium sur les marchés internationaux — à condition de prouver leur origine et leurs conditions de production. La blockchain permet cette traçabilité de manière sécurisée et vérifiable.</p>
+      <h3>4. Microfinance digitale pour les agriculteurs</h3>
+      <p>L'accès au crédit est l'un des plus grands obstacles au développement agricole. Des plateformes de microfinance numériques permettent aux agriculteurs d'accéder à des prêts basés sur leurs historiques de production — sans avoir besoin d'une banque traditionnelle.</p>
+      <h3>5. Agents IA pour le conseil agricole</h3>
+      <p>Un agriculteur qui peut poser une question en créole à un agent IA sur les maladies de ses plants, les meilleures pratiques d'irrigation ou les prix du marché — et recevoir une réponse précise en quelques secondes — c'est une révolution d'accès à l'information.</p>
+      <h2>Ce que GAROMS-TECH fait dans ce domaine</h2>
+      <p>Nous développons des solutions tech-agricoles sur mesure pour les coopératives, ONG et entreprises agro-alimentaires haïtiennes : <strong>plateformes de gestion de filières, agents IA agricoles, systèmes de traçabilité et applications de mise en marché</strong>. Notre vision : que la technologie soit un levier de souveraineté alimentaire pour Haïti.</p>
+      <h2>L'horizon 2030</h2>
+      <p>D'ici 2030, le marché agritech en Afrique et dans la Caraïbe atteindra 3 milliards de dollars. Les entreprises qui positionnent leurs solutions maintenant dans ce secteur construisent un avantage compétitif durable. <strong>L'agriculture haïtienne n'a pas besoin de charité — elle a besoin d'innovation.</strong></p>
+    `
+  }
+];
+
+/* CATEGORIES */
+const CATS=['Tous',...new Set(ARTICLES.map(a=>a.cat))];
+
+function renderFilters(){
+  document.getElementById('filters').innerHTML=CATS.map((c,i)=>`<button class="filter-btn${i===0?' active':''}" onclick="filterBy('${c}',this)">${c}</button>`).join('');
+}
+
+let currentFilter='Tous';
+function filterBy(cat,btn){
+  currentFilter=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+function renderGrid(){
+  const list=currentFilter==='Tous'?ARTICLES:ARTICLES.filter(a=>a.cat===currentFilter);
+  document.getElementById('articleGrid').innerHTML=list.map(a=>`
+    <div class="article-card" onclick="openArticle(${a.id})" role="article" tabindex="0" onkeydown="if(event.key==='Enter')openArticle(${a.id})">
+      <div class="card-img">
+        <img src="${a.img}" alt="${a.title}" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a0800,#2d1200)';this.style.display='none'">
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${a.cat}</div>
+        <div class="card-title">${a.title}</div>
+        <div class="card-excerpt">${a.excerpt}</div>
+        <div class="card-meta">
+          <span>${a.date}</span>
+          <span>${a.read}</span>
+          <span class="card-read">Lire l'article →</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openArticle(id){
+  const a=ARTICLES.find(x=>x.id===id);
+  if(!a)return;
+  document.getElementById('mCover').src=a.img;
+  document.getElementById('mCover').alt=a.title;
+  document.getElementById('mCoverErr').style.display='none';
+  document.getElementById('mCover').style.display='block';
+  document.getElementById('mCat').textContent=a.cat;
+  document.getElementById('mTitle').textContent=a.title;
+  document.getElementById('mMeta').innerHTML=`<span>${a.date}</span><span>${a.read} de lecture</span>`;
+  document.getElementById('mBody').innerHTML=a.body;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  window.scrollTo({top:0});
+  if(typeof gtag!=='undefined')gtag('event','article_view',{article_title:a.title,article_category:a.cat});
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.getElementById('modal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
+});
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeModal();
+});
+
+/* NEWSLETTER */
+async function subBlogNL(){
+  const em=document.getElementById('blNlEmail').value.trim();
+  if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return;
+  const btn=document.querySelector('.nl-form button');
+  if(btn){btn.disabled=true;btn.textContent='...';}
+  try{
+    await fetch(`${SB_URL}/rest/v1/newsletter?on_conflict=email`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':SB_KEY,
+        'Authorization':`Bearer ${SB_KEY}`,
+        'Prefer':'resolution=ignore-duplicates,return=minimal'
+      },
+      body:JSON.stringify({email:em,source:'blog',created_at:new Date().toISOString()})
+    });
+  }catch(_){}
+  document.getElementById('blNlOk').style.display='block';
+  document.getElementById('blNlEmail').value='';
+  if(btn){btn.disabled=false;btn.textContent='S\'abonner →';}
+  if(typeof gtag!=='undefined')gtag('event','newsletter_subscribe',{source:'blog'});
+}
+
+/* BACK TO TOP */
+window.addEventListener('scroll',function(){
+  const btn=document.getElementById('backTop');
+  if(btn)btn.classList.toggle('show',window.scrollY>400);
+},{passive:true});
+
+renderFilters();
+renderGrid();
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "name": "GAROMS-TECH — IA & Automatisation",
+  "short_name": "GAROMS-TECH",
+  "description": "Systèmes IA et automatisation qui travaillent 24/7 pour votre business.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0A1628",
+  "theme_color": "#E85D04",
+  "lang": "fr",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

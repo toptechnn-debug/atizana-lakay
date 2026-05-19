@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+  <meta name="theme-color" content="#E85D04"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>JBD Marché — Projet GAROMS-TECH | Collaborateurs & Investisseurs</title>
+  <meta name="description" content="JBD Marché — la première marketplace haïtienne. GAROMS-TECH cherche collaborateurs, investisseurs et entrepreneurs pour la révolution digitale d'Haïti."/>
+  <link rel="canonical" href="https://garomstech.com/portfolio.html"/>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;height:100%;-webkit-tap-highlight-color:transparent;}
+  body{font-family:'Inter',sans-serif;background:#0A1628;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100dvh;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{cursor:pointer;border:none;background:none;font-family:'Inter',sans-serif;}
+  ul{list-style:none;}
+  .c{width:100%;max-width:1280px;margin:0 auto;padding:0 1.25rem;}
+  @media(min-width:768px){.c{padding:0 2rem;}}
+  @media(min-width:1024px){.c{padding:0 3rem;}}
+  section{padding:5.5rem 0;}
+  :root{
+    --or:#E85D04;--or2:#FB923C;--bg:#0A1628;--bg2:#0D1F3C;
+    --w:#fff;--muted:rgba(255,255,255,.55);--border:rgba(255,255,255,.08);
+  }
+
+  /* STARS */
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .stars::before{content:'';position:absolute;inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 15% 25%,rgba(255,255,255,.25) 0%,transparent 100%),
+      radial-gradient(1px 1px at 55% 70%,rgba(232,93,4,.4) 0%,transparent 100%),
+      radial-gradient(2px 2px at 80% 10%,rgba(251,146,60,.5) 0%,transparent 100%),
+      radial-gradient(1px 1px at 40% 45%,rgba(255,255,255,.4) 0%,transparent 100%),
+      radial-gradient(1px 1px at 70% 85%,rgba(232,93,4,.3) 0%,transparent 100%),
+      radial-gradient(1.5px 1.5px at 25% 60%,rgba(255,255,255,.2) 0%,transparent 100%);
+  }
+
+  /* HEADER */
+  .hdr{position:fixed;top:0;left:0;right:0;z-index:5000;padding:.875rem 0;
+    background:rgba(10,22,40,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);transition:all .3s;}
+  .hdr.on{border-bottom-color:rgba(232,93,4,.2);}
+  .hdrin{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+  .logo-full img{height:52px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 10px rgba(232,93,4,.3));}
+  .hnav{display:none;}
+  @media(min-width:900px){.hnav{display:flex;gap:1.75rem;align-items:center;}}
+  .hnav a{font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.6);transition:color .2s;}
+  .hnav a:hover,.hnav a.active{color:#fff;}
+  .btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;padding:.65rem 1.4rem;border-radius:9999px;transition:all .3s;cursor:pointer;border:none;}
+  .btnp{background:linear-gradient(135deg,#E85D04,#FB923C);color:#fff;box-shadow:0 4px 16px rgba(232,93,4,.35);}
+  .btnp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,93,4,.55);}
+  .btno{background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.2);}
+  .btno:hover{border-color:#E85D04;color:#fff;}
+  .hmb{display:flex;flex-direction:column;gap:5px;padding:.4rem;width:36px;}
+  @media(min-width:900px){.hmb{display:none;}}
+  .hmb span{display:block;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
+  .mmenu{display:none;position:fixed;inset:0;background:rgba(10,22,40,.99);z-index:4999;padding:5rem 2rem 2rem;flex-direction:column;gap:1.5rem;}
+  .mmenu.o{display:flex;}
+  .mmenu nav{display:flex;flex-direction:column;gap:1.25rem;}
+  .mmenu nav a{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:700;color:rgba(255,255,255,.8);}
+  .mmenu nav a:hover{color:#E85D04;}
+
+  /* HERO */
+  .hero{padding:9rem 0 5rem;position:relative;z-index:1;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);
+    width:900px;height:900px;background:radial-gradient(circle,rgba(232,93,4,.1),transparent 70%);
+    pointer-events:none;}
+  .hero-inner{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;}
+  @media(min-width:1024px){.hero-inner{grid-template-columns:1.1fr 1fr;gap:4rem;}}
+  .hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;
+    color:#FB923C;background:rgba(232,93,4,.1);border:1px solid rgba(232,93,4,.25);
+    padding:.35rem 1rem;border-radius:9999px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;}
+  .hero h1{font-family:'Poppins',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;
+    line-height:1.05;margin-bottom:1.25rem;}
+  .hero h1 .or{background:linear-gradient(135deg,#E85D04,#FB923C);-webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-sub{font-size:clamp(.95rem,2vw,1.1rem);color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:2rem;}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;}
+  .hero-tag{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.7);
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+    padding:.3rem .85rem;border-radius:9999px;}
+  .hero-btns{display:flex;gap:.875rem;flex-wrap:wrap;}
+
+  /* HERO SCREENSHOTS */
+  .hero-screens{position:relative;display:flex;justify-content:center;align-items:flex-start;gap:1rem;}
+  .sc-wrap{border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);
+    border:1px solid rgba(255,255,255,.1);background:#111;}
+  .sc-wrap img{width:100%;display:block;object-fit:cover;}
+  .sc-main{width:clamp(200px,45vw,280px);animation:scFloat 5s ease-in-out infinite;}
+  .sc-side1{width:clamp(140px,30vw,180px);margin-top:2rem;animation:scFloat 6s ease-in-out infinite;animation-delay:.8s;}
+  .sc-side2{width:clamp(140px,30vw,180px);margin-top:4rem;animation:scFloat 4.5s ease-in-out infinite;animation-delay:1.6s;}
+  @keyframes scFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+  @media(max-width:1023px){.sc-side2{display:none;}.sc-side1{margin-top:1rem;}}
+  @media(max-width:640px){.sc-side1{display:none;}.sc-main{width:clamp(220px,70vw,320px);}}
+
+  /* BADGE FLOATING */
+  .sc-badge{position:absolute;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);
+    border:1px solid rgba(232,93,4,.3);border-radius:12px;padding:.6rem 1rem;
+    display:flex;align-items:center;gap:.6rem;white-space:nowrap;}
+  .sc-badge-icon{width:32px;height:32px;background:linear-gradient(135deg,#E85D04,#FB923C);
+    border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+  .sc-badge-txt{font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;color:#fff;}
+  .sc-badge-sub{font-size:.65rem;color:rgba(255,255,255,.5);}
+  .badge-a{bottom:2rem;left:-1.5rem;animation:bdgFloat 4s ease-in-out infinite;}
+  .badge-b{top:1rem;right:-1rem;animation:bdgFloat 5s ease-in-out infinite;animation-delay:1s;}
+  @keyframes bdgFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  @media(max-width:640px){.sc-badge{display:none;}}
+
+  /* STATS BAR */
+  .stats-bar{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;
+    padding:2rem;margin-top:3rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+  @media(min-width:640px){.stats-bar{grid-template-columns:repeat(4,1fr);}}
+  .stat-it{text-align:center;}
+  .stat-n{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:900;
+    background:linear-gradient(135deg,#E85D04,#FB923C);-webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-l{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+  /* LOOKING FOR */
+  .lf-sec{background:var(--bg2);position:relative;z-index:1;}
+  .lf-sec::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(232,93,4,.06),transparent 60%);pointer-events:none;}
+  .sec-badge{display:inline-flex;font-size:.72rem;font-weight:700;color:#FB923C;
+    background:rgba(232,93,4,.1);border:1px solid rgba(232,93,4,.25);
+    padding:.3rem .9rem;border-radius:9999px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;}
+  .stitle{font-family:'Poppins',sans-serif;font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;
+    line-height:1.1;margin-bottom:.75rem;}
+  .stitle .or{background:linear-gradient(135deg,#E85D04,#FB923C);-webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;background-clip:text;}
+  .ssub{color:var(--muted);max-width:560px;line-height:1.8;font-size:.95rem;margin-bottom:3rem;}
+  .lf-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
+  @media(min-width:640px){.lf-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1024px){.lf-grid{grid-template-columns:repeat(4,1fr);}}
+  .lf-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);
+    border-radius:20px;padding:2rem 1.5rem;transition:all .35s;position:relative;overflow:hidden;}
+  .lf-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,#E85D04,#FB923C);opacity:0;transition:opacity .35s;}
+  .lf-card:hover{border-color:rgba(232,93,4,.35);transform:translateY(-6px);
+    background:rgba(232,93,4,.05);}
+  .lf-card:hover::before{opacity:1;}
+  .lf-icon{font-size:2.2rem;margin-bottom:1.25rem;}
+  .lf-card h3{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:.6rem;}
+  .lf-card p{color:var(--muted);font-size:.85rem;line-height:1.75;}
+  .lf-card ul{margin-top:.875rem;display:flex;flex-direction:column;gap:.4rem;}
+  .lf-card ul li{font-size:.8rem;color:rgba(255,255,255,.6);padding-left:1rem;position:relative;}
+  .lf-card ul li::before{content:'→';position:absolute;left:0;color:#E85D04;font-weight:700;}
+
+  /* GALLERY */
+  .gallery-sec{background:var(--bg);position:relative;z-index:1;}
+  .gallery-grid{display:grid;grid-template-columns:1fr;gap:3rem;}
+  @media(min-width:900px){.gallery-grid{grid-template-columns:1fr 1fr 1fr;gap:2rem;}}
+  .gal-item{display:flex;flex-direction:column;gap:1.25rem;}
+  .gal-img-wrap{border-radius:24px;overflow:hidden;border:1px solid rgba(232,93,4,.25);
+    box-shadow:0 24px 60px rgba(0,0,0,.5);background:linear-gradient(135deg,#0d1f3c,#1a2a4a);position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:9/19;}
+  .gal-img-wrap img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;transition:transform .5s;}
+  .gal-img-wrap:hover img{transform:scale(1.04);}
+  .gal-img-wrap .img-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;opacity:.4;}
+  .gal-img-wrap .img-placeholder span{font-size:3rem;}
+  .gal-img-wrap .img-placeholder p{font-size:.8rem;color:rgba(255,255,255,.6);font-family:'Poppins',sans-serif;font-weight:600;}
+  .gal-badge{display:inline-flex;font-size:.7rem;font-weight:700;color:#FB923C;
+    background:rgba(232,93,4,.1);border:1px solid rgba(232,93,4,.2);
+    padding:.25rem .75rem;border-radius:9999px;letter-spacing:.08em;text-transform:uppercase;}
+  .gal-item h3{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:800;}
+  .gal-item p{color:var(--muted);font-size:.85rem;line-height:1.75;}
+  .gal-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+  .gal-tag{font-size:.7rem;font-weight:600;color:rgba(255,255,255,.6);
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+    padding:.2rem .65rem;border-radius:9999px;}
+
+  /* WHY HAITI */
+  .why-sec{background:var(--bg2);position:relative;z-index:1;overflow:hidden;}
+  .why-sec::before{content:'';position:absolute;top:-100px;right:-200px;
+    width:600px;height:600px;background:radial-gradient(circle,rgba(232,93,4,.08),transparent 70%);
+    pointer-events:none;}
+  .why-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;}
+  @media(min-width:1024px){.why-grid{grid-template-columns:1.2fr 1fr;gap:5rem;}}
+  .why-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.875rem;}
+  .why-img{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 16px 40px rgba(0,0,0,.35);}
+  .why-img img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .4s;}
+  .why-img:hover img{transform:scale(1.05);}
+  .why-img.tall{grid-row:span 2;}
+  .why-img.tall img{height:100%;}
+  .why-content .sec-badge{margin-bottom:.75rem;}
+  .why-content h2{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;line-height:1.15;margin-bottom:1.25rem;}
+  .why-content p{color:var(--muted);line-height:1.85;margin-bottom:1.25rem;font-size:.95rem;}
+  .why-pts{display:flex;flex-direction:column;gap:.875rem;margin-top:1.75rem;}
+  .why-pt{display:flex;align-items:flex-start;gap:.875rem;}
+  .why-pt-icon{width:36px;height:36px;background:linear-gradient(135deg,rgba(232,93,4,.15),rgba(251,146,60,.1));
+    border:1px solid rgba(232,93,4,.25);border-radius:10px;display:flex;align-items:center;
+    justify-content:center;font-size:1rem;flex-shrink:0;}
+  .why-pt-txt strong{font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:700;display:block;margin-bottom:.2rem;}
+  .why-pt-txt span{color:var(--muted);font-size:.82rem;line-height:1.65;}
+
+  /* CONTACT FORM */
+  .form-sec{background:var(--bg);position:relative;z-index:1;}
+  .form-sec::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:800px;height:500px;background:radial-gradient(ellipse,rgba(232,93,4,.07),transparent 70%);
+    pointer-events:none;}
+  .form-wrap{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);
+    border-radius:28px;padding:3rem;position:relative;z-index:1;max-width:800px;margin:0 auto;}
+  @media(max-width:640px){.form-wrap{padding:2rem 1.5rem;}}
+  .form-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#E85D04,#FB923C,#E85D04);border-radius:28px 28px 0 0;}
+  .form-head{text-align:center;margin-bottom:2.5rem;}
+  .form-head h2{font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:900;margin-bottom:.75rem;}
+  .form-head p{color:var(--muted);font-size:.92rem;line-height:1.75;}
+  .form-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
+  @media(min-width:640px){.form-grid{grid-template-columns:1fr 1fr;}}
+  .form-group{display:flex;flex-direction:column;gap:.4rem;}
+  .form-group.full{grid-column:1/-1;}
+  .form-label{font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;
+    color:rgba(255,255,255,.8);}
+  .form-label span{color:#E85D04;margin-left:2px;}
+  .form-input,.form-select,.form-textarea{width:100%;padding:.85rem 1.1rem;
+    background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);
+    border-radius:12px;color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;
+    transition:all .25s;outline:none;}
+  .form-input:focus,.form-select:focus,.form-textarea:focus{
+    border-color:#E85D04;background:rgba(232,93,4,.07);box-shadow:0 0 0 3px rgba(232,93,4,.12);}
+  .form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,.3);}
+  .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FB923C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;}
+  .form-select option{background:#0D1F3C;color:#fff;}
+  .form-textarea{resize:vertical;min-height:120px;}
+  .form-btn{width:100%;padding:1.1rem;font-size:1rem;background:linear-gradient(135deg,#E85D04,#FB923C);
+    color:#fff;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:800;
+    cursor:pointer;transition:all .3s;border:none;display:flex;align-items:center;
+    justify-content:center;gap:.5rem;margin-top:.5rem;}
+  .form-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,93,4,.5);}
+  .form-btn:disabled{opacity:.6;transform:none;cursor:not-allowed;}
+  .form-note{text-align:center;font-size:.78rem;color:rgba(255,255,255,.35);margin-top:1rem;}
+  .form-note a{color:#FB923C;}
+  .form-success{display:none;text-align:center;padding:3rem 2rem;}
+  .form-success-ico{font-size:3.5rem;margin-bottom:1.25rem;}
+  .form-success h3{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:900;margin-bottom:.75rem;}
+  .form-success p{color:var(--muted);line-height:1.75;}
+  .form-divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;}
+  .form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1);}
+  .form-divider span{font-size:.78rem;color:rgba(255,255,255,.35);white-space:nowrap;}
+  .wa-btn{width:100%;padding:1rem;background:#25D366;color:#fff;border-radius:12px;
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:.92rem;cursor:pointer;
+    transition:all .3s;border:none;display:flex;align-items:center;justify-content:center;gap:.6rem;}
+  .wa-btn:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.4);}
+
+  /* FOOTER */
+  footer{background:#060E1E;border-top:1px solid rgba(255,255,255,.06);padding:3rem 0 2rem;position:relative;z-index:1;}
+  .ft-inner{display:flex;flex-direction:column;align-items:center;gap:1.5rem;}
+  .ft-logo img{height:48px;object-fit:contain;}
+  .ft-links{display:flex;flex-wrap:wrap;gap:.875rem;justify-content:center;}
+  .ft-links a{font-size:.8rem;color:var(--muted);transition:color .2s;}
+  .ft-links a:hover{color:#E85D04;}
+  .ft-copy{font-size:.75rem;color:rgba(255,255,255,.22);text-align:center;}
+
+  /* WA FLOAT */
+  .wa-float{position:fixed;bottom:1.75rem;left:1.75rem;z-index:8000;width:54px;height:54px;
+    background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 20px rgba(37,211,102,.45);transition:.25s;text-decoration:none;}
+  .wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.65);}
+  </style>
+</head>
+<body>
+
+<!-- STARS -->
+<div class="stars" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+  <div class="c hdrin">
+    <a href="index.html" class="logo-full">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png"
+           alt="GAROMS-TECH" onerror="this.style.display='none'"/>
+    </a>
+    <nav class="hnav">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#apropos">À Propos</a>
+      <a href="index.html#services">Services</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="blog.html">Blog</a>
+      <a href="ambassadeur.html">Ambassadeur</a>
+    </nav>
+    <a href="#collaboration" class="btn btnp" style="display:none;" id="hdr-cta">Collaborer →</a>
+    <button class="hmb" id="hmb" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu">
+  <nav>
+    <a href="index.html" onclick="closeMenu()">Accueil</a>
+    <a href="index.html#apropos" onclick="closeMenu()">À Propos</a>
+    <a href="index.html#services" onclick="closeMenu()">Services</a>
+    <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
+    <a href="blog.html" onclick="closeMenu()">Blog</a>
+    <a href="ambassadeur.html" onclick="closeMenu()">Ambassadeur</a>
+  </nav>
+  <a href="#collaboration" class="btn btnp" onclick="closeMenu()">Collaborer sur JBD →</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="c">
+    <div class="hero-inner">
+      <!-- LEFT -->
+      <div>
+        <div class="hero-badge">🇭🇹 Projet Phare GAROMS-TECH</div>
+        <h1>
+          <span class="or">JBD Marché</span><br/>
+          La révolution<br/>digitale haïtienne
+        </h1>
+        <p class="hero-sub">
+          La première marketplace haïtienne complète — Achat, Vente, Livraison, MonCash &amp; NatCash.
+          Nous cherchons des partenaires visionnaires qui croient en l'avenir digital d'Haïti.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">Collaborateurs</span>
+          <span class="hero-tag">Investisseurs</span>
+          <span class="hero-tag">Entrepreneurs</span>
+          <span class="hero-tag">Développeurs</span>
+          <span class="hero-tag">Créatifs</span>
+        </div>
+        <div class="hero-btns">
+          <a href="#collaboration" class="btn btnp">Rejoindre le projet →</a>
+          <a href="#gallery" class="btn btno">Voir la plateforme</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: SCREENS -->
+      <div class="hero-screens" style="position:relative;">
+        <div class="sc-wrap sc-side1">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072825.png"
+               alt="JBD Marché — Inscription"
+               onerror="this.style.background='linear-gradient(135deg,#1a2a4a,#0d1f3c)';this.style.height='350px'"/>
+        </div>
+        <div class="sc-wrap sc-main">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072727.png"
+               alt="JBD Marché — Accueil"
+               onerror="this.style.background='linear-gradient(135deg,#1a2a4a,#0d1f3c)';this.style.height='500px'"/>
+        </div>
+        <div class="sc-wrap sc-side2">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072950.png"
+               alt="JBD Marché — Produit"
+               onerror="this.style.background='linear-gradient(135deg,#1a2a4a,#0d1f3c)';this.style.height='350px'"/>
+        </div>
+        <!-- Floating badges -->
+        <div class="sc-badge badge-a">
+          <div class="sc-badge-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+          <div>
+            <div class="sc-badge-txt">12 000+ Produits</div>
+            <div class="sc-badge-sub">En ligne maintenant</div>
+          </div>
+        </div>
+        <div class="sc-badge badge-b">
+          <div class="sc-badge-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <div>
+            <div class="sc-badge-txt">MonCash &amp; NatCash</div>
+            <div class="sc-badge-sub">Paiement local intégré</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat-it"><div class="stat-n">12 000+</div><div class="stat-l">Produits listés</div></div>
+      <div class="stat-it"><div class="stat-n">850+</div><div class="stat-l">Boutiques actives</div></div>
+      <div class="stat-it"><div class="stat-n">10</div><div class="stat-l">Départements couverts</div></div>
+      <div class="stat-it"><div class="stat-n">100%</div><div class="stat-l">Made in Haïti</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     QUI RECHERCHONS-NOUS
+═══════════════════════════════════════════ -->
+<section class="lf-sec">
+  <div class="c">
+    <div class="sec-badge">Rejoindre la révolution</div>
+    <h2 class="stitle">Qui recherchons-nous<br/><span class="or">pour ce projet ?</span></h2>
+    <p class="ssub">JBD Marché est en plein développement. Nous cherchons des partenaires sérieux qui croient en la révolution digitale haïtienne.</p>
+    <div class="lf-grid">
+
+      <div class="lf-card">
+        <div class="lf-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Investisseurs</h3>
+        <p>Vous croyez au potentiel du marché digital haïtien et souhaitez participer à sa croissance.</p>
+        <ul>
+          <li>Participation au capital</li>
+          <li>Retour sur investissement</li>
+          <li>Accès aux métriques</li>
+          <li>Siège au board stratégique</li>
+        </ul>
+      </div>
+
+      <div class="lf-card">
+        <div class="lf-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Développeurs &amp; Tech</h3>
+        <p>Rejoignez l'équipe technique et contribuez à construire l'infrastructure de demain.</p>
+        <ul>
+          <li>Frontend / Backend</li>
+          <li>Mobile (React Native)</li>
+          <li>DevOps &amp; Cloud</li>
+          <li>Sécurité &amp; Scalabilité</li>
+        </ul>
+      </div>
+
+      <div class="lf-card">
+        <div class="lf-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>Entrepreneurs &amp; Marchands</h3>
+        <p>Vous avez une boutique ou des produits à vendre — JBD Marché est votre vitrine digitale.</p>
+        <ul>
+          <li>Boutique en ligne gratuite</li>
+          <li>Accès à 12 000+ clients</li>
+          <li>Paiements MonCash/NatCash</li>
+          <li>Tableau de bord vendeur</li>
+        </ul>
+      </div>
+
+      <div class="lf-card">
+        <div class="lf-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Équipes &amp; Partenaires</h3>
+        <p>Marketing, design, logistique, communication — rejoignez l'écosystème JBD.</p>
+        <ul>
+          <li>Marketing digital</li>
+          <li>Design UI/UX</li>
+          <li>Logistique &amp; livraison</li>
+          <li>Partenariats stratégiques</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GALERIE SCREENSHOTS
+═══════════════════════════════════════════ -->
+<section class="gallery-sec" id="gallery">
+  <div class="c">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="sec-badge">La plateforme en action</div>
+      <h2 class="stitle">Découvrez <span class="or">JBD Marché</span></h2>
+      <p class="ssub" style="margin:0 auto;">Une plateforme complète, pensée pour les Haïtiens, construite avec les meilleures technologies du marché.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gal-item">
+        <div class="gal-img-wrap">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072727.png"
+               alt="Page d'accueil JBD Marché"
+               style="position:relative;z-index:2;"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="img-placeholder" style="display:none;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><p>JBD Marché — Accueil</p><small style="font-size:.7rem;color:rgba(255,255,255,.35);">Image en chargement…</small></div>
+        </div>
+        <div class="gal-badge">Accueil</div>
+        <h3>Interface principale</h3>
+        <p>Page d'accueil moderne avec recherche intelligente, catégories, boutiques vérifiées et statistiques en temps réel. Plus de 12 000 produits accessibles en un clic.</p>
+        <div class="gal-tags">
+          <span class="gal-tag">Responsive</span>
+          <span class="gal-tag">Recherche avancée</span>
+          <span class="gal-tag">Multilingue</span>
+        </div>
+      </div>
+
+      <div class="gal-item">
+        <div class="gal-img-wrap">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072825.png"
+               alt="Inscription JBD Marché"
+               style="position:relative;z-index:2;"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="img-placeholder" style="display:none;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><p>JBD Marché — Inscription</p><small style="font-size:.7rem;color:rgba(255,255,255,.35);">Image en chargement…</small></div>
+        </div>
+        <div class="gal-badge">Inscription</div>
+        <h3>Système d'authentification</h3>
+        <p>Création de compte rapide pour les clients et les vendeurs. Google Auth intégré, profil boutique complet, vérification sécurisée et connexion par département.</p>
+        <div class="gal-tags">
+          <span class="gal-tag">Clients &amp; Vendeurs</span>
+          <span class="gal-tag">Google Auth</span>
+          <span class="gal-tag">Sécurisé</span>
+        </div>
+      </div>
+
+      <div class="gal-item">
+        <div class="gal-img-wrap">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072950.png"
+               alt="Fiche produit JBD Marché"
+               style="position:relative;z-index:2;"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="img-placeholder" style="display:none;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><p>JBD Marché — Produit</p><small style="font-size:.7rem;color:rgba(255,255,255,.35);">Image en chargement…</small></div>
+        </div>
+        <div class="gal-badge">Fiche Produit</div>
+        <h3>Expérience d'achat complète</h3>
+        <p>Fiche produit détaillée avec photos multiples, prix en HTG, badges vendeur vérifié, paiement MonCash/NatCash, WhatsApp direct et produits similaires.</p>
+        <div class="gal-tags">
+          <span class="gal-tag">MonCash</span>
+          <span class="gal-tag">NatCash</span>
+          <span class="gal-tag">Cash livraison</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     POURQUOI HAÏTI
+═══════════════════════════════════════════ -->
+<section class="why-sec">
+  <div class="c">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="sec-badge">🇭🇹 L'opportunité haïtienne</div>
+      <h2 class="stitle">Haïti est prêt pour<br/><span class="or">sa révolution digitale</span></h2>
+      <p class="ssub" style="margin:0 auto;">Le commerce en Haïti représente des milliards de gourdes — mais il reste largement non digitalisé. JBD Marché est l'infrastructure qui change tout cela.</p>
+    </div>
+
+    <!-- STATS VISUELLES HAÏTI -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-bottom:3rem;">
+      <style>
+      @media(min-width:640px){.haiti-stats{grid-template-columns:repeat(4,1fr)!important;}}
+      </style>
+      <div class="haiti-stats" style="display:contents;">
+        <div style="background:linear-gradient(135deg,rgba(0,87,255,.12),rgba(0,87,255,.04));border:1px solid rgba(0,87,255,.2);border-radius:20px;padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:900;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#60A5FA,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">11M+</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem;">Habitants</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(232,93,4,.12),rgba(232,93,4,.04));border:1px solid rgba(232,93,4,.2);border-radius:20px;padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:900;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#E85D04,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">60%</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem;">Sur mobile</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(34,197,94,.04));border:1px solid rgba(34,197,94,.2);border-radius:20px;padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:900;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#4ADE80,#22C55E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">3M+</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem;">Utilisateurs MonCash</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(168,85,247,.04));border:1px solid rgba(168,85,247,.2);border-radius:20px;padding:2rem 1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:900;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#C084FC,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">3M+</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem;">Diaspora mondiale</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 RAISONS CARDS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+      <style>@media(min-width:768px){.why-4{grid-template-columns:repeat(4,1fr)!important;}}</style>
+      <div class="why-4" style="display:contents;">
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem 1.5rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E85D04,#FB923C);"></div>
+          <div style="margin-bottom:1rem;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+          <strong style="font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;display:block;margin-bottom:.5rem;">Marché sous-servi</strong>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">Des millions de Haïtiens sans accès à un e-commerce local fiable et sécurisé.</p>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem 1.5rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3B82F6,#60A5FA);"></div>
+          <div style="margin-bottom:1rem;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <strong style="font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;display:block;margin-bottom:.5rem;">Mobile-first</strong>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">Plus de 60% des Haïtiens accèdent à internet via mobile — JBD est entièrement optimisé.</p>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem 1.5rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22C55E,#4ADE80);"></div>
+          <div style="margin-bottom:1rem;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <strong style="font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;display:block;margin-bottom:.5rem;">Paiements locaux</strong>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">MonCash, NatCash, cash à la livraison — les méthodes que les Haïtiens utilisent chaque jour.</p>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem 1.5rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A855F7,#C084FC);"></div>
+          <div style="margin-bottom:1rem;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <strong style="font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;display:block;margin-bottom:.5rem;">Diaspora mondiale</strong>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">La diaspora haïtienne peut acheter depuis l'étranger pour leurs familles en Haïti.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FORMULAIRE COLLABORATION
+═══════════════════════════════════════════ -->
+<section class="form-sec" id="collaboration">
+  <div class="c">
+    <div class="form-wrap">
+      <!-- SUCCESS -->
+      <div id="jbd-success" class="form-success">
+        <div class="form-success-ico"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h3>Candidature reçue !</h3>
+        <p>Merci pour votre intérêt pour JBD Marché.<br/>Notre équipe vous contactera sous <strong>24–48h</strong> sur le WhatsApp que vous avez fourni.<br/><br/>
+        Pour une réponse immédiate :<br/>
+        <strong style="color:#FB923C;">WhatsApp : +509 33688411</strong></p>
+      </div>
+
+      <!-- FORM -->
+      <div id="jbd-form-container">
+        <div class="form-head">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" style="height:48px;width:auto;object-fit:contain;margin:0 auto 1.5rem;display:block;" onerror="this.style.display='none'"/>
+          <div class="sec-badge" style="margin:0 auto 1rem;">Rejoindre le projet</div>
+          <h2>Collaborez sur <span style="background:linear-gradient(135deg,#E85D04,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">JBD Marché</span></h2>
+          <p>Investisseur, développeur, entrepreneur ou partenaire — remplissez ce formulaire. Notre équipe vous recontacte sous 24h.</p>
+        </div>
+
+        <form id="jbd-form" name="jbd-collaboration" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitJBD(event)" class="form-grid">
+          <input type="hidden" name="form-name" value="jbd-collaboration"/>
+          <p style="display:none;"><label>Ne remplissez pas : <input name="bot-field"/></label></p>
+
+          <div class="form-group">
+            <label class="form-label">Prénom &amp; Nom <span>*</span></label>
+            <input type="text" name="nom" class="form-input" placeholder="Marie Joseph" required/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email <span>*</span></label>
+            <input type="email" name="email" class="form-input" placeholder="vous@exemple.com" required/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">WhatsApp (avec indicatif pays) <span>*</span></label>
+            <input type="tel" name="whatsapp" class="form-input" placeholder="+509 33688411" required/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Pays &amp; Ville <span>*</span></label>
+            <input type="text" name="ville" class="form-input" placeholder="Haïti, Port-au-Prince" required/>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Votre profil <span>*</span></label>
+            <select name="profil" class="form-select" required>
+              <option value="" disabled selected>Sélectionnez votre rôle</option>
+              <option value="Investisseur">Investisseur</option>
+              <option value="Développeur / Tech">Développeur / Tech</option>
+              <option value="Entrepreneur / Marchand">Entrepreneur / Marchand</option>
+              <option value="Designer / Créatif">Designer / Créatif</option>
+              <option value="Marketeur / Communication">Marketeur / Communication</option>
+              <option value="Logistique / Livraison">Logistique / Livraison</option>
+              <option value="Partenaire stratégique">Partenaire stratégique</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Qu'est-ce que vous apportez au projet ? <span>*</span></label>
+            <textarea name="apport" class="form-textarea" placeholder="Décrivez votre expertise, vos ressources, votre vision ou ce que vous souhaitez contribuer à JBD Marché..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Capacité d'investissement</label>
+            <select name="budget" class="form-select">
+              <option value="" disabled selected>Si applicable</option>
+              <option value="Moins de 1 000 USD">Moins de 1 000 USD</option>
+              <option value="1 000 – 5 000 USD">1 000 – 5 000 USD</option>
+              <option value="5 000 – 20 000 USD">5 000 – 20 000 USD</option>
+              <option value="20 000 USD+">20 000 USD+</option>
+              <option value="Non applicable">Non applicable</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Comment avez-vous connu JBD Marché ?</label>
+            <select name="source" class="form-select">
+              <option value="" disabled selected>Sélectionnez</option>
+              <option value="Site GAROMS-TECH">Site GAROMS-TECH</option>
+              <option value="Réseaux sociaux">Réseaux sociaux</option>
+              <option value="Recommandation">Recommandation</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <button type="submit" class="form-btn" id="jbd-btn">
+              <span>Envoyer ma candidature</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </form>
+
+        <div class="form-divider"><span>ou contactez-nous directement</span></div>
+
+        <button class="wa-btn" onclick="openWA()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp — +509 33688411
+        </button>
+
+        <p class="form-note">
+          Vos informations restent confidentielles et ne seront jamais partagées avec des tiers.<br/>
+          Contact direct : <a href="mailto:jbdmarketplace@gmail.com">jbdmarketplace@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="c">
+    <div class="ft-inner">
+      <div class="ft-logo">
+        <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png"
+             alt="GAROMS-TECH"
+             onerror="this.style.display='none'"/>
+      </div>
+      <div class="ft-links">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#apropos">À Propos</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="ambassadeur.html">Ambassadeur</a>
+        <a href="cgu.html">CGU</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
+      <p class="ft-copy">© 2023–2026 GAROMS-TECH — Propulsé par JBD-X Groupe. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/50941773549" target="_blank" rel="noopener" aria-label="WhatsApp GAROMS-TECH" class="wa-float">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mmenu'),b=document.getElementById('hmb');
+  if(!m||!b)return;
+  const o=m.classList.toggle('o');b.classList.toggle('o',o);document.body.style.overflow=o?'hidden':'';
+}
+function closeMenu(){
+  const m=document.getElementById('mmenu'),b=document.getElementById('hmb');
+  if(m)m.classList.remove('o');if(b)b.classList.remove('o');document.body.style.overflow='';
+}
+document.addEventListener('click',e=>{
+  const m=document.getElementById('mmenu'),b=document.getElementById('hmb');
+  if(m&&b&&m.classList.contains('o')&&!m.contains(e.target)&&!b.contains(e.target))closeMenu();
+});
+
+const h=document.getElementById('hdr');
+if(h){
+  window.addEventListener('scroll',()=>{
+    h.classList.toggle('on',window.scrollY>10);
+    const cta=document.getElementById('hdr-cta');
+    if(cta)cta.style.display=window.scrollY>300?'inline-flex':'none';
+  },{passive:true});
+}
+
+function openWA(){
+  const txt=encodeURIComponent('Bonjour ! Je souhaite collaborer sur JBD Marché. Voici mon profil :');
+  window.open('https://wa.me/50933688411?text='+txt,'_blank');
+}
+
+async function submitJBD(e){
+  e.preventDefault();
+  const btn=document.getElementById('jbd-btn');
+  if(btn){btn.disabled=true;btn.querySelector('span').textContent='Envoi en cours...';}
+  try{
+    const fd=new FormData(e.target);
+    const res=await fetch('/',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(fd).toString()
+    });
+    if(res.ok){
+      document.getElementById('jbd-form-container').style.display='none';
+      document.getElementById('jbd-success').style.display='block';
+      window.scrollTo({top:document.getElementById('collaboration').offsetTop-80,behavior:'smooth'});
+    } else {
+      throw new Error('Erreur réseau');
+    }
+  }catch(err){
+    if(btn){btn.disabled=false;btn.querySelector('span').textContent='Envoyer ma candidature';}
+    alert('Erreur lors de l\'envoi. Contactez-nous directement sur WhatsApp au +509 33688411 ou par email à jbdmarketplace@gmail.com');
+  }
+}
+
+/* Lazy load images */
+document.querySelectorAll('img').forEach(img=>{
+  img.loading='lazy';
+  img.onload=()=>{if(img.parentElement)img.parentElement.classList.add('loaded');};
+});
+</script>
+</body>
+</html>

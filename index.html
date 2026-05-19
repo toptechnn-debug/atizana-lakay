@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#E85D04" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GAROMS-TECH" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png" />
+  <link rel="manifest" href="manifest.json" />
+  <title>GAROMS-TECH — IA & Automatisation | Depuis 2023</title>
+  <meta name="description" content="GAROMS-TECH transforme votre business avec l'IA et l'automatisation. Chatbots intelligents, agents IA, développement web et marketing digital. Résultats concrets dès la première semaine." />
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://garoms-techsite.netlify.app/" />
+  <meta property="og:site_name" content="GAROMS-TECH" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="GAROMS-TECH — IA & Automatisation | Depuis 2023" />
+  <meta property="og:description" content="🚀 Transformez votre business avec l'IA. Chatbots 24/7, agents IA, automatisation et développement web. Résultats concrets dès la première semaine." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/og.png" />
+  <meta property="og:image:alt" content="GAROMS-TECH — IA & Automatisation" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GAROMS-TECH — IA & Automatisation | Depuis 2023" />
+  <meta name="twitter:description" content="🚀 Transformez votre business avec l'IA. Chatbots 24/7, agents IA, automatisation et développement web. Résultats concrets dès la première semaine." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/og.png" />
+  <meta name="twitter:image:alt" content="GAROMS-TECH — IA & Automatisation" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://garoms-techsite.netlify.app/" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-70VF95VJ9M"></script>
+  
+
+
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+<div class="stars-layer"></div>
+
+<!-- LOADING -->
+<div id="ls" class="ls">
+  <div class="lbg"><span></span><span></span></div>
+  <div class="lc">
+    <div id="ll" class="llogo">
+      <div class="lstar-orbit">
+        <span class="lstar">✦</span>
+        <span class="lstar">★</span>
+        <span class="lstar">✦</span>
+        <span class="lstar">✧</span>
+        <span class="lstar">★</span>
+        <span class="lstar">✦</span>
+        <span class="lstar">✧</span>
+        <span class="lstar">★</span>
+      </div>
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" style="height:96px;width:auto;max-width:220px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(232,93,4,.5));" />
+      <div class="lname"><span class="n">GAROMS</span><span class="t">-TECH</span></div>
+    </div>
+    <div id="ltag" class="ltag">Intelligence Artificielle & Automatisation</div>
+    <div class="lpbar"><div id="lpf" class="lpfill"></div></div>
+    <div id="lpc" class="lpct">0%</div>
+    <button class="lskip" onclick="skip()">Passer</button>
+  </div>
+</div>
+
+<!-- TOAST 15% RABAIS -->
+<div id="toast" class="toast" style="display:none;">
+  <div class="toast-in">
+    <div class="t-ico">🎁</div>
+    <div class="t-b">
+      <div class="t-title">Offre Première Collaboration — 15% de réduction</div>
+      <div class="t-txt">Bienvenue chez GAROMS-TECH ! En tant que nouveau visiteur, profitez de 15% de réduction sur votre premier service. Offre limitée !</div>
+      <div class="t-acts">
+        <button class="t-claim" onclick="claimP()">Réclamer l'offre</button>
+        <button class="t-later" onclick="laterP()">Plus tard</button>
+      </div>
+    </div>
+    <button class="t-x" onclick="closeP()">✕</button>
+  </div>
+</div>
+
+<!-- FLOATING GAROMS-AI -->
+<div class="chat-float">
+  <div class="cf-bubble" id="cfBubble">
+    <div class="cf-bubble-t">💬 Parlons de votre projet</div>
+    <div class="cf-bubble-s">Notre équipe vous répond maintenant</div>
+  </div>
+  <button class="cf-btn" onclick="toggleChat()" aria-label="Ouvrir le chat">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" fill="white" fill-opacity=".9"/></svg>
+    <span class="cf-notif">1</span>
+  </button>
+</div>
+<div class="cf-panel" id="cfPanel">
+  <div class="cfp-hdr">
+    <div class="cfp-av" style="background:linear-gradient(135deg,#0057FF,#00D4FF);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:900;font-size:1rem;color:#fff;flex-shrink:0;">G</div>
+    <div style="flex:1;">
+      <div class="cfp-title">Parler avec Garoms-Tech AI</div>
+      <div class="cfp-sub"><span style="display:inline-block;width:7px;height:7px;background:#22C55E;border-radius:50%;margin-right:5px;animation:pulse 2s infinite;"></span>Disponible — Répond en quelques secondes</div>
+    </div>
+    <button class="cfp-x" onclick="toggleChat()" aria-label="Fermer">✕</button>
+  </div>
+  <div class="cfp-msgs" id="cfMsgs"></div>
+  <div id="cfBlockBanner" style="display:none;padding:.55rem 1rem;background:rgba(239,68,68,.1);border-top:1px solid rgba(239,68,68,.15);font-size:.72rem;color:rgba(239,68,68,.85);text-align:center;"></div>
+  <!-- PRE-WRITTEN MESSAGES -->
+  <div class="cfp-quick" id="cfQuick">
+    <button class="cfp-qbtn" onclick="sendQuick('J&#39;ai un projet à démarrer')">💡 J'ai un projet</button>
+    <button class="cfp-qbtn" onclick="sendQuick('Quels sont vos tarifs ?')">💰 Voir les tarifs</button>
+    <button class="cfp-qbtn" onclick="sendQuick('Comment fonctionne l&#39;automatisation ?')">⚡ Automatisation</button>
+    <button class="cfp-qbtn" onclick="sendQuick('Je veux créer un SaaS')">🚀 Créer un SaaS</button>
+    <button class="cfp-qbtn" onclick="sendQuick('Parlez-moi du programme ambassadeur')">🤝 Ambassadeur</button>
+  </div>
+  <div class="cfp-typing" id="cfTyping"><span></span><span></span><span></span></div>
+  <div class="cfp-inp">
+    <input class="cfp-inpf" id="cfInput" type="text" placeholder="Écrivez votre message..." onkeydown="if(event.key==='Enter')sendAI()" />
+    <button class="cfp-send" id="cfSendBtn" onclick="sendAI()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  <div class="cfp-footer">
+    <div class="cfp-disclaimer">GAROMS-TECH AI — <a href="#contact" onclick="toggleChat()">formulaire</a> · <a href="mailto:infogaromstech@gmail.com">email</a> · <a href="https://wa.me/50943111054" target="_blank">WhatsApp</a></div>
+  </div>
+</div>
+
+<div id="site" style="display:none;">
+<!-- HEADER -->
+<header id="hdr" class="hdr">
+  <div class="c hdrin">
+    <a href="/" class="logo-full">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span style=&quot;font-family:Poppins,sans-serif;font-size:1.3rem;font-weight:900;color:#E85D04;&quot;>GAROMS<span style=&quot;color:#0057FF;&quot;>-TECH</span></span>')" />
+    </a>
+    <nav class="hnav">
+      <a href="#apropos">À Propos</a>
+      <a href="#services">Services</a>
+      <a href="#pourquoi">Pourquoi nous</a>
+      <a href="#saas">SaaS</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#contact">Contact</a>
+      <a href="ambassadeur.html">Ambassadeur</a>
+    </nav>
+    <div class="hacts">
+      <a href="#contact" class="btn btnp hcta">Démarrer un projet →</a>
+      <button class="hmb" id="hmb" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mmenu" id="mmenu">
+    <nav>
+      <a href="#apropos" onclick="closeMenu()">À Propos</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#pourquoi" onclick="closeMenu()">Pourquoi nous</a>
+      <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+      <a href="#equipe" onclick="closeMenu()">Équipe</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="ambassadeur.html" onclick="closeMenu()">Ambassadeur</a>
+    </nav>
+    <a href="#contact" class="btn btnp" onclick="closeMenu()">Démarrer un projet →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-canvas" id="hcanvas"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-line"></div>
+  <div class="c hero-in">
+    <div class="hero-c">
+      <div class="hero-eyebrow">Depuis 2023 — IA & Automatisation</div>
+      <h1 class="hero-h1" id="hh1">Votre Business,<br><span class="line2">Automatisé par l'IA</span></h1>
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="100">GAROMS-TECH crée des systèmes intelligents qui travaillent 24/7 à votre place. Chatbots, agents IA, automatisation, sites web et marketing digital.</p>
+      <div class="hero-btns" data-aos="fade-up" data-aos-delay="200">
+        <a href="#services" class="btn btnp">Découvrir nos services</a>
+        <a href="#demo" class="btn btno">Voir l'IA en action →</a>
+      </div>
+      <div class="hero-tags" data-aos="fade-up" data-aos-delay="280">
+        <span class="htag">Automatisation</span><span class="htag">Agents IA</span><span class="htag">Web & Apps</span><span class="htag">Marketing Digital</span><span class="htag">n8n / Make</span>
+      </div>
+      <div class="hero-metrics" data-aos="fade-up" data-aos-delay="340">
+        <div class="hm"><div class="hm-n">50+</div><div class="hm-l">Clients</div></div>
+        <div class="hm"><div class="hm-n">24/7</div><div class="hm-l">Disponibilité</div></div>
+        <div class="hm"><div class="hm-n">30j</div><div class="hm-l">1ers résultats</div></div>
+      </div>
+    </div>
+    <div class="hero-vis" data-aos="fade-left" data-aos-delay="150">
+      <div class="hero-screen">
+        <div class="hs-header">
+          <div class="hs-dots"><div class="hs-dot hs-d1"></div><div class="hs-dot hs-d2"></div><div class="hs-dot hs-d3"></div></div>
+          <div class="hs-title">GAROMS-TECH — Dashboard IA</div>
+        </div>
+        <div class="hs-body">
+          <div class="hs-row"><div class="hs-ico blue">🤖</div><div class="hs-text"><div class="hs-label">Agent IA actif</div><div class="hs-val">Garoms-AI — Online</div><div class="hs-bar"><div class="hs-fill hs-fillp" style="width:78%;"></div></div></div></div>
+          <div class="hs-row"><div class="hs-ico grn">⚡</div><div class="hs-text"><div class="hs-label">Automatisations actives</div><div class="hs-val">12 workflows — En cours</div><div class="hs-bar"><div class="hs-fill hs-fills" style="width:92%;"></div></div></div></div>
+          <div class="hs-row"><div class="hs-ico acc">📊</div><div class="hs-text"><div class="hs-label">Messages traités aujourd'hui</div><div class="hs-val">247 réponses automatiques</div></div></div>
+          <div class="hs-badge"><div class="hs-pulse"></div>Système opérationnel 24/7</div>
+        </div>
+      </div>
+      <div class="hfb hfb1"><div class="hfb-ico">💬</div><span>+47 leads qualifiés</span></div>
+      <div class="hfb hfb2"><div class="hfb-ico g">✅</div><span>ROI +340% ce mois</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mq-track">
+    <div class="mq-set"><span class="hl">n8n</span><span>Make</span><span>Zapier</span><span class="hl">OpenAI GPT-4</span><span class="hl">Claude API</span><span class="hl">Cursor AI</span><span>Supabase</span><span class="hl">Groq AI</span><span>Netlify</span><span>Google Analytics</span><span>WhatsApp API</span><span>GitHub</span><span>Meta Ads</span><span>Meta AI</span><span>Google Ads</span><span>Notion</span><span class="hl">Stripe</span><span>Copilot</span><span>Figma</span><span class="hl">LangChain</span><span>Pinecone</span><span>PostgreSQL</span><span>Drizzle ORM</span><span>Vite</span><span>React</span><span>TypeScript</span><span>Perplexity AI</span><span class="hl">Gemini API</span><span>Firebase</span><span>Vercel</span></div>
+    <div class="mq-set" aria-hidden="true"><span class="hl">n8n</span><span>Make</span><span>Zapier</span><span class="hl">OpenAI GPT-4</span><span class="hl">Claude API</span><span class="hl">Cursor AI</span><span>Supabase</span><span class="hl">Groq AI</span><span>Netlify</span><span>Google Analytics</span><span>WhatsApp API</span><span>GitHub</span><span>Meta Ads</span><span>Meta AI</span><span>Google Ads</span><span>Notion</span><span class="hl">Stripe</span><span>Copilot</span><span>Figma</span><span class="hl">LangChain</span><span>Pinecone</span><span>PostgreSQL</span><span>Drizzle ORM</span><span>Vite</span><span>React</span><span>TypeScript</span><span>Perplexity AI</span><span class="hl">Gemini API</span><span>Firebase</span><span>Vercel</span></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="c">
+    <div class="stats-grid">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="0"><div class="stat-i">🚀</div><div class="stat-n" data-count="50">0+</div><div class="stat-l">Projets livrés</div></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="80"><div class="stat-i">⚡</div><div class="stat-n" data-count="95">0%</div><div class="stat-l">Satisfaction client</div></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="160"><div class="stat-i">🤖</div><div class="stat-n" data-count="247">0</div><div class="stat-l">Réponses IA / jour</div></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="240"><div class="stat-i">🌍</div><div class="stat-n">24/7</div><div class="stat-l">Disponibilité mondiale</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMENT CA MARCHE -->
+<section class="hiw">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge">Notre processus</div>
+      <h2 class="stitle">Comment ça marche ?</h2>
+      <p class="ssub">De votre premier message à la livraison de votre solution — simple, transparent, rapide.</p>
+    </div>
+    <div class="hiw-steps" data-aos="fade-up">
+      <div class="hiw-step"><div class="hiw-nb">1</div><div class="hiw-ico">📞</div><div class="hiw-t">Appel découverte</div><div class="hiw-d">30 minutes gratuites pour analyser votre business et identifier les opportunités IA.</div></div>
+      <div class="hiw-step"><div class="hiw-nb">2</div><div class="hiw-ico">📋</div><div class="hiw-t">Proposition sur mesure</div><div class="hiw-d">Plan clair avec livrables, délais et investissement. Aucune surprise.</div></div>
+      <div class="hiw-step"><div class="hiw-nb">3</div><div class="hiw-ico">⚙️</div><div class="hiw-t">Construction & Tests</div><div class="hiw-d">Notre équipe construit votre solution avec des points d'avancement réguliers.</div></div>
+      <div class="hiw-step"><div class="hiw-nb">4</div><div class="hiw-ico">🚀</div><div class="hiw-t">Livraison & Suivi</div><div class="hiw-d">Mise en ligne + formation incluse + support continu pour que tout fonctionne parfaitement.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- A PROPOS -->
+<section id="apropos" class="ap">
+  <div class="c">
+    <div class="ap-grid">
+      <div data-aos="fade-right">
+        <div class="ap-kpi">
+          <div class="ap-k"><div class="ap-kn">50+</div><div class="ap-kl">Clients servis</div></div>
+          <div class="ap-k"><div class="ap-kn">3+</div><div class="ap-kl">Ans d'exp.</div></div>
+          <div class="ap-k"><div class="ap-kn">95%</div><div class="ap-kl">Satisfaction</div></div>
+        </div>
+        <div class="ap-quote-box">
+          <div class="ap-qt">«Notre mission est simple : transformer chaque entreprise en une machine de croissance autonome grâce à l'IA. Ce qui prenait 8 heures de travail ne prend maintenant que 8 minutes.»</div>
+          <div class="ap-qa">— GURU Gédéon, CEO & Fondateur de GAROMS-TECH</div>
+        </div>
+        <!-- PLANÈTE ANIMÉE PLUS GRANDE -->
+        <div class="planet-wrap">
+        <div class="planet-scene" data-aos="zoom-in">
+          <div class="planet-glow"></div>
+          <div class="planet-globe"></div>
+          <div class="planet-ring"></div>
+          <div class="planet-ring2"></div>
+          <div class="planet-dot"></div>
+          <div class="planet-dot" style="animation-delay:-2s;animation-duration:6s;"></div>
+          <!-- Texte GAROMS-TECH qui tourne autour -->
+          <div class="planet-orbit-text">
+            <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="orbitPath" d="M190,190 m-160,0 a160,160 0 1,1 320,0 a160,160 0 1,1 -320,0"/>
+              </defs>
+              <text font-family="Poppins,sans-serif" font-size="13" font-weight="800" fill="rgba(251,146,60,0.7)" letter-spacing="4">
+                <textPath href="#orbitPath">GAROMS-TECH &bull; IA &amp; AUTOMATISATION &bull; GAROMS-TECH &bull; IA &amp; AUTOMATISATION &bull;</textPath>
+              </text>
+            </svg>
+          </div>
+        </div>
+        </div><!-- /planet-wrap -->
+        <div class="planet-caption">
+          <div class="planet-caption-t">Service mondial, sans frontières</div>
+          <div class="planet-caption-s">GAROMS-TECH accompagne des entrepreneurs partout dans le monde, 100% en ligne.</div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="sbadge">Qui sommes-nous</div>
+        <h2 class="stitle">Une force de transformation digitale sans frontières</h2>
+        <p class="ssub" style="max-width:100%;margin-bottom:1.75rem;">Fondée en 2023, GAROMS-TECH est une agence spécialisée en IA et automatisation. Nous accompagnons des entrepreneurs et entreprises du monde entier, 100% en ligne, avec une approche concrète et orientée résultats.</p>
+        <div class="ap-pillar-row">
+          <div class="ap-pi"><div class="ap-pi-i">🤖</div><div><div class="ap-pi-t">Automatisation & Agents IA</div><div class="ap-pi-d">Systèmes intelligents qui remplacent les processus manuels et travaillent sans interruption.</div></div></div>
+          <div class="ap-pi"><div class="ap-pi-i">💻</div><div><div class="ap-pi-t">Développement Web & Apps</div><div class="ap-pi-d">Solutions digitales sur mesure, performantes et orientées conversion.</div></div></div>
+          <div class="ap-pi"><div class="ap-pi-i">📈</div><div><div class="ap-pi-t">Marketing Digital & Croissance</div><div class="ap-pi-d">Stratégies publicitaires avec ROI mesurable et prévisible.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="svc">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge" style="background:rgba(0,212,255,.08);color:var(--acc);border-color:rgba(0,212,255,.2);">Nos Solutions</div>
+      <h2 class="stitle" style="color:var(--w);">Ce que nous construisons pour vous</h2>
+      <p class="ssub" style="color:rgba(255,255,255,.5);">Chaque solution est conçue pour un objectif concret : vous faire gagner du temps, des clients et de l'argent.</p>
+    </div>
+    <!-- Tab.png image animée -->
+    <div data-aos="fade-up" data-aos-delay="80">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png" alt="GAROMS-TECH Lab" class="svc-hero-img" loading="lazy" />
+    </div>
+    <div class="svc-with-aside">
+    <div class="svc-grid">
+      <!-- Service 1: Chatbot -->
+      <div class="scard" data-aos="fade-up" data-aos-delay="0">
+        <div class="avt-person">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="16" fill="url(#avpg)"/><defs><linearGradient id="avpg" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#0057FF"/><stop offset="1" stop-color="#00D4FF"/></linearGradient></defs><circle cx="32" cy="16" r="7" fill="rgba(255,255,255,0.9)"/><path d="M20 30 Q20 26 32 26 Q44 26 44 30 L46 42 H18 Z" fill="rgba(255,255,255,0.25)"/><rect x="14" y="42" width="36" height="4" rx="2" fill="rgba(255,255,255,0.55)"/><rect x="17" y="32" width="30" height="10" rx="2" fill="rgba(0,10,40,0.7)" stroke="rgba(0,212,255,0.6)" stroke-width="1"/><rect x="20" y="34.5" width="14" height="1.5" rx="1" fill="rgba(0,212,255,0.8)"/><rect x="20" y="37" width="10" height="1.5" rx="1" fill="rgba(255,255,255,0.4)"/><circle cx="44" cy="14" r="3" fill="rgba(0,212,255,0.9)"/><circle cx="44" cy="14" r="5" fill="transparent" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/></svg>
+        </div>
+        <div class="st">Chatbot IA 24/7</div>
+        <div class="sd">Un agent conversationnel formé sur votre business qui répond, qualifie et convertit vos prospects à toute heure.</div>
+        <div class="s-delay">Livraison : une semaine</div>
+        <div class="svc-ba"><div class="sba red"><div class="sba-label">Sans ça</div><div class="sba-txt">Client à 2h du matin, personne ne répond. Vente perdue.</div></div><div class="sba grn"><div class="sba-label">Avec ça</div><div class="sba-txt">100% des messages reçoivent une réponse. Taux de conversion ×3.</div></div></div>
+      </div>
+      <!-- Service 2: Automatisation -->
+      <div class="scard" data-aos="fade-up" data-aos-delay="80">
+        <div class="svc-avt"><svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" rx="16" fill="url(#avs2)"/><defs><linearGradient id="avs2" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#7C3AED"/><stop offset="1" stop-color="#0057FF"/></linearGradient></defs><circle cx="28" cy="28" r="11" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><rect x="26" y="12" width="4" height="6" rx="2" fill="rgba(255,255,255,0.6)"/><rect x="26" y="38" width="4" height="6" rx="2" fill="rgba(255,255,255,0.6)"/><rect x="12" y="26" width="6" height="4" rx="2" fill="rgba(255,255,255,0.6)"/><rect x="38" y="26" width="6" height="4" rx="2" fill="rgba(255,255,255,0.6)"/><path d="M30 20 L25 28 H29 L24 36 L34 26 H30 L33 20 Z" fill="white"/></svg></div>
+        <div class="st">Automatisation de processus</div>
+        <div class="sd">Workflows n8n/Make qui connectent vos outils, éliminent les tâches répétitives et font tourner votre opération en fond.</div>
+        <div class="s-delay">Simple : une semaine | Complexe : 2–5 sem.</div>
+        <div class="svc-ba"><div class="sba red"><div class="sba-label">Sans ça</div><div class="sba-txt">3-4h perdues/jour sur des tâches répétitives.</div></div><div class="sba grn"><div class="sba-label">Avec ça</div><div class="sba-txt">80% des processus automatisés. Équipe 100% focalisée sur la stratégie.</div></div></div>
+      </div>
+      <!-- Service 3: Site Web -->
+      <div class="scard" data-aos="fade-up" data-aos-delay="160">
+        <div class="svc-avt"><svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" rx="16" fill="url(#avs3)"/><defs><linearGradient id="avs3" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#0A1628"/><stop offset="1" stop-color="#0057FF"/></linearGradient></defs><rect x="10" y="16" width="36" height="24" rx="4" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><rect x="10" y="16" width="36" height="7" rx="4" fill="rgba(255,255,255,0.12)"/><circle cx="16" cy="20" r="1.5" fill="rgba(255,77,77,0.7)"/><circle cx="21" cy="20" r="1.5" fill="rgba(255,189,46,0.7)"/><circle cx="26" cy="20" r="1.5" fill="rgba(39,201,63,0.7)"/><rect x="14" y="27" width="16" height="2" rx="1" fill="rgba(255,255,255,0.35)"/><rect x="14" y="31" width="22" height="1.5" rx="1" fill="rgba(255,255,255,0.2)"/><rect x="14" y="34" width="18" height="1.5" rx="1" fill="rgba(255,255,255,0.15)"/><rect x="34" y="27" width="8" height="10" rx="2" fill="rgba(0,87,255,0.5)"/><rect x="10" y="40" width="36" height="5" rx="2" fill="rgba(255,255,255,0.08)"/></svg></div>
+        <div class="st">Site Web & Application</div>
+        <div class="sd">Sites professionnels et applications sur mesure, rapides, optimisés SEO et orientés conversion.</div>
+        <div class="s-delay">Site vitrine : une semaine | App : 4–8 sem.</div>
+        <div class="svc-ba"><div class="sba red"><div class="sba-label">Sans ça</div><div class="sba-txt">70% des visiteurs quittent un site non professionnel en moins de 3 secondes.</div></div><div class="sba grn"><div class="sba-label">Avec ça</div><div class="sba-txt">Site rapide, crédible, optimisé SEO. Visiteurs → clients qualifiés.</div></div></div>
+      </div>
+      <!-- Service 4: Marketing -->
+      <div class="scard" data-aos="fade-up" data-aos-delay="0">
+        <div class="svc-avt"><svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" rx="16" fill="url(#avs4)"/><defs><linearGradient id="avs4" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#0057FF"/><stop offset="1" stop-color="#22C55E"/></linearGradient></defs><rect x="12" y="36" width="8" height="8" rx="2" fill="rgba(255,255,255,0.3)"/><rect x="24" y="28" width="8" height="16" rx="2" fill="rgba(255,255,255,0.5)"/><rect x="36" y="19" width="8" height="25" rx="2" fill="white"/><path d="M13 30 L22 22 L30 26 L43 14" stroke="rgba(255,255,255,0.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="43" cy="14" r="3" fill="white"/></svg></div>
+        <div class="st">Marketing Digital & Publicité</div>
+        <div class="sd">Campagnes Meta Ads, Google Ads et stratégies organiques pour générer des leads qualifiés en continu.</div>
+        <div class="s-delay">Mise en place : 1–2 semaines</div>
+        <div class="svc-ba"><div class="sba red"><div class="sba-label">Sans ça</div><div class="sba-txt">Invisible en ligne. Vos concurrents capturent les clients qui vous cherchent.</div></div><div class="sba grn"><div class="sba-label">Avec ça</div><div class="sba-txt">Flux constant de leads, ROI mesurable chaque semaine.</div></div></div>
+      </div>
+      <!-- Service 5: Agent IA -->
+      <div class="scard" data-aos="fade-up" data-aos-delay="80">
+        <div class="svc-avt"><svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" rx="16" fill="url(#avs5)"/><defs><linearGradient id="avs5" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#0057FF"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><circle cx="28" cy="21" r="9" fill="rgba(255,255,255,0.13)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><circle cx="28" cy="21" r="4" fill="rgba(255,255,255,0.25)"/><circle cx="28" cy="21" r="2" fill="white"/><circle cx="19" cy="36" r="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><circle cx="37" cy="36" r="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="23" y1="29" x2="19" y2="32" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/><line x1="33" y1="29" x2="37" y2="32" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/><circle cx="19" cy="36" r="2" fill="#00D4FF"/><circle cx="37" cy="36" r="2" fill="#00D4FF"/></svg></div>
+        <div class="st">Agent IA Personnalisé</div>
+        <div class="sd">IA entraînée sur vos données qui gère support, ventes, administration — comme un employé qui ne dort jamais.</div>
+        <div class="s-delay">Livraison : 3–8 semaines selon complexité</div>
+        <div class="svc-ba"><div class="sba red"><div class="sba-label">Sans ça</div><div class="sba-txt">Plusieurs employés pour des tâches automatisables. Coût élevé, erreurs humaines.</div></div><div class="sba grn"><div class="sba-label">Avec ça</div><div class="sba-txt">1 IA disponible 24h/24, sans congé ni fatigue, à une fraction du coût.</div></div></div>
+      </div>
+      <!-- Service 6: Pack Croissance -->
+      <div class="scard star" data-aos="fade-up" data-aos-delay="160">
+        <div class="svc-avt"><svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" rx="16" fill="url(#avs6)"/><defs><linearGradient id="avs6" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#0057FF"/><stop offset="1" stop-color="#00D4FF"/></linearGradient></defs><path d="M28 11 C28 11 37 16 37 27 L37 33 L28 39 L19 33 L19 27 C19 16 28 11 28 11Z" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><circle cx="28" cy="24" r="4" fill="rgba(255,255,255,0.35)"/><circle cx="28" cy="24" r="2" fill="white"/><path d="M19 31 L13 35 L15 28 Z" fill="rgba(255,255,255,0.28)"/><path d="M37 31 L43 35 L41 28 Z" fill="rgba(255,255,255,0.28)"/><path d="M25 39 L24 44 L28 42 L32 44 L31 39" fill="rgba(255,220,0,0.75)"/></svg></div>
+        <div class="st">Pack Croissance Complet</div>
+        <div class="sd">IA + Site + Automatisation + Marketing. La transformation digitale complète de votre business.</div>
+        <div class="s-delay">Premiers livrables dès la 1ère semaine</div>
+        <div style="background:rgba(0,87,255,.15);border:1px solid rgba(0,87,255,.3);border-radius:8px;padding:.875rem;margin-top:.25rem;">
+          <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--acc);margin-bottom:.4rem;">OFFRE PHARE — Transformation complète</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.55;">Déploiement complet en 4 à 8 semaines. Remboursement intégral si non satisfait sous 30 jours.</div>
+        </div>
+        <a href="#contact" class="btn btnp" style="width:100%;justify-content:center;margin-top:.5rem;">Démarrer ce pack →</a>
+      </div>
+    </div>
+    <!-- expect.png côté droit — image expert -->
+    <div class="svc-expect-wrap" data-aos="fade-left">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/expect.png" alt="GAROMS-TECH — Expert IA" loading="lazy" />
+      <div style="padding:1.25rem;background:rgba(255,255,255,.04);border-top:1px solid rgba(0,87,255,.2);">
+        <div style="font-family:var(--fh);font-size:.85rem;font-weight:800;color:var(--acc);margin-bottom:.4rem;">Ce que vous obtenez</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.65;">Plus de temps, plus de clients, plus de revenus — sans recruter davantage.</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI -->
+<section id="pourquoi" class="pq">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge">Notre valeur</div>
+      <h2 class="stitle">Pourquoi choisir GAROMS-TECH ?</h2>
+      <p class="ssub">Pas de promesses vides. Voici ce qui nous différencie concrètement de toute autre agence.</p>
+    </div>
+
+    <!-- HERO: image gauche + raisons droite -->
+    <div class="pq-hero">
+      <!-- Colonne image -->
+      <div class="pq-img-wrap" data-aos="fade-right">
+        <div class="pq-img-glow"></div>
+        <div class="pq-img-frame">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/expect.png"
+               alt="Expert GAROMS-TECH entouré des outils d'IA et d'automatisation"
+               loading="lazy" />
+          <div class="pq-img-caption">
+            <div class="pq-img-cap-t">L'expertise au service de votre croissance</div>
+            <div class="pq-img-cap-s">Chaque solution est pensée pour votre business, conçue par des experts IA.</div>
+          </div>
+        </div>
+        <!-- Badge flottant haut-droite -->
+        <div class="pq-badge b1">
+          <div class="pq-badge-dot">&#9733;</div>
+          <div><div class="pq-badge-val">+50</div><div class="pq-badge-lbl">Clients automatisés</div></div>
+        </div>
+        <!-- Badge flottant bas-droite -->
+        <div class="pq-badge b2">
+          <div class="pq-badge-dot">&#9650;</div>
+          <div><div class="pq-badge-val">ROI ×3</div><div class="pq-badge-lbl">Retour moyen constaté</div></div>
+        </div>
+        <!-- Badge flottant gauche-centre -->
+        <div class="pq-badge b3">
+          <div class="pq-badge-dot">&#9679;</div>
+          <div><div class="pq-badge-val">24/7</div><div class="pq-badge-lbl">Support actif</div></div>
+        </div>
+      </div>
+
+      <!-- Colonne raisons -->
+      <div class="pq-reasons" data-aos="fade-left">
+        <div class="pq-item">
+          <div class="pq-num">01</div>
+          <div class="pq-body">
+            <div class="pq-t">Résultats concrets dès la 1ère semaine</div>
+            <div class="pq-d">Nous livrons vos premiers systèmes opérationnels rapidement — pas dans 6 mois.</div>
+          </div>
+        </div>
+        <div class="pq-item">
+          <div class="pq-num">02</div>
+          <div class="pq-body">
+            <div class="pq-t">Pas de jargon, que des chiffres</div>
+            <div class="pq-d">Leads générés, heures économisées, revenus additionnels. On parle ROI, pas technologie abstraite.</div>
+          </div>
+        </div>
+        <div class="pq-item">
+          <div class="pq-num">03</div>
+          <div class="pq-body">
+            <div class="pq-t">Solutions 100% sur mesure</div>
+            <div class="pq-d">Chaque système est conçu spécifiquement pour votre business. Zéro template générique.</div>
+          </div>
+        </div>
+        <div class="pq-item">
+          <div class="pq-num">04</div>
+          <div class="pq-body">
+            <div class="pq-t">Accompagnement continu inclus</div>
+            <div class="pq-d">Nous ne disparaissons pas après livraison. Support, mises à jour, évolution : on grandit ensemble.</div>
+          </div>
+        </div>
+        <div class="pq-item">
+          <div class="pq-num">05</div>
+          <div class="pq-body">
+            <div class="pq-t">Technologies de dernière génération</div>
+            <div class="pq-d">OpenAI, Claude, n8n, Supabase, Groq — nous maîtrisons les outils les plus performants du marché.</div>
+          </div>
+        </div>
+        <div class="pq-item">
+          <div class="pq-num">06</div>
+          <div class="pq-body">
+            <div class="pq-t">Service mondial, 100% en ligne</div>
+            <div class="pq-d">Nous accompagnons des entrepreneurs partout dans le monde. Votre localisation n'est pas un obstacle.</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /pq-hero -->
+
+    <div class="pq-vs" data-aos="fade-up">
+      <div class="pq-vside dark"><div class="pq-vs-t">Sans GAROMS-TECH</div><div class="pq-vlist"><div class="pq-vi"><span>❌</span>Vous répondez manuellement à chaque client</div><div class="pq-vi"><span>❌</span>Des heures perdues sur des tâches répétitives</div><div class="pq-vi"><span>❌</span>Site peu visible, très peu de leads entrants</div><div class="pq-vi"><span>❌</span>Votre business s'arrête quand vous dormez</div><div class="pq-vi"><span>❌</span>Vos concurrents avancent plus vite que vous</div></div></div>
+      <div class="pq-vside lite"><div class="pq-vs-t">Avec GAROMS-TECH</div><div class="pq-vlist"><div class="pq-vi"><span>✅</span>Votre IA répond à tous vos clients 24h/24</div><div class="pq-vi"><span>✅</span>Les workflows automatiques gèrent tout</div><div class="pq-vi"><span>✅</span>Leads qualifiés qui arrivent en continu</div><div class="pq-vi"><span>✅</span>Votre business tourne pendant votre sommeil</div><div class="pq-vi"><span>✅</span>Vous prenez une longueur d'avance décisive</div></div></div>
+    </div>
+    <div class="pq-cta" data-aos="fade-up">
+      <div class="pq-cta-t">Prêt à passer à l'ère de l'IA ?</div>
+      <div class="pq-cta-s">Prenez 30 minutes avec notre équipe. Nous analysons votre business et vous disons exactement ce que l'IA peut faire pour vous.</div>
+      <div class="pq-cta-free">Appel stratégique GRATUIT — 30 minutes — Sans engagement</div>
+      <div class="pq-cta-btns">
+        <a href="https://wa.me/50943111054" target="_blank" rel="noopener" class="btn btnwp">Prendre contact sur WhatsApp →</a>
+        <a href="#contact" class="btn btno">Envoyer un message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO AGENT -->
+<section id="demo" class="demo">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="demo-tag">Démonstration concrète</div>
+      <h2 class="stitle" style="color:var(--w);">Voyez comment un agent IA planifie<br>une réservation hôtelière</h2>
+      <p class="ssub" style="color:rgba(255,255,255,.5);">Un exemple réel de ce que nous construisons pour nos clients.</p>
+    </div>
+    <div class="demo-grid">
+      <!-- Colonne gauche : CEO photo animée -->
+      <div class="demo-ceo-col" data-aos="fade-right">
+        <div class="demo-ceo-scene">
+          <div class="demo-ceo-glow"></div>
+          <div class="demo-ring r1"></div>
+          <div class="demo-ring r2"></div>
+          <div class="demo-ring r3"></div>
+          <div class="demo-ceo-photo">
+            <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/ceo.png"
+                 alt="GURU Gédéon — CEO GAROMS-TECH" loading="lazy" />
+          </div>
+          <!-- Badges tech flottants autour -->
+          <div class="demo-tech-badge">OpenAI</div>
+          <div class="demo-tech-badge">n8n</div>
+          <div class="demo-tech-badge">Supabase</div>
+          <div class="demo-tech-badge">Groq</div>
+          <div class="demo-tech-badge">Make</div>
+        </div>
+        <div class="demo-ceo-info">
+          <div class="demo-ceo-name">GURU Gédéon</div>
+          <div class="demo-ceo-title">CEO & Fondateur — GAROMS-TECH</div>
+          <div class="demo-ceo-quote">"Ce que votre équipe fait en 8 heures, notre agent IA le fait en 8 minutes — sans pause, sans erreur, sans salaire."</div>
+          <div class="demo-ceo-status"><span class="demo-ceo-pulse"></span>Disponible pour un appel stratégique gratuit</div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="chat-ui">
+          <div class="cui-bar"><div class="cui-dots"><div class="cui-dot cui-d1"></div><div class="cui-dot cui-d2"></div><div class="cui-dot cui-d3"></div></div><span class="cui-title">Hôtel Prestige — Assistant IA</span></div>
+          <div class="cui-hdr"><div class="cui-av">🏨</div><div><div class="cui-name">Hôtel Prestige — IA</div><div class="cui-biz"><span class="cui-online"></span>Réception virtuelle 24/7</div></div></div>
+          <div class="cui-body" id="chatDemo">
+            <div class="msg bot">Bonjour et bienvenue à l'Hôtel Prestige ! Comment puis-je vous aider ?</div>
+            <div class="msg usr">Bonjour, je voudrais réserver pour 2 personnes</div>
+            <div class="msg bot">Avec plaisir ! Pour quelles dates ? Et quelle chambre : standard, déluxe ou suite ?</div>
+            <div class="msg usr">Du 20 au 23 juin, chambre déluxe si possible</div>
+            <div class="msg sys">Vérification des disponibilités...</div>
+            <div class="msg bot">La Déluxe vue mer est disponible ! 3 nuits × 185 USD = <strong>555 USD</strong>. Je confirme ?</div>
+            <div class="msg usr">Oui parfait !</div>
+            <div class="msg bot">Réservé ! Confirmation envoyée par email. Rappel automatique 48h avant. À bientôt !</div>
+          </div>
+          <div class="cui-inp"><input class="cui-inpf" type="text" placeholder="Essayez un message..." id="demoInput" onkeydown="if(event.key==='Enter')sendDemo()" /><button class="cui-send" onclick="sendDemo()">Envoyer</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE — CEO seulement + partenaires sans noms fictifs -->
+<section id="equipe" class="eq">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge">Notre équipe</div>
+      <h2 class="stitle">L'équipe derrière GAROMS-TECH</h2>
+      <p class="ssub">Un expert passionné, entouré d'un réseau de partenaires spécialisés pour vous livrer des résultats concrets.</p>
+    </div>
+    <!-- CEO SEULEMENT — photo réelle, grande -->
+    <div class="eq-grid" style="justify-content:center;margin-bottom:3rem;">
+      <div class="eq-card ceo" data-aos="fade-up" data-aos-delay="0">
+        <div class="eq-photo">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/ceo.png" alt="GURU Gédéon — CEO GAROMS-TECH" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#0057FF,#00D4FF);display:flex;align-items:center;justify-content:center;font-size:3rem;margin:0 auto;>👨‍💼</div>'" />
+        </div>
+        <div class="eq-name">GURU Gédéon</div>
+        <div class="eq-role">CEO & Fondateur</div>
+        <div class="eq-desc">Visionnaire et architecte des solutions IA de GAROMS-TECH. Expert en automatisation, création d'applications, stratégie business, croissance et développement web. Il conçoit des systèmes intelligents qui transforment concrètement la façon dont les entreprises opèrent et se développent. Chaque client est une mission personnelle — comprendre ses besoins, définir ce que GAROMS-TECH peut faire pour lui, et lui livrer un résultat exceptionnel.</div>
+        <div class="eq-skills">
+          <span class="eq-skill">Automatisation</span>
+          <span class="eq-skill">Création d'applications</span>
+          <span class="eq-skill">Stratégie business</span>
+          <span class="eq-skill">Croissance</span>
+          <span class="eq-skill">Site Web</span>
+          <span class="eq-skill">IA & LLMs</span>
+        </div>
+      </div>
+    </div>
+    <!-- PARTENAIRES — sans faux noms, avec compétences -->
+    <div class="eq-partners">
+      <div class="eq-partners-title">Notre réseau de partenaires</div>
+      <div class="eq-partners-sub">GAROMS-TECH s'appuie sur un réseau solide de partenaires nationaux et internationaux spécialisés. Pas de noms fictifs — que des expertises réelles au service de vos projets.</div>
+      <div class="eq-partners-grid" data-aos="fade-up">
+        <div class="eq-partner-card">
+          <div class="eq-partner-ico">📱</div>
+          <div class="eq-partner-label">Partenaire national</div>
+          <div class="eq-partner-t">Spécialiste Marketing Digital</div>
+          <div class="eq-partner-skills">
+            <span class="eq-partner-skill">Meta Ads</span>
+            <span class="eq-partner-skill">Google Ads</span>
+            <span class="eq-partner-skill">SEO/SEA</span>
+            <span class="eq-partner-skill">Funnel Marketing</span>
+          </div>
+        </div>
+        <div class="eq-partner-card">
+          <div class="eq-partner-ico">🤖</div>
+          <div class="eq-partner-label">Partenaire international</div>
+          <div class="eq-partner-t">Expert Automatisation</div>
+          <div class="eq-partner-skills">
+            <span class="eq-partner-skill">n8n</span>
+            <span class="eq-partner-skill">Make</span>
+            <span class="eq-partner-skill">API REST</span>
+            <span class="eq-partner-skill">Intégrations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section id="temoignages" class="temo">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge" style="background:rgba(0,212,255,.08);color:var(--acc);border-color:rgba(0,212,255,.2);">Témoignages</div>
+      <h2 class="stitle" style="color:var(--w);">Ce que disent nos clients</h2>
+      <p class="ssub" style="color:rgba(255,255,255,.5);">Des entrepreneurs qui ont transformé leur business avec GAROMS-TECH.</p>
+    </div>
+    <div class="swiper mySwiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><div class="temo-card"><div class="temo-stars">⭐⭐⭐⭐⭐</div><div class="temo-txt">«En 10 jours, GAROMS-TECH a mis en place un chatbot qui répond à nos clients le soir et le week-end. Nous avons augmenté nos réservations de 40% sans embaucher personne. Je recommande à 100%.»</div><div class="temo-author"><div class="temo-av">MC</div><div><div class="temo-n">Marc-Antoine C.</div><div class="temo-s">Gérant — Agence de voyage, Canada</div></div></div><div class="temo-badge">Client vérifié</div></div></div>
+        <div class="swiper-slide"><div class="temo-card"><div class="temo-stars">⭐⭐⭐⭐⭐</div><div class="temo-txt">«Notre équipe perdait 4 heures par jour sur des tâches administratives. Après l'automatisation par GAROMS-TECH, tout tourne en fond. Nos commerciaux se concentrent maintenant uniquement sur la vente.»</div><div class="temo-author"><div class="temo-av">SL</div><div><div class="temo-n">Sandrine L.</div><div class="temo-s">Directrice opérationnelle — PME, France</div></div></div><div class="temo-badge">Client vérifié</div></div></div>
+        <div class="swiper-slide"><div class="temo-card"><div class="temo-stars">⭐⭐⭐⭐⭐</div><div class="temo-txt">«Le site qu'ils m'ont construit est ultra rapide et professionnel. Depuis le lancement, mes leads ont triplé et mon taux de conversion est passé de 2% à 8%. L'investissement s'est rentabilisé en 3 semaines.»</div><div class="temo-author"><div class="temo-av">RD</div><div><div class="temo-n">Romel D.</div><div class="temo-s">Entrepreneur — Coach business</div></div></div><div class="temo-badge">Client vérifié</div></div></div>
+        <div class="swiper-slide"><div class="temo-card"><div class="temo-stars">⭐⭐⭐⭐⭐</div><div class="temo-txt">«L'agent IA que GAROMS-TECH m'a livré gère toutes mes demandes de devis. Il qualifie les clients, répond aux questions et envoie les documents automatiquement. Je gagne 2 jours de travail par semaine.»</div><div class="temo-author"><div class="temo-av">JP</div><div><div class="temo-n">Jean-Philippe M.</div><div class="temo-s">Fondateur — Cabinet de conseil, Belgique</div></div></div><div class="temo-badge">Client vérifié</div></div></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge">Questions fréquentes</div>
+      <h2 class="stitle">Vos questions, nos réponses</h2>
+      <p class="ssub">Tout ce que vous devez savoir avant de démarrer avec GAROMS-TECH.</p>
+    </div>
+    <div class="faq-list" data-aos="fade-up">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Combien coûtent vos services ?</div><div class="faq-icon">+</div></div><div class="faq-a">Nos tarifs varient selon la nature et la complexité du projet. Un site vitrine professionnel démarre à partir de 500 USD. Une application mobile à partir de 1 000 USD. Le marketing digital et l'automatisation sont devisés selon vos objectifs. Contactez-nous pour une évaluation gratuite — pas de surprise, tout est transparent.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Combien de temps faut-il pour voir les premiers résultats ?</div><div class="faq-icon">+</div></div><div class="faq-a">Cela dépend du service : un chatbot IA est opérationnel en une semaine. Une automatisation simple prend aussi une semaine. Un site vitrine de 1 à 3 semaines. Une application ou un agent IA complexe de 4 à 8 semaines. Dans tous les cas, vous voyez de l'avancement concret dès la première semaine.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Travaillez-vous avec des entreprises hors de la région ?</div><div class="faq-icon">+</div></div><div class="faq-a">Absolument. Nous travaillons 100% en ligne avec des clients en France, au Canada, en Belgique, aux États-Unis et dans d'autres pays. La distance n'est pas un obstacle — tout se passe à distance via appel vidéo, WhatsApp et email.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Qu'est-ce qu'un agent IA exactement ?</div><div class="faq-icon">+</div></div><div class="faq-a">Un agent IA est un assistant virtuel intelligent formé sur les données spécifiques de votre business. Il comprend le contexte, répond à des questions complexes, effectue des actions (réservations, devis, emails) et apprend en continu. C'est comme un employé ultra-compétent disponible 24h/24, sans congé ni fatigue.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Ai-je besoin de connaissances techniques ?</div><div class="faq-icon">+</div></div><div class="faq-a">Non, zéro compétence technique requise. Nous gérons tout de A à Z. Vous nous expliquez votre business et vos objectifs — nous nous occupons du reste. Une formation à l'utilisation est incluse dans chaque livraison.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Que se passe-t-il si je ne suis pas satisfait ?</div><div class="faq-icon">+</div></div><div class="faq-a">Nous offrons une garantie satisfaction sur notre Pack Croissance Complet. Si les résultats ne sont pas au rendez-vous dans les 30 premiers jours, vous êtes remboursé intégralement. Votre succès est notre priorité absolue.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Comment se déroule la collaboration concrètement ?</div><div class="faq-icon">+</div></div><div class="faq-a">1) Appel découverte gratuit (30 min) pour comprendre votre besoin. 2) Analyse et proposition personnalisée. 3) Démarrage du projet avec livrables définis. 4) Points d'avancement réguliers. 5) Livraison avec formation. 6) Support et suivi continu. Vous êtes informé à chaque étape, aucune opacité.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Est-ce que je peux tester avant de m'engager ?</div><div class="faq-icon">+</div></div><div class="faq-a">Oui. Commencez par un appel découverte gratuit de 30 minutes — aucun engagement, aucune obligation. Pour certains projets, nous proposons des pilotes à petite échelle pour que vous constatiez les résultats avant un déploiement complet.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Quelle différence entre automatisation et agent IA ?</div><div class="faq-icon">+</div></div><div class="faq-a">L'automatisation exécute des tâches prédéfinies (ex : envoyer un email quand un formulaire est rempli). L'agent IA comprend le langage naturel, s'adapte au contexte et prend des décisions intelligentes. Les deux se complètent parfaitement et nous les combinons souvent pour un résultat maximal.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-t">Mes données sont-elles en sécurité ?</div><div class="faq-icon">+</div></div><div class="faq-a">Oui, totalement. Nous utilisons des infrastructures sécurisées avec chiffrement des données (Supabase, Netlify). Vos informations ne sont jamais partagées avec des tiers. Un accord de confidentialité est disponible sur demande.</div></div>
+    </div>
+    <div class="faq-cta" data-aos="fade-up">
+      <div class="faq-cta-t">Vous ne trouvez pas la réponse à votre question ?</div>
+      <div class="faq-cta-s">Posez-la directement à Garoms-AI ou contactez notre équipe — nous répondons dans les 24h.</div>
+      <div class="faq-cta-btns">
+        <button class="btn btnp" onclick="toggleChat()">Demander à Garoms-AI</button>
+        <a href="#contact" class="btn btno">Contacter l'équipe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl">
+  <div class="c">
+    <div class="nl-in">
+      <div>
+        <div class="nl-t">Restez à la pointe de l'IA</div>
+        <div class="nl-s">Conseils, cas pratiques et actualités IA — directement dans votre boîte mail.</div>
+      </div>
+      <form class="nl-form" onsubmit="subNL(event)">
+        <input class="nl-inp" type="email" id="nlEmail" placeholder="votre@email.com" required />
+        <button type="submit" class="nl-btn" id="nlBtn">S'abonner →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- SAAS SECTION -->
+<section id="saas" class="saas-sec">
+  <div class="c">
+    <div class="saas-grid">
+      <div data-aos="fade-right">
+        <div class="saas-img-wrap">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/a2188de7-2e5f-457d-b668-87509cfdf5cd.png" alt="Créez votre SaaS avec GAROMS-TECH" class="saas-img" loading="lazy" />
+          <div class="saas-badge-float saas-bf1">🚀 Livraison en 4-8 semaines</div>
+          <div class="saas-badge-float saas-bf2">💳 Connexion Stripe incluse</div>
+          <div class="saas-badge-float saas-bf3">⚙️ Scalable & Cloud-ready</div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="sbadge" style="background:rgba(0,212,255,.08);color:var(--acc);border-color:rgba(0,212,255,.2);">Nouveau Service</div>
+        <h2 class="stitle" style="color:var(--w);">Vous avez une idée de SaaS ?<br>On la construit pour vous.</h2>
+        <p class="ssub" style="color:rgba(255,255,255,.6);margin-bottom:1.5rem;">Vous avez imaginé un logiciel en abonnement, une plateforme, un outil digital ? GAROMS-TECH conçoit et déploie votre SaaS de A à Z — avec authentification, paiements récurrents Stripe, base de données, et interface professionnelle.</p>
+        <div class="saas-features">
+          <div class="saas-feat"><div class="saas-feat-ico">🔐</div><div class="saas-feat-t">Authentification sécurisée</div></div>
+          <div class="saas-feat"><div class="saas-feat-ico">💳</div><div class="saas-feat-t">Stripe / paiements récurrents</div></div>
+          <div class="saas-feat"><div class="saas-feat-ico">📊</div><div class="saas-feat-t">Dashboard admin complet</div></div>
+          <div class="saas-feat"><div class="saas-feat-ico">🤖</div><div class="saas-feat-t">IA intégrée si souhaité</div></div>
+          <div class="saas-feat"><div class="saas-feat-ico">☁️</div><div class="saas-feat-t">Hébergement cloud scalable</div></div>
+          <div class="saas-feat"><div class="saas-feat-ico">📱</div><div class="saas-feat-t">Version mobile incluse</div></div>
+        </div>
+        <div style="background:rgba(0,87,255,.1);border:1px solid rgba(0,87,255,.25);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1.5rem;">
+          <div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--acc);margin-bottom:.35rem;">À partir de 1 000 USD — Premier livrable en 2 semaines</div>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.55);">Idée simple → App complexe avec abonnements Stripe. Nous gérons tout.</div>
+        </div>
+        <div style="display:flex;gap:.875rem;flex-wrap:wrap;">
+          <a href="#contact" class="btn btnp" onclick="setTimeout(()=>{const s=document.getElementById('cfService');if(s)s.value='Application SaaS avec abonnement';const m=document.getElementById('cfMsg');if(m)m.value='Je veux créer un SaaS. Voici mon idée : ';const mv=document.getElementById('cfMsg');if(mv)mv.focus();},400)">Je veux créer un SaaS →</a>
+          <a href="https://wa.me/50941773549?text=Bonjour%20GAROMS-TECH%20!%20Je%20veux%20créer%20un%20SaaS%20et%20je%20voudrais%20en%20discuter." target="_blank" rel="noopener" class="btn btnwp">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS SECTION -->
+<section id="jobs" class="jobs-sec">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge">On recrute</div>
+      <h2 class="stitle">Rejoignez l'équipe GAROMS-TECH</h2>
+      <p class="ssub">Nous cherchons des talents passionnés par l'IA et la tech. Travail 100% à distance, projets innovants, rémunération attractive.</p>
+    </div>
+    <div class="jobs-grid" data-aos="fade-up">
+      <div class="job-card">
+        <div class="job-ico">🤖</div>
+        <div>
+          <div class="job-type">Freelance · Remote</div>
+          <div class="job-title">Développeur Automatisation IA</div>
+          <div class="job-desc">Maîtrise de n8n, Make ou Zapier. Capable de connecter des APIs et de construire des workflows intelligents pour nos clients.</div>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-ico">💻</div>
+        <div>
+          <div class="job-type">Freelance · Remote</div>
+          <div class="job-title">Développeur Web Full-Stack</div>
+          <div class="job-desc">React, Node.js, PostgreSQL. Passion pour la performance et le design. Expérience avec des projets SaaS ou applications web.</div>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-ico">📈</div>
+        <div>
+          <div class="job-type">Freelance · Remote</div>
+          <div class="job-title">Expert Marketing Digital</div>
+          <div class="job-desc">Meta Ads, Google Ads, stratégie de contenu. ROI mesurable, reporting transparent. Résultats prouvés avec des clients.</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;" data-aos="fade-up">
+      <p style="font-size:.95rem;color:var(--g5);margin-bottom:1.25rem;">Envoyez votre profil à notre équipe — nous répondons à toutes les candidatures sérieuses.</p>
+      <a href="mailto:infogaromstech@gmail.com?subject=Candidature GAROMS-TECH&body=Bonjour, je souhaite rejoindre l'équipe GAROMS-TECH. Voici mon profil :" class="btn btnp">Postuler par email →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge" style="background:rgba(0,212,255,.08);color:var(--acc);border-color:rgba(0,212,255,.2);">Contact</div>
+      <h2 class="stitle" style="color:var(--w);">Parlons de votre projet</h2>
+      <p class="ssub" style="color:rgba(255,255,255,.5);">Réponse garantie sous 24h. Premier échange gratuit et sans engagement.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info" data-aos="fade-right">
+        <div class="cinfo-item"><div class="cinfo-ico">💬</div><div><div class="cinfo-t">WhatsApp — Services & Devis</div><div class="cinfo-v"><a href="https://wa.me/50941773549" target="_blank" rel="noopener">+509 41 77 35 49</a></div></div></div>
+        <div class="cinfo-item"><div class="cinfo-ico">📞</div><div><div class="cinfo-t">Téléphone — Questions & Conseils</div><div class="cinfo-v"><a href="tel:+50943111054">+509 43 11 10 54</a></div></div></div>
+        <div class="cinfo-item"><div class="cinfo-ico">📧</div><div><div class="cinfo-t">Email général & Service</div><div class="cinfo-v"><a href="mailto:infogaromstech@gmail.com">infogaromstech@gmail.com</a></div></div></div>
+        <div class="cinfo-item"><div class="cinfo-ico">📬</div><div><div class="cinfo-t">Email — Retours & Autres</div><div class="cinfo-v"><a href="mailto:toptechnn@gmail.com">toptechnn@gmail.com</a></div></div></div>
+        <div class="free-call-box">
+          <div class="fcb-t">Appel stratégique GRATUIT — 30 minutes</div>
+          <div class="fcb-s">Pas de vente forcée. On analyse votre business ensemble et on vous dit exactement ce que l'IA peut faire pour vous. Aucun engagement.</div>
+          <a href="https://wa.me/50943111054" target="_blank" rel="noopener" class="fcb-link">Écrire sur WhatsApp — C'est gratuit →</a>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="cform">
+          <div class="cf-title">Envoyez-nous un message</div>
+          <div class="cf-subtitle">Pour un projet, un devis ou une question sur nos services. Réponse sous 24h.</div>
+          <div id="cfOk" class="cf-ok" style="display:none;"><div class="cf-ok-ico">🎉</div><div class="cf-ok-t">Message envoyé !</div><div class="cf-ok-s">Nous vous répondons dans les 24 heures. Surveillez votre boîte mail ou WhatsApp.</div></div>
+          <form id="cfForm" onsubmit="sendContact(event)">
+            <div class="cfield-row">
+              <div class="cfield"><label>Prénom *</label><input type="text" id="cfPrenom" placeholder="Jean" required /></div>
+              <div class="cfield"><label>Nom *</label><input type="text" id="cfNom" placeholder="Dupont" required /></div>
+            </div>
+            <div class="cfield"><label>Email *</label><input type="email" id="cfEmail" placeholder="jean@email.com" required /></div>
+            <div class="cfield"><label>WhatsApp / Téléphone</label><input type="tel" id="cfTel" placeholder="+1 555 000 0000" /></div>
+            <div class="cfield"><label>Service souhaité *</label>
+              <select id="cfService" required>
+                <option value="">Choisir un service...</option>
+                <option>Chatbot IA 24/7</option>
+                <option>Automatisation de processus</option>
+                <option>Site Web & Application</option>
+                <option>Marketing Digital & Publicité</option>
+                <option>Agent IA Personnalisé</option>
+                <option>Pack Croissance Complet</option>
+                <option>Application SaaS avec abonnement</option>
+                <option>Authentification & Sécurité</option>
+                <option>Je ne sais pas encore — conseillez-moi</option>
+              </select>
+            </div>
+            <div class="cfield"><label>Votre message *</label><textarea id="cfMsg" placeholder="Décrivez votre projet, vos besoins, vos questions..." required></textarea></div>
+            <div class="csecure"><span class="csecure-ico">🔒</span> Vos données sont sécurisées et ne seront jamais partagées avec des tiers.</div>
+            <div class="cform-btns">
+              <button type="submit" class="btn btnp csend" id="cfSubmit">Envoyer le message →</button>
+              <a href="javascript:void(0)" class="btn btnwp csend" onclick="sendContactWA()">Envoyer via WhatsApp</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO SECTION -->
+<section id="portfolio" class="portfolio">
+  <div class="c">
+    <div class="sh cnt" data-aos="fade-up">
+      <div class="sbadge" style="background:rgba(232,93,4,.1);color:var(--acc);border-color:rgba(232,93,4,.25);">Nos réalisations</div>
+      <h2 class="stitle" style="color:var(--w);">Projets développés par<br><span style="background:linear-gradient(135deg,#E85D04,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GAROMS-TECH</span></h2>
+      <p class="ssub" style="color:rgba(255,255,255,.55);">Des applications réelles, livrées et opérationnelles. Chaque projet illustre notre savoir-faire en développement, IA et automatisation.</p>
+    </div>
+    <div class="port-grid">
+      <div class="port-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="port-imgs">
+          <img class="port-img-main" src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072950.png" alt="JBD Marketplace accueil" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.style.opacity='0.15';" />
+          <img class="port-img-alt" src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/Screenshot_20260518-072950.png" alt="JBD Marketplace produits" loading="lazy" decoding="async" onerror="this.onerror=null;this.style.opacity='0.15';" />
+          <div class="port-img-overlay"></div>
+          <div class="port-img-badge">Marketplace</div>
+          <div class="port-img-tech">
+            <span class="port-tech-tag">React</span>
+            <span class="port-tech-tag">Node.js</span>
+            <span class="port-tech-tag">Supabase</span>
+          </div>
+        </div>
+        <div class="port-body">
+          <div class="port-label">Plateforme e-commerce</div>
+          <div class="port-title">JBD Marketplace</div>
+          <div class="port-desc">Plateforme de vente en ligne pour acheter et vendre partout. Création de compte, catalogue produits, publication d'annonces — conçu pour le marché haïtien et la diaspora.</div>
+          <div class="port-tags">
+            <span class="port-tag">E-commerce</span>
+            <span class="port-tag">Multi-vendeurs</span>
+            <span class="port-tag">Catalogue produits</span>
+            <span class="port-tag">Mobile-first</span>
+          </div>
+          <div class="port-footer">
+            
+            <a href="portfolio.html" class="port-btn-detail">
+              &#9998; Collaborer
+            </a>
+          </div>
+          <div class="port-stats">
+            <div class="port-stat"><div class="port-stat-val">100%</div><div class="port-stat-lbl">Sur mesure</div></div>
+            <div class="port-stat"><div class="port-stat-val">24/7</div><div class="port-stat-lbl">Disponible</div></div>
+            <div class="port-stat"><div class="port-stat-val">Mobile</div><div class="port-stat-lbl">Responsive</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="port-card" data-aos="fade-up" data-aos-delay="120" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:420px;border:2px dashed rgba(232,93,4,.2);background:rgba(232,93,4,.03);">
+        <div style="text-align:center;padding:2.5rem;">
+          <div style="font-size:3rem;margin-bottom:1rem;">&#128640;</div>
+          <div style="font-family:var(--fh);font-size:1.1rem;font-weight:800;color:rgba(255,255,255,.6);margin-bottom:.5rem;">Prochain projet</div>
+          <div style="font-size:.88rem;color:rgba(255,255,255,.3);line-height:1.7;margin-bottom:1.5rem;">Nous développons continuellement de nouvelles solutions. Votre projet pourrait être ici.</div>
+          <a href="#contact" class="port-btn-detail">Démarrer mon projet &#8594;</a>
+        </div>
+      </div>
+    </div>
+    <div class="port-cta-row" data-aos="fade-up">
+      <div class="port-cta-box">
+        <div class="port-cta-t">Vous avez un projet en tête ?</div>
+        <div class="port-cta-s">Nous développons des applications, marketplaces, SaaS et systèmes IA sur mesure. Parlez-nous de votre vision.</div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+          <a href="portfolio.html" class="btn btnp">Voir toutes nos collaborations &#8594;</a>
+          <a href="#contact" class="btn btno">Discuter de mon projet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMBASSADOR SECTION INDEX -->
+<section id="ambassadeur-index" class="ambidx-sec">
+  <div class="c">
+    <div class="ambidx-grid">
+      <div data-aos="fade-right">
+        <div class="ambidx-img-main">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/124e6c36-796b-4af4-9daf-96158864192c.png" alt="Ambassadeurs et Ambassadrices GAROMS-TECH" loading="lazy" decoding="async"
+               onerror="this.style.opacity='0.3';this.alt='Image en cours de chargement'" />
+          <div class="ambidx-badge aibad1">🌍 +50 pays représentés</div>
+          <div class="ambidx-badge aibad2">💰 Commission jusqu'à 20%</div>
+          <div class="ambidx-badge aibad3">⚡ Paiement mensuel garanti</div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="sbadge" style="background:rgba(232,93,4,.1);color:var(--acc);border-color:rgba(232,93,4,.25);">Programme Partenaire</div>
+        <h2 class="stitle" style="color:var(--w);">Devenez Ambassadeur(drice)<br><span style="background:linear-gradient(135deg,#E85D04,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GAROMS-TECH</span></h2>
+        <p class="ssub" style="color:rgba(255,255,255,.65);margin-bottom:1.75rem;">Vous connaissez des entrepreneurs ? Présentez-les à notre équipe — nous gérons tout le reste. Vous touchez une commission sur chaque vente, men qu'ils restent clients.</p>
+        <div class="ambidx-perks">
+          <div class="ambidx-perk"><div class="ambidx-perk-ico">💸</div><div class="ambidx-perk-t">Commission jusqu'à 20%</div></div>
+          <div class="ambidx-perk"><div class="ambidx-perk-ico">🎓</div><div class="ambidx-perk-t">Formation gratuite</div></div>
+          <div class="ambidx-perk"><div class="ambidx-perk-ico">📲</div><div class="ambidx-perk-t">Support WhatsApp dédié</div></div>
+          <div class="ambidx-perk"><div class="ambidx-perk-ico">🌍</div><div class="ambidx-perk-t">100% en ligne, mondial</div></div>
+          <div class="ambidx-perk"><div class="ambidx-perk-ico">🤝</div><div class="ambidx-perk-t">Ambassadeurs & Ambassadrices</div></div>
+          <div class="ambidx-perk"><div class="ambidx-perk-ico">🏆</div><div class="ambidx-perk-t">Paiement mensuel garanti</div></div>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <a href="ambassadeur.html" class="btn-amb-cta">
+            <span>🚀</span> Devenir Ambassadeur(drice) →
+          </a>
+        </div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.35);margin-top:.75rem;">Inscription gratuite · Réponse sous 24h · Aucun engagement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECOND FORM -->
+<section id="curiosite" class="form2">
+  <div class="c" style="padding-top:5rem;padding-bottom:5rem;">
+    <div class="form2-inner">
+      <div class="form2-info" data-aos="fade-right">
+        <div class="form2-badge">Idées & Questions</div>
+        <h2 class="form2-t">Une idée ? Une vision pour l'avenir ?</h2>
+        <p class="form2-s">Pas encore prêt pour un projet ? Vous avez une idée, une suggestion, une question sur l'IA ou l'avenir du digital ? Partagez-la — nous lisons tout.</p>
+        <div class="form2-contact">Tél : <a href="tel:+50943111054">+509 43 11 10 54</a> &nbsp;|&nbsp; <a href="mailto:toptechnn@gmail.com">toptechnn@gmail.com</a></div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="form2-box">
+          <div id="f2Ok" class="form2-ok" style="display:none;"><div style="font-size:2.5rem;margin-bottom:.5rem;">💡</div><div style="font-family:var(--fh);font-weight:700;color:var(--w);margin-bottom:.25rem;">Message reçu !</div><div style="font-size:.85rem;color:rgba(255,255,255,.5);">Merci pour votre idée. On vous lit avec attention.</div></div>
+          <form id="f2Form" onsubmit="sendForm2(event)">
+            <div class="cf-title" style="margin-bottom:1.25rem;">Partagez votre idée</div>
+            <div class="cfield"><label>Prénom</label><input type="text" id="f2Prenom" placeholder="Votre prénom" /></div>
+            <div class="cfield"><label>Email *</label><input type="email" id="f2Email" placeholder="votre@email.com" required /></div>
+            <div class="cfield"><label>Votre idée ou question *</label><textarea id="f2Msg" placeholder="Une idée pour l'IA, une vision, une question sur l'avenir du digital..." style="min-height:110px;" required></textarea></div>
+            <div class="csecure"><span class="csecure-ico">🔒</span> Confidentiel — jamais partagé.</div>
+            <button type="submit" class="btn btnp" style="width:100%;justify-content:center;margin-top:.25rem;" id="f2Btn">Envoyer mon idée →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER 2 -->
+<div class="nl">
+  <div class="c">
+    <div class="nl-in">
+      <div>
+        <div class="nl-t">Restez à la pointe de l'IA</div>
+        <div class="nl-s">Conseils, cas pratiques et actualités IA — directement dans votre boîte mail.</div>
+      </div>
+      <form class="nl-form" onsubmit="subNL2(event)">
+        <input class="nl-inp" type="email" id="nlEmail2" placeholder="votre@email.com" required />
+        <button type="submit" class="nl-btn" id="nlBtn2">S'abonner →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER avec bouton WhatsApp + logo -->
+<footer class="ft">
+  <div class="c">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-logo">
+          <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" style="height:40px;width:auto;object-fit:contain;" />
+        </div>
+        <div class="ft-desc">IA & Automatisation pour entrepreneurs ambitieux. Systèmes intelligents qui travaillent pour vous. Fondée en 2023 — Service mondial.</div>
+        <!-- Bouton WhatsApp avec logo -->
+        <a href="https://wa.me/50941773549" target="_blank" rel="noopener" class="wa-footer-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp : +509 41 77 35 49
+        </a>
+      </div>
+      <div>
+        <div class="ft-col-t">Services</div>
+        <div class="ft-links">
+          <a href="#services">Chatbot IA 24/7</a>
+          <a href="#services">Automatisation</a>
+          <a href="#services">Sites Web & Apps</a>
+          <a href="#services">Marketing Digital</a>
+          <a href="#services">Agent IA Personnalisé</a>
+          <a href="#services">Pack Croissance</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-t">Entreprise</div>
+        <div class="ft-links">
+          <a href="#apropos">À Propos</a>
+          <a href="#equipe">Notre équipe</a>
+          <a href="#temoignages">Témoignages</a>
+          <a href="#faq">FAQ</a>
+          <a href="ambassadeur.html">👤 Programme Ambassadeur</a>
+          <a href="blog.html">📝 Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-t">Contact direct</div>
+        <div class="ft-contacts">
+          <div class="ft-contact-item">
+            <div class="ft-contact-role">Nouveaux projets &amp; direction</div>
+            <a href="https://wa.me/50941773549" target="_blank" rel="noopener" class="ft-contact-link ft-contact-wa">
+              <svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              +509 41 77 35 49
+            </a>
+          </div>
+          <div class="ft-contact-item">
+            <div class="ft-contact-role">Support client &amp; suivi</div>
+            <a href="tel:+50943111054" class="ft-contact-link">+509 43 11 10 54</a>
+          </div>
+          <div class="ft-contact-item">
+            <div class="ft-contact-role">Email général</div>
+            <a href="mailto:infogaromstech@gmail.com" class="ft-contact-link">infogaromstech@gmail.com</a>
+          </div>
+          <div class="ft-contact-item">
+            <div class="ft-contact-role">Questions rapides</div>
+            <a href="mailto:toptechm@gmail.com" class="ft-contact-link">toptechm@gmail.com</a>
+          </div>
+        </div>
+        <div class="ft-col-t" style="margin-top:1.5rem;">Informations légales</div>
+        <div class="ft-links">
+          <a href="confidentialite.html">Politique de confidentialité</a>
+          <a href="cgu.html">Conditions générales d'utilisation</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2023–2026 GAROMS-TECH — Propulsé par JBD-X Groupe. Tous droits réservés.</div>
+      <div class="ft-legal">
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="cgu.html">CGU</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</div><!-- /#site -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/50941773549" target="_blank" rel="noopener" aria-label="WhatsApp GAROMS-TECH"
+   style="position:fixed;bottom:1.75rem;left:1.75rem;z-index:8000;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:.25s;text-decoration:none;"
+   onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(37,211,102,.65)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,.45)'">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+  <script src="main.js" defer></script>
+</body>
+</html>

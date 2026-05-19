@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Portail Ambassadeur — GAROMS-TECH</title>
+<link rel="icon" href="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/tab.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --p:#E85D04;--p2:#FB923C;--dark:#0A0A0A;--card:#111;--card2:#1A1A1A;
+  --border:rgba(232,93,4,.18);--txt:#F5F5F5;--muted:#888;--green:#22C55E;
+  --yellow:#FACC15;--red:#EF4444;--blue:#60A5FA;
+  --gold:#FFC300;--silver:#CBD5E1;--bronze:#CD7F32;
+}
+html{height:100%;background:var(--dark);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;}
+body{min-height:100vh;background:var(--dark);}
+
+/* ── LOGIN ── */
+#loginScreen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:1.5rem;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(232,93,4,.12) 0%,transparent 70%);
+}
+.login-box{
+  width:100%;max-width:440px;background:var(--card);
+  border:1px solid var(--border);border-radius:20px;padding:2.5rem 2rem;
+  box-shadow:0 24px 64px rgba(0,0,0,.5);
+}
+.login-logo{text-align:center;margin-bottom:2rem;}
+.login-logo img{width:72px;height:72px;object-fit:contain;}
+.login-logo h1{font-size:1.3rem;font-weight:700;margin-top:.7rem;
+  background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.login-logo p{color:var(--muted);font-size:.85rem;margin-top:.25rem;}
+.lbl{display:block;font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;}
+.inp{
+  width:100%;padding:.8rem 1rem;background:#1E1E1E;border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;color:var(--txt);font-size:.95rem;outline:none;transition:.2s;
+}
+.inp:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(232,93,4,.15);}
+.field{margin-bottom:1.2rem;}
+.btn-login{
+  width:100%;padding:.9rem;background:linear-gradient(135deg,var(--p),var(--p2));
+  border:none;border-radius:12px;color:#fff;font-size:1rem;font-weight:700;
+  cursor:pointer;transition:.2s;margin-top:.4rem;
+  box-shadow:0 4px 20px rgba(232,93,4,.35);
+}
+.btn-login:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(232,93,4,.45);}
+.btn-login:disabled{opacity:.5;transform:none;cursor:not-allowed;}
+.login-err{display:none;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);
+  color:#FCA5A5;border-radius:8px;padding:.7rem 1rem;font-size:.85rem;margin-top:.8rem;text-align:center;}
+.login-footer{text-align:center;margin-top:1.5rem;font-size:.8rem;color:var(--muted);}
+.login-footer a{color:var(--p2);text-decoration:none;}
+
+/* ── DASHBOARD ── */
+#dashboard{display:none;min-height:100vh;}
+
+/* top bar */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,10,.92);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:.9rem 1.5rem;display:flex;align-items:center;gap:1rem;
+}
+.topbar-logo{display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.topbar-logo img{width:36px;height:36px;object-fit:contain;}
+.topbar-logo span{font-weight:700;font-size:.95rem;
+  background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.topbar-name{flex:1;text-align:center;}
+.topbar-name .amb-name{font-weight:600;font-size:.95rem;}
+.topbar-name .amb-level{font-size:.75rem;color:var(--muted);}
+.level-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  padding:.25rem .7rem;border-radius:999px;font-size:.7rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.level-badge.bronze{background:rgba(205,127,50,.15);color:var(--bronze);border:1px solid rgba(205,127,50,.3);}
+.level-badge.silver{background:rgba(203,213,225,.1);color:var(--silver);border:1px solid rgba(203,213,225,.25);}
+.level-badge.gold{background:rgba(255,195,0,.12);color:var(--gold);border:1px solid rgba(255,195,0,.3);}
+.btn-logout{padding:.4rem .9rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;color:var(--muted);font-size:.78rem;cursor:pointer;white-space:nowrap;}
+.btn-logout:hover{border-color:var(--p);color:var(--txt);}
+
+/* main */
+.main{max-width:980px;margin:0 auto;padding:1.5rem;}
+
+/* section title */
+.sec-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--muted);margin-bottom:.8rem;padding-left:.1rem;}
+
+/* stat cards */
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-bottom:1.5rem;}
+@media(min-width:640px){.stats-grid{grid-template-columns:repeat(4,1fr);}}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.2rem 1rem;
+}
+.stat-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
+.stat-val{font-size:1.7rem;font-weight:800;line-height:1;}
+.stat-val.orange{background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-val.green{color:var(--green);}
+.stat-val.blue{color:var(--blue);}
+.stat-val.yellow{color:var(--yellow);}
+.stat-sub{font-size:.72rem;color:var(--muted);margin-top:.3rem;}
+
+/* progress card */
+.progress-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.2rem 1.2rem .9rem;margin-bottom:1.5rem;
+}
+.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;}
+.progress-title{font-size:.85rem;font-weight:600;}
+.progress-sub{font-size:.75rem;color:var(--muted);}
+.progress-track{background:#222;border-radius:999px;height:8px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:999px;
+  background:linear-gradient(90deg,var(--p),var(--p2));transition:width .6s ease;}
+.progress-legend{display:flex;justify-content:space-between;margin-top:.5rem;font-size:.7rem;color:var(--muted);}
+
+/* commission box */
+.comm-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:1.5rem;}
+.comm-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem;}
+.comm-icon{font-size:1.4rem;margin-bottom:.4rem;}
+.comm-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.comm-val{font-size:1.4rem;font-weight:800;margin:.2rem 0;}
+.comm-desc{font-size:.72rem;color:var(--muted);}
+
+/* clients table */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.5rem;}
+.table-head{padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.table-head h3{font-size:.9rem;font-weight:700;}
+.badge-count{background:rgba(232,93,4,.15);color:var(--p2);border-radius:999px;
+  padding:.15rem .6rem;font-size:.72rem;font-weight:700;}
+table{width:100%;border-collapse:collapse;}
+th{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+  padding:.7rem 1rem;text-align:left;background:#0D0D0D;font-weight:600;}
+td{padding:.85rem 1rem;font-size:.85rem;border-bottom:1px solid rgba(255,255,255,.04);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.02);}
+.status-pill{display:inline-block;padding:.2rem .65rem;border-radius:999px;font-size:.7rem;font-weight:700;}
+.status-pill.active{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.25);}
+.status-pill.inactive{background:rgba(239,68,68,.1);color:#FCA5A5;border:1px solid rgba(239,68,68,.22);}
+.status-pill.pending{background:rgba(250,204,21,.1);color:var(--yellow);border:1px solid rgba(250,204,21,.22);}
+.empty-state{text-align:center;padding:2.5rem 1rem;color:var(--muted);}
+.empty-state .ico{font-size:2rem;margin-bottom:.5rem;}
+.empty-state p{font-size:.85rem;}
+
+/* soumettre prospect */
+.prospect-form-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.4rem;margin-bottom:1.5rem;}
+.prospect-form-wrap h3{font-size:.9rem;font-weight:700;margin-bottom:.3rem;}
+.prospect-form-wrap p{font-size:.78rem;color:var(--muted);margin-bottom:1rem;}
+.form-grid{display:grid;gap:.8rem;grid-template-columns:1fr;}
+@media(min-width:520px){.form-grid{grid-template-columns:1fr 1fr;}}
+.inp-sm{width:100%;padding:.65rem .9rem;background:#1A1A1A;border:1px solid rgba(255,255,255,.07);
+  border-radius:9px;color:var(--txt);font-size:.85rem;outline:none;transition:.2s;}
+.inp-sm:focus{border-color:var(--p);}
+select.inp-sm option{background:#1A1A1A;}
+.btn-submit{
+  padding:.7rem 1.4rem;background:linear-gradient(135deg,var(--p),var(--p2));
+  border:none;border-radius:10px;color:#fff;font-size:.85rem;font-weight:700;
+  cursor:pointer;transition:.2s;
+}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(232,93,4,.35);}
+.btn-submit:disabled{opacity:.5;transform:none;cursor:not-allowed;}
+.form-success{display:none;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);
+  color:#86EFAC;border-radius:9px;padding:.7rem 1rem;font-size:.82rem;margin-top:.8rem;}
+
+/* formation */
+.formation-list{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.5rem;}
+.formation-item{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;}
+.f-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;background:rgba(232,93,4,.12);}
+.f-content{}
+.f-title{font-size:.88rem;font-weight:600;}
+.f-desc{font-size:.75rem;color:var(--muted);margin-top:.15rem;}
+.f-badge{margin-left:auto;padding:.2rem .6rem;border-radius:999px;font-size:.68rem;font-weight:700;
+  background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.2);white-space:nowrap;}
+.f-badge.locked{background:rgba(255,255,255,.05);color:var(--muted);border-color:rgba(255,255,255,.08);}
+
+/* mobile table scroll */
+.table-scroll{overflow-x:auto;}
+
+/* spinner */
+.spin{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.2);
+  border-top-color:var(--p);border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle;}
+@keyframes sp{to{transform:rotate(360deg);}}
+
+/* Responsive tweaks */
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .comm-grid{grid-template-columns:1fr 1fr;}
+  th,td{padding:.65rem .7rem;font-size:.78rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ LOGIN ══════════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="index.html" style="display:inline-block;margin-bottom:.5rem;font-size:.78rem;color:var(--p2);text-decoration:none;opacity:.7;">← Accueil</a>
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="GAROMS-TECH" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+      <div id="logoFallback" style="display:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#E85D04,#FB923C);margin:0 auto;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem;color:#fff;">GT</div>
+      <h1>PORTAIL AMBASSADEUR</h1>
+      <p>Accédez à votre espace personnel</p>
+    </div>
+    <div class="field">
+      <label class="lbl">Adresse e-mail</label>
+      <input id="lEmail" class="inp" type="email" placeholder="votre@email.com" autocomplete="email">
+    </div>
+    <div class="field">
+      <label class="lbl">Code Ambassadeur</label>
+      <input id="lCode" class="inp" type="text" placeholder="GT-2025-001" autocomplete="off" style="text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()">
+    </div>
+    <button class="btn-login" id="btnLogin" onclick="doLogin()">Se connecter</button>
+    <div class="login-err" id="loginErr">Code ou e-mail invalide. Vérifiez vos informations.</div>
+    <div class="login-footer">
+      Code non reçu ? Contactez-nous sur <a href="https://wa.me/50943111054">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ DASHBOARD ══════════ -->
+<div id="dashboard">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-logo">
+      <img src="https://raw.githubusercontent.com/toptechnn-debug/garoms-tech-assets/main/2e16bc94-a15a-4ee6-8802-51d8f58911b2.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#E85D04,#FB923C);align-items:center;justify-content:center;font-weight:900;font-size:.65rem;color:#fff;flex-shrink:0;">GT</div>
+      <span>GAROMS-TECH</span>
+    </div>
+    <div class="topbar-name">
+      <div class="amb-name" id="tbName">—</div>
+      <div class="amb-level"><span class="level-badge bronze" id="lvlBadge">Bronze</span></div>
+    </div>
+    <a href="blog.html" class="btn-logout" style="text-decoration:none;margin-right:.4rem;">📝 Blog</a>
+    <a href="index.html" class="btn-logout" style="text-decoration:none;margin-right:.4rem;">🏠 Accueil</a>
+    <button class="btn-logout" onclick="doLogout()">Déconnexion</button>
+  </div>
+
+  <div class="main">
+
+    <!-- Stats -->
+    <div class="sec-title">Tableau de bord — <span id="currentMonth">—</span></div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Pts ce mois</div>
+        <div class="stat-val orange" id="stPtsMonth">0</div>
+        <div class="stat-sub">Points gagnés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total points</div>
+        <div class="stat-val yellow" id="stPtsTotal">0</div>
+        <div class="stat-sub">Cumulatif</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Clients actifs</div>
+        <div class="stat-val green" id="stActive">0</div>
+        <div class="stat-sub">En cours</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Revenus mois</div>
+        <div class="stat-val blue" id="stRevMonth">$0</div>
+        <div class="stat-sub">Récurrent</div>
+      </div>
+    </div>
+
+    <!-- Level progress -->
+    <div class="progress-card">
+      <div class="progress-header">
+        <div>
+          <div class="progress-title">Progression de niveau</div>
+          <div class="progress-sub" id="progressSub">0 pts → prochain niveau : Silver (100 pts)</div>
+        </div>
+        <span class="level-badge bronze" id="lvlBadge2">Bronze</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-legend">
+        <span>Bronze · 0</span><span>Silver · 100</span><span>Gold · 300</span>
+      </div>
+    </div>
+
+    <!-- Commissions -->
+    <div class="sec-title">Commissions</div>
+    <div class="comm-grid">
+      <div class="comm-card">
+        <div class="comm-icon">💰</div>
+        <div class="comm-label">Setup (signatures)</div>
+        <div class="comm-val" id="commSetup">$0</div>
+        <div class="comm-desc">Total commissions à la signature</div>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">🔄</div>
+        <div class="comm-label">Récurrent / mois</div>
+        <div class="comm-val" id="commMonthly">$0</div>
+        <div class="comm-desc">Revenus passifs mensuels actuels</div>
+      </div>
+    </div>
+
+    <!-- Client tracker -->
+    <div class="sec-title">Mes clients</div>
+    <div class="table-wrap">
+      <div class="table-head">
+        <h3>Suivi des clients</h3>
+        <span class="badge-count" id="clientCount">0</span>
+      </div>
+      <div class="table-scroll">
+        <table id="clientTable">
+          <thead>
+            <tr>
+              <th>Client / Entreprise</th>
+              <th>Service</th>
+              <th>Commission mensuelle</th>
+              <th>Statut</th>
+              <th>Depuis</th>
+            </tr>
+          </thead>
+          <tbody id="clientTbody">
+            <tr><td colspan="5"><div class="empty-state"><div class="ico">📋</div><p>Chargement…</p></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Submit prospect -->
+    <div class="sec-title">Soumettre un nouveau prospect</div>
+    <div class="prospect-form-wrap">
+      <h3>Transmettre un dossier qualifié</h3>
+      <p>Remplissez ce formulaire uniquement si le prospect répond aux 4 critères de qualification.</p>
+      <div class="form-grid">
+        <div>
+          <label class="lbl" style="font-size:.7rem;color:var(--muted);display:block;margin-bottom:.3rem;">Nom du prospect</label>
+          <input id="pNom" class="inp-sm" type="text" placeholder="Nom complet">
+        </div>
+        <div>
+          <label class="lbl" style="font-size:.7rem;color:var(--muted);display:block;margin-bottom:.3rem;">Entreprise</label>
+          <input id="pEntreprise" class="inp-sm" type="text" placeholder="Nom de l'entreprise">
+        </div>
+        <div>
+          <label class="lbl" style="font-size:.7rem;color:var(--muted);display:block;margin-bottom:.3rem;">Contact (tél / WhatsApp)</label>
+          <input id="pContact" class="inp-sm" type="text" placeholder="+509 ...">
+        </div>
+        <div>
+          <label class="lbl" style="font-size:.7rem;color:var(--muted);display:block;margin-bottom:.3rem;">Service visé</label>
+          <select id="pService" class="inp-sm">
+            <option value="">— Choisir —</option>
+            <option>Chatbot IA Standard</option>
+            <option>Automatisation Avancée</option>
+            <option>Développement Web / App</option>
+            <option>Pack Croissance Complet</option>
+          </select>
+        </div>
+        <div>
+          <label class="lbl" style="font-size:.7rem;color:var(--muted);display:block;margin-bottom:.3rem;">CA mensuel estimé ($)</label>
+          <input id="pCA" class="inp-sm" type="number" placeholder="ex: 3000">
+        </div>
+        <div>
+          <label class="lbl" style="font-size:.7rem;color:var(--muted);display:block;margin-bottom:.3rem;">Budget disponible ($)</label>
+          <input id="pBudget" class="inp-sm" type="number" placeholder="ex: 500">
+        </div>
+      </div>
+      <div style="margin-top:.8rem;">
+        <label class="lbl" style="font-size:.7rem;color:var(--muted);display:block;margin-bottom:.3rem;">Notes / Contexte du prospect</label>
+        <textarea id="pNotes" class="inp-sm" rows="2" placeholder="Décrivez brièvement le problème du prospect…" style="resize:vertical;"></textarea>
+      </div>
+      <div style="margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap;">
+        <button class="btn-submit" id="btnProspect" onclick="submitProspect()">Envoyer le dossier →</button>
+        <div style="font-size:.75rem;color:var(--muted);align-self:center;">+10 pts automatiquement à la soumission</div>
+      </div>
+      <div class="form-success" id="prospectOk">✓ Dossier transmis à la direction. Vous recevrez un retour sous 24h.</div>
+    </div>
+
+    <!-- Formation -->
+    <div class="sec-title">Formation & Ressources</div>
+    <div class="formation-list">
+      <div class="formation-item">
+        <div class="f-icon">📘</div>
+        <div class="f-content">
+          <div class="f-title">Module 1 — Comprendre la solution Garoms-Tech</div>
+          <div class="f-desc">Maîtrisez les services, les cas d'usage et le discours de valeur</div>
+        </div>
+        <div class="f-badge">Disponible</div>
+      </div>
+      <div class="formation-item">
+        <div class="f-icon">🎯</div>
+        <div class="f-content">
+          <div class="f-title">Module 2 — Identifier & qualifier un prospect</div>
+          <div class="f-desc">Les 4 critères, le questionnaire et les signaux d'alerte</div>
+        </div>
+        <div class="f-badge">Disponible</div>
+      </div>
+      <div class="formation-item">
+        <div class="f-icon">💬</div>
+        <div class="f-content">
+          <div class="f-title">Module 3 — Scripts de conversation WhatsApp</div>
+          <div class="f-desc">Scripts testés pour approcher, qualifier et transmettre efficacement</div>
+        </div>
+        <div class="f-badge locked">Silver requis</div>
+      </div>
+      <div class="formation-item">
+        <div class="f-icon">🚀</div>
+        <div class="f-content">
+          <div class="f-title">Module 4 — Construire votre portefeuille passif</div>
+          <div class="f-desc">Stratégies pour maximiser les revenus récurrents</div>
+        </div>
+        <div class="f-badge locked">Gold requis</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;padding:1.5rem 0 2rem;font-size:.75rem;color:var(--muted);">
+      GAROMS-TECH — Portail Ambassadeur Confidentiel &nbsp;·&nbsp;
+      <a href="https://wa.me/50943111054" style="color:var(--p2);text-decoration:none;">Support WhatsApp</a>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /dashboard -->
+
+<script>
+/* ── CONFIG ── */
+const SB_URL='https://boelpuehvvuvddyyphpe.supabase.co';
+const SB_KEY='sb_publishable_tOjmLT97b3y2ou2P62a4vA_nlperttq';
+const SB_H={'Content-Type':'application/json','apikey':SB_KEY,'Authorization':`Bearer ${SB_KEY}`};
+
+/* ── STATE ── */
+let AMB=null; // current ambassador object
+
+/* ── POINTS SYSTEM ── */
+const LEVELS=[
+  {name:'Bronze',min:0,max:99,class:'bronze'},
+  {name:'Silver',min:100,max:299,class:'silver'},
+  {name:'Gold',min:300,max:Infinity,class:'gold'}
+];
+function getLevel(pts){return LEVELS.findLast(l=>pts>=l.min)||LEVELS[0];}
+function nextLevel(pts){
+  const next=LEVELS.find(l=>l.min>pts);
+  return next?`prochain niveau : ${next.name} (${next.min} pts)`:' Niveau maximum atteint 🏆';
+}
+function levelProgress(pts){
+  if(pts>=300)return 100;
+  if(pts>=100)return Math.min(100,((pts-100)/200)*100);
+  return Math.min(100,(pts/100)*100);
+}
+
+/* ── SUPABASE HELPERS ── */
+async function sbGet(table,filter=''){
+  const r=await fetch(`${SB_URL}/rest/v1/${table}?${filter}`,{headers:{...SB_H,'Prefer':'return=representation'}});
+  return r.ok?r.json():[];
+}
+async function sbPost(table,data){
+  return fetch(`${SB_URL}/rest/v1/${table}`,{method:'POST',headers:{...SB_H,'Prefer':'return=minimal'},body:JSON.stringify(data)});
+}
+async function sbPatch(table,filter,data){
+  return fetch(`${SB_URL}/rest/v1/${table}?${filter}`,{method:'PATCH',headers:{...SB_H,'Prefer':'return=minimal'},body:JSON.stringify(data)});
+}
+
+/* ── LOGIN ── */
+async function doLogin(){
+  const email=document.getElementById('lEmail').value.trim().toLowerCase();
+  const code=document.getElementById('lCode').value.trim().toUpperCase();
+  if(!email||!code){showLoginErr('Remplissez les deux champs.');return;}
+  const btn=document.getElementById('btnLogin');
+  btn.disabled=true;btn.innerHTML='<span class="spin"></span> Connexion…';
+  document.getElementById('loginErr').style.display='none';
+  try{
+    const rows=await sbGet('gt_ambassadors',`email=eq.${encodeURIComponent(email)}&code=eq.${encodeURIComponent(code)}&status=eq.active&select=*`);
+    if(!rows||rows.length===0){
+      /* Demo mode for testing if no table yet */
+      if(code==='GT-DEMO'&&email.includes('@')){
+        AMB={id:'demo',name:'Ambassadeur Démo',email,code,total_points:45,status:'active'};
+        openDashboard();return;
+      }
+      showLoginErr('Code ou e-mail invalide. Vérifiez vos informations.');
+      return;
+    }
+    AMB=rows[0];
+    openDashboard();
+  }catch(e){
+    /* Fallback: table not yet created */
+    if(code==='GT-DEMO'&&email.includes('@')){
+      AMB={id:'demo',name:'Ambassadeur Démo',email,code,total_points:45,status:'active'};
+      openDashboard();return;
+    }
+    showLoginErr('Erreur de connexion. Réessayez.');
+  }finally{btn.disabled=false;btn.textContent='Se connecter';}
+}
+function showLoginErr(msg){const e=document.getElementById('loginErr');e.textContent=msg;e.style.display='block';}
+document.getElementById('lEmail').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('lCode').focus();});
+document.getElementById('lCode').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+
+/* ── OPEN DASHBOARD ── */
+async function openDashboard(){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  const now=new Date();
+  document.getElementById('currentMonth').textContent=now.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  document.getElementById('tbName').textContent=AMB.name||'Ambassadeur';
+  await loadDashboardData();
+}
+
+/* ── LOAD DATA ── */
+async function loadDashboardData(){
+  let clients=[];
+  let pts=AMB.total_points||0;
+  let commSetup=0,commMonthly=0;
+  let ptsThisMonth=0;
+
+  try{
+    /* Clients */
+    if(AMB.id&&AMB.id!=='demo'){
+      clients=await sbGet('gt_ambassador_clients',`ambassador_id=eq.${AMB.id}&select=*&order=created_at.desc`);
+      /* Points log this month */
+      const ym=new Date().toISOString().slice(0,7);
+      const logs=await sbGet('gt_ambassador_points_log',`ambassador_id=eq.${AMB.id}&month=eq.${ym}&select=points`);
+      if(Array.isArray(logs))ptsThisMonth=logs.reduce((s,l)=>s+(l.points||0),0);
+    }else{
+      /* Demo data */
+      clients=[
+        {client_name:'Boutique Mode Luxe',client_company:'BML S.A.',service:'Chatbot IA Standard',monthly_commission:35,setup_commission:180,status:'active',created_at:'2025-01-10'},
+        {client_name:'AgriHaïti',client_company:'AgriHaïti SARL',service:'Pack Croissance Complet',monthly_commission:120,setup_commission:600,status:'active',created_at:'2025-02-01'},
+        {client_name:'StartupXY',client_company:'StartupXY',service:'Développement Web / App',monthly_commission:0,setup_commission:450,status:'inactive',created_at:'2024-11-15'},
+      ];
+      ptsThisMonth=20;
+    }
+  }catch(e){/* ignore table-not-found */}
+
+  /* Calc */
+  const activeClients=clients.filter(c=>c.status==='active');
+  commSetup=clients.reduce((s,c)=>s+(c.setup_commission||0),0);
+  commMonthly=activeClients.reduce((s,c)=>s+(c.monthly_commission||0),0);
+  const totalPts=pts;
+
+  /* Level bonus info */
+  const lv=getLevel(totalPts);
+  const lvEl1=document.getElementById('lvlBadge');
+  const lvEl2=document.getElementById('lvlBadge2');
+  [lvEl1,lvEl2].forEach(el=>{el.textContent=lv.name;el.className='level-badge '+lv.class;});
+
+  /* Stats */
+  document.getElementById('stPtsMonth').textContent=ptsThisMonth;
+  document.getElementById('stPtsTotal').textContent=totalPts;
+  document.getElementById('stActive').textContent=activeClients.length;
+  document.getElementById('stRevMonth').textContent='$'+commMonthly.toFixed(0);
+  document.getElementById('commSetup').textContent='$'+commSetup.toFixed(0);
+  document.getElementById('commMonthly').textContent='$'+commMonthly.toFixed(0)+'/mois';
+  document.getElementById('progressSub').textContent=`${totalPts} pts — ${nextLevel(totalPts)}`;
+  document.getElementById('progressFill').style.width=levelProgress(totalPts)+'%';
+
+  /* Client table */
+  renderClients(clients);
+}
+
+function renderClients(clients){
+  const tbody=document.getElementById('clientTbody');
+  document.getElementById('clientCount').textContent=clients.length;
+  if(!clients.length){
+    tbody.innerHTML='<tr><td colspan="5"><div class="empty-state"><div class="ico">🤝</div><p>Aucun client enregistré pour le moment.<br>Soumettez votre premier prospect ci-dessous.</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML=clients.map(c=>{
+    const d=c.created_at?new Date(c.created_at).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'}):'—';
+    const pill=c.status==='active'?'<span class="status-pill active">Actif</span>':
+               c.status==='pending'?'<span class="status-pill pending">En attente</span>':
+               '<span class="status-pill inactive">Inactif</span>';
+    const monthly=c.monthly_commission?'$'+(+c.monthly_commission).toFixed(0)+'/mois':'—';
+    return `<tr>
+      <td><strong>${esc(c.client_name||'—')}</strong><br><small style="color:var(--muted)">${esc(c.client_company||'')}</small></td>
+      <td>${esc(c.service||'—')}</td>
+      <td style="color:var(--green)">${monthly}</td>
+      <td>${pill}</td>
+      <td style="color:var(--muted);font-size:.78rem">${d}</td>
+    </tr>`;
+  }).join('');
+}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+/* ── SUBMIT PROSPECT ── */
+async function submitProspect(){
+  const nom=document.getElementById('pNom').value.trim();
+  const ent=document.getElementById('pEntreprise').value.trim();
+  const contact=document.getElementById('pContact').value.trim();
+  const service=document.getElementById('pService').value;
+  const ca=document.getElementById('pCA').value;
+  const budget=document.getElementById('pBudget').value;
+  const notes=document.getElementById('pNotes').value.trim();
+  if(!nom||!contact||!service){alert('Remplissez au minimum : nom, contact et service.');return;}
+  const btn=document.getElementById('btnProspect');
+  btn.disabled=true;btn.innerHTML='<span class="spin"></span> Envoi…';
+  try{
+    const ym=new Date().toISOString().slice(0,7);
+    const data={
+      ambassador_id:AMB.id==='demo'?null:AMB.id,
+      ambassador_name:AMB.name,
+      ambassador_code:AMB.code,
+      client_name:nom,
+      client_company:ent,
+      client_contact:contact,
+      service,
+      ca_mensuel:ca?+ca:null,
+      budget_disponible:budget?+budget:null,
+      notes,
+      status:'pending',
+      created_at:new Date().toISOString()
+    };
+    if(AMB.id!=='demo'){
+      await sbPost('gt_ambassador_prospects',data);
+      /* Log points +10 */
+      await sbPost('gt_ambassador_points_log',{ambassador_id:AMB.id,points:10,reason:'Prospect soumis',month:ym,created_at:new Date().toISOString()});
+      /* Update total points */
+      const newPts=(AMB.total_points||0)+10;
+      await sbPatch('gt_ambassadors',`id=eq.${AMB.id}`,{total_points:newPts});
+      AMB.total_points=newPts;
+    }
+    /* Clear form */
+    ['pNom','pEntreprise','pContact','pCA','pBudget','pNotes'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('pService').value='';
+    document.getElementById('prospectOk').style.display='block';
+    setTimeout(()=>{document.getElementById('prospectOk').style.display='none';},5000);
+    await loadDashboardData();
+  }catch(e){alert('Erreur lors de l\'envoi. Contactez le support.');}
+  finally{btn.disabled=false;btn.textContent='Envoyer le dossier →';}
+}
+
+/* ── LOGOUT ── */
+function doLogout(){AMB=null;document.getElementById('dashboard').style.display='none';document.getElementById('loginScreen').style.display='flex';}
+
+/* ── PWA ── */
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+</script>
+</body>
+</html>
