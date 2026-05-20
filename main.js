@@ -125,12 +125,13 @@ const GT_BLOCK='gt_chat_block';
 const GT_BLOCK_HIST='gt_block_hist';
 const GT_MEM='gt_customer_mem';
 const BLOCK_DUR=3600000;
-const HIST_TTL=7*24*3600000;
+const HIST_TTL=24*3600000; // 24 ED — reset otomatik apre 1 jou
 
 /* --- LIMITES ANTI-ABUS --- */
-const MAX_CHARS=500;       // karaktè max pa mesaj
-const MAX_SESSION_MSGS=20; // mesaj max pa sesyon (user sèlman)
-const MSG_COOLDOWN=2500;   // ms minimiòm ant 2 mesaj (anti-spam)
+const MAX_CHARS=500;
+const MAX_SESSION_MSGS=30; // 30 mesaj pa sesyon
+const MSG_COOLDOWN=2500;
+const WARN_AT=25; // avetiman wouj kòmanse nan mesaj 25
 let lastMsgTime=0;
 /* --- FIN LIMITES --- */
 
@@ -165,19 +166,29 @@ function extractCustMem(){
   }
 }
 
-/* Persistent chat history — 7 jou */
+/* Persistent chat history — 24 ED */
 function saveCH(){try{localStorage.setItem(GT_HIST,JSON.stringify({msgs:chatHistory,ts:Date.now()}));extractCustMem();}catch(e){}}
 function loadCH(){
   try{
     const r=localStorage.getItem(GT_HIST);if(!r)return;
     const d=JSON.parse(r);
     if(d&&Array.isArray(d.msgs)&&(Date.now()-d.ts)<HIST_TTL)chatHistory=d.msgs;
-    else localStorage.removeItem(GT_HIST);
+    else{localStorage.removeItem(GT_HIST);chatHistory=[];}
   }catch(e){}
 }
 
 function isBlocked(){try{const b=localStorage.getItem(GT_BLOCK);if(!b)return false;const bd=JSON.parse(b);if(Date.now()-bd.ts<BLOCK_DUR)return{remaining:Math.ceil((BLOCK_DUR-(Date.now()-bd.ts))/60000)};localStorage.removeItem(GT_BLOCK);return false;}catch(e){return false;}}
 function setBlock(){localStorage.setItem(GT_BLOCK,JSON.stringify({ts:Date.now()}));addBlockHist();}
+
+/* Estat limit mesaj */
+function getMsgLimitStatus(){
+  const userMsgCount=chatHistory.filter(m=>m.role==='user').length;
+  let sessionStart=Date.now();
+  try{const r=localStorage.getItem(GT_HIST);if(r){const d=JSON.parse(r);if(d&&d.ts)sessionStart=d.ts;}}catch(e){}
+  const msRemaining=Math.max(0,HIST_TTL-(Date.now()-sessionStart));
+  const hRemaining=Math.max(1,Math.ceil(msRemaining/3600000));
+  return{count:userMsgCount,remaining:MAX_SESSION_MSGS-userMsgCount,hRemaining};
+}
 
 /* Contador karaktè */
 function updateCharCount(){
@@ -190,17 +201,48 @@ function updateCharCount(){
 
 function updateBlockUI(){
   const b=isBlocked(),inp=document.getElementById('cfInput'),btn=document.getElementById('cfSendBtn'),banner=document.getElementById('cfBlockBanner'),q=document.getElementById('cfQuick');
+  const lim=getMsgLimitStatus();
+
+  /* 1 — Blokaj IA (###BLOCKED###) — 1 ed */
   if(b){
     if(inp){inp.disabled=true;inp.placeholder='Conversation suspendue...';}
     if(btn)btn.disabled=true;
-    if(banner){banner.style.display='block';banner.textContent=`⏸ Suspendu — disponible dans ${b.remaining} min`;}
+    if(banner){
+      banner.style.cssText='display:block;padding:.55rem 1rem;background:rgba(239,68,68,.1);border-top:1px solid rgba(239,68,68,.15);font-size:.72rem;color:rgba(239,68,68,.85);text-align:center;';
+      banner.textContent=`\u23f8 Suspendu — disponible dans ${b.remaining} min`;
+    }
     if(q)q.style.display='none';
     setTimeout(updateBlockUI,60000);
-  }else{
+    return;
+  }
+
+  /* 2 — Limit 30 mesaj atenn */
+  if(lim.count>=MAX_SESSION_MSGS){
+    if(inp){inp.disabled=true;inp.placeholder=`Limit atenn — retounen nan ${lim.hRemaining}h`;}
+    if(btn)btn.disabled=true;
+    if(banner){
+      banner.style.cssText='display:block;padding:.65rem 1rem;background:rgba(239,68,68,.13);border-top:1px solid rgba(239,68,68,.25);font-size:.72rem;color:rgba(255,255,255,.9);text-align:center;line-height:1.5;';
+      banner.innerHTML=`\uD83D\uDD34 <strong>Limit sesyon atenn.</strong> Retounen nan <strong style="color:#FB923C;">${lim.hRemaining}h</strong> — oswa kontakte nou kounye a\u00a0: <a href="https://wa.me/50943111054" target="_blank" style="color:#FB923C;font-weight:700;text-decoration:underline;">WhatsApp +509\u00a043111054</a>`;
+    }
+    if(q)q.style.display='none';
+    return;
+  }
+
+  /* 3 — Avetiman ant mesaj 25-29 */
+  if(lim.count>=WARN_AT){
+    if(banner){
+      banner.style.cssText='display:block;padding:.5rem 1rem;background:rgba(239,68,68,.08);border-top:1px solid rgba(239,68,68,.18);font-size:.7rem;color:rgba(239,68,68,.9);text-align:center;';
+      banner.textContent=`\u26a0\ufe0f ${lim.remaining} mesaj rete nan sesyon ou a.`;
+    }
     if(inp){inp.disabled=false;inp.placeholder='Écrivez votre message (max 500 car.)...';}
     if(btn)btn.disabled=false;
-    if(banner)banner.style.display='none';
+    return;
   }
+
+  /* 4 — Nòmal */
+  if(banner)banner.style.display='none';
+  if(inp){inp.disabled=false;inp.placeholder='Écrivez votre message (max 500 car.)...';}
+  if(btn)btn.disabled=false;
 }
 
 function restoreChatUI(){
@@ -209,7 +251,7 @@ function restoreChatUI(){
   if(chatHistory.length===0){
     const mem=getCustMem();
     if(mem&&mem.name)bm.textContent='Bon retour, '+mem.name+' ! Comment puis-je vous aider ?';
-    else bm.textContent='Bonjour 👋 Je représente l\'équipe GAROMS-TECH. Vous avez un projet ou une question ? Je suis là.';
+    else bm.textContent='Bonjour \uD83D\uDC4B Je représente l\'équipe GAROMS-TECH. Vous avez un projet ou une question ? Je suis là.';
     msgs.appendChild(bm);return;
   }
   chatHistory.forEach(m=>{const div=document.createElement('div');div.className='msg '+(m.role==='user'?'usr':'bot');let txt=m.content.replace('###BLOCKED###','').trim();div.textContent=txt;if(txt)msgs.appendChild(div);});
@@ -258,31 +300,34 @@ async function sendAI(){
   const now=Date.now();
   if(now-lastMsgTime<MSG_COOLDOWN){
     const cd=document.createElement('div');cd.className='msg bot';
-    cd.textContent='⏳ Un instant — attends quelques secondes avant d\'envoyer un autre message.';
+    cd.textContent='\u23f3 Un instant — attends quelques secondes avant d\'envoyer un autre message.';
     msgs.appendChild(cd);msgs.scrollTop=msgs.scrollHeight;
     return;
   }
 
-  /* --- LIMITE MESAJ PA SESYON --- */
-  const userMsgCount=chatHistory.filter(m=>m.role==='user').length;
-  if(userMsgCount>=MAX_SESSION_MSGS){
-    const lm=document.createElement('div');lm.className='msg bot';
-    lm.textContent='Nous avons atteint la limite de cette session 😊 Pour continuer, contactez-nous directement sur WhatsApp : +509 43111054 ou +509 41773549.';
-    msgs.appendChild(lm);msgs.scrollTop=msgs.scrollHeight;
-    if(inp){inp.disabled=true;inp.placeholder='Limite atteinte — Contactez-nous sur WhatsApp';}
-    const btn=document.getElementById('cfSendBtn');if(btn)btn.disabled=true;
+  /* --- LIMITE 30 MESAJ + AVETIMAN --- */
+  const lim=getMsgLimitStatus();
+  if(lim.count>=MAX_SESSION_MSGS){
+    updateBlockUI();
     return;
+  }
+  if(lim.count===WARN_AT-1){
+    const wm=document.createElement('div');wm.className='msg bot';
+    wm.style.cssText='background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:rgba(239,68,68,.9);font-size:.78rem;border-radius:10px;padding:.6rem .9rem;';
+    wm.textContent=`\u26a0\ufe0f Atansyon — ou rive sou dènye ${MAX_SESSION_MSGS-WARN_AT+1} mesaj nan sesyon ou a. Apre sa, kontakte nou sou WhatsApp pou kontinye.`;
+    msgs.appendChild(wm);msgs.scrollTop=msgs.scrollHeight;
   }
 
   lastMsgTime=Date.now();
 
-  /* --- Limite karaktè (sekirite anplis) --- */
+  /* --- Limite karaktè --- */
   const safeVal=val.slice(0,MAX_CHARS);
 
   const um=document.createElement('div');um.className='msg usr';um.textContent=safeVal;msgs.appendChild(um);
   inp.value='';updateCharCount();msgs.scrollTop=msgs.scrollHeight;
   chatHistory.push({role:'user',content:safeVal});
   saveCH();
+  updateBlockUI();
   const q=document.getElementById('cfQuick');if(q)q.style.display='none';
   if(typ)typ.style.display='flex';
   const bm=document.createElement('div');bm.className='msg bot';
@@ -334,7 +379,7 @@ async function sendContact(e){
     document.getElementById('cfForm').style.display='none';
     const okEl=document.getElementById('cfOk');if(okEl)okEl.style.display='block';
   }else{
-    if(btn){btn.disabled=false;btn.textContent='Envoyer le message →';}
+    if(btn){btn.disabled=false;btn.textContent='Envoyer le message \u2192';}
     alert('Erreur lors de l\'envoi. Contactez-nous directement sur WhatsApp ou par email.');
   }
 }
@@ -354,27 +399,27 @@ async function subNL(e){
   e.preventDefault();
   const em=(document.getElementById('nlEmail').value||'').trim();
   const btn=document.getElementById('nlBtn');
-  if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){if(btn){btn.textContent='Email invalide';setTimeout(()=>{btn.textContent='S\'abonner →';},2500);}return;}
-  if(nlAlreadySub(em)){if(btn){btn.textContent='Déjà abonné ✓';setTimeout(()=>{btn.textContent='S\'abonner →';},3000);}document.getElementById('nlEmail').value='';return;}
+  if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){if(btn){btn.textContent='Email invalide';setTimeout(()=>{btn.textContent='S\'abonner \u2192';},2500);}return;}
+  if(nlAlreadySub(em)){if(btn){btn.textContent='Déjà abonné \u2713';setTimeout(()=>{btn.textContent='S\'abonner \u2192';},3000);}document.getElementById('nlEmail').value='';return;}
   if(btn){btn.disabled=true;btn.textContent='...';}
   const ok=await sbUpsert('newsletter',{email:em,source:'index_top',created_at:new Date().toISOString()},'email');
-  if(ok){nlSaveSub(em);if(btn)btn.textContent='Abonné ✓';}
+  if(ok){nlSaveSub(em);if(btn)btn.textContent='Abonné \u2713';}
   else{if(btn)btn.textContent='Erreur — Réessayez';}
   document.getElementById('nlEmail').value='';
-  setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent='S\'abonner →';}},3000);
+  setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent='S\'abonner \u2192';}},3000);
 }
 async function subNL2(e){
   e.preventDefault();
   const em=(document.getElementById('nlEmail2').value||'').trim();
   const btn=document.getElementById('nlBtn2');
-  if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){if(btn){btn.textContent='Email invalide';setTimeout(()=>{btn.textContent='S\'abonner →';},2500);}return;}
-  if(nlAlreadySub(em)){if(btn){btn.textContent='Déjà abonné ✓';setTimeout(()=>{btn.textContent='S\'abonner →';},3000);}document.getElementById('nlEmail2').value='';return;}
+  if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){if(btn){btn.textContent='Email invalide';setTimeout(()=>{btn.textContent='S\'abonner \u2192';},2500);}return;}
+  if(nlAlreadySub(em)){if(btn){btn.textContent='Déjà abonné \u2713';setTimeout(()=>{btn.textContent='S\'abonner \u2192';},3000);}document.getElementById('nlEmail2').value='';return;}
   if(btn){btn.disabled=true;btn.textContent='...';}
   const ok=await sbUpsert('newsletter',{email:em,source:'index_bottom',created_at:new Date().toISOString()},'email');
-  if(ok){nlSaveSub(em);if(btn)btn.textContent='Abonné ✓';}
+  if(ok){nlSaveSub(em);if(btn)btn.textContent='Abonné \u2713';}
   else{if(btn)btn.textContent='Erreur — Réessayez';}
   document.getElementById('nlEmail2').value='';
-  setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent='S\'abonner →';}},3000);
+  setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent='S\'abonner \u2192';}},3000);
 }
 async function sendForm2(e){
   e.preventDefault();
@@ -386,7 +431,7 @@ async function sendForm2(e){
     document.getElementById('f2Form').style.display='none';
     const okEl=document.getElementById('f2Ok');if(okEl)okEl.style.display='block';
   }else{
-    if(btn){btn.disabled=false;btn.textContent='Envoyer →';}
+    if(btn){btn.disabled=false;btn.textContent='Envoyer \u2192';}
     alert('Erreur lors de l\'envoi. Contactez-nous sur WhatsApp au +509 43 11 10 54.');
   }
 }
