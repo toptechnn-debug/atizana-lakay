@@ -122,11 +122,12 @@
   </div>
   <div class="cfp-typing" id="cfTyping"><span></span><span></span><span></span></div>
   <div class="cfp-inp">
-    <input class="cfp-inpf" id="cfInput" type="text" placeholder="Écrivez votre message..." onkeydown="if(event.key==='Enter')sendAI()" />
+    <input class="cfp-inpf" id="cfInput" type="text" maxlength="500" placeholder="Écrivez votre message..." onkeydown="if(event.key==='Enter')sendAI()" />
     <button class="cfp-send" id="cfSendBtn" onclick="sendAI()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
+  <div id="cfCharCount" style="font-size:.63rem;color:rgba(255,255,255,.3);text-align:right;padding:2px 14px 0;transition:color .2s;">500 / 500</div>
   <div class="cfp-footer">
     <div class="cfp-disclaimer">GAROMS-TECH AI — <a href="#contact" onclick="toggleChat()">formulaire</a> · <a href="mailto:infogaromstech@gmail.com">email</a> · <a href="https://wa.me/50943111054" target="_blank">WhatsApp</a></div>
   </div>
