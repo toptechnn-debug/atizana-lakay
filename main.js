@@ -117,7 +117,9 @@ function initScroll(){
   items.forEach(i=>{if(i.classList.contains('open')&&!i.querySelector('.faq-a').style.display)i.querySelector('.faq-a').style.display='block';});
 }
 
-/* FLOAT CHAT + MEMORY + BLOCK */
+/* ================================================================
+   FLOAT CHAT + MEMORY + BLOCK + LIMITES
+   ================================================================ */
 const GT_HIST='gt_chat_hist';
 const GT_BLOCK='gt_chat_block';
 const GT_BLOCK_HIST='gt_block_hist';
@@ -125,20 +127,22 @@ const GT_MEM='gt_customer_mem';
 const BLOCK_DUR=3600000;
 const HIST_TTL=7*24*3600000;
 
-/* ---- LIMITES CHAT ---- */
-const MAX_CHARS=500;        // karaktè max pa mesaj
-const MAX_SESSION_MSGS=20;  // mesaj max pa sesyon
-const MSG_COOLDOWN=2500;    // ms ant chak mesaj (anti-spam)
+/* --- LIMITES ANTI-ABUS --- */
+const MAX_CHARS=500;       // karaktè max pa mesaj
+const MAX_SESSION_MSGS=20; // mesaj max pa sesyon (user sèlman)
+const MSG_COOLDOWN=2500;   // ms minimiòm ant 2 mesaj (anti-spam)
 let lastMsgTime=0;
-/* ---- FIN LIMITES ---- */
+/* --- FIN LIMITES --- */
 
 let chatHistory=[];
 let floatShown=false;
 let leadSaved=false;
 
+/* Customer profile persistent memory */
 function getCustMem(){try{const r=localStorage.getItem(GT_MEM);return r?JSON.parse(r):{};}catch(e){return{};}}
 function setCustMem(data){try{localStorage.setItem(GT_MEM,JSON.stringify({...getCustMem(),...data,updated:Date.now()}));}catch(e){}}
 
+/* Block history — 30 jou */
 function getBlockHist(){try{const r=localStorage.getItem(GT_BLOCK_HIST);if(!r)return[];const a=JSON.parse(r);const cutoff=Date.now()-30*24*3600000;return a.filter(t=>t>cutoff);}catch(e){return[];}}
 function addBlockHist(){try{const h=getBlockHist();h.push(Date.now());localStorage.setItem(GT_BLOCK_HIST,JSON.stringify(h));}catch(e){}}
 function wasBlockedBefore(){return getBlockHist().length>0;}
@@ -155,4 +159,250 @@ function extractCustMem(){
   const ccM=allMsgs.match(/\+(\d{1,3})/);
   if(ccM)setCustMem({countryCode:'+'+ccM[1]});
   const mem=getCustMem();
-  if(!lead
+  if(!leadSaved&&mem.name&&mem.email&&mem.phone&&!mem.sbSaved){
+    leadSaved=true;setCustMem({sbSaved:true});
+    sbPost('gt_chat_leads',{name:mem.name,email:mem.email,phone:mem.phone,country_code:mem.countryCode||null,source:'chat_widget',created_at:new Date().toISOString()}).catch(()=>{});
+  }
+}
+
+/* Persistent chat history — 7 jou */
+function saveCH(){try{localStorage.setItem(GT_HIST,JSON.stringify({msgs:chatHistory,ts:Date.now()}));extractCustMem();}catch(e){}}
+function loadCH(){
+  try{
+    const r=localStorage.getItem(GT_HIST);if(!r)return;
+    const d=JSON.parse(r);
+    if(d&&Array.isArray(d.msgs)&&(Date.now()-d.ts)<HIST_TTL)chatHistory=d.msgs;
+    else localStorage.removeItem(GT_HIST);
+  }catch(e){}
+}
+
+function isBlocked(){try{const b=localStorage.getItem(GT_BLOCK);if(!b)return false;const bd=JSON.parse(b);if(Date.now()-bd.ts<BLOCK_DUR)return{remaining:Math.ceil((BLOCK_DUR-(Date.now()-bd.ts))/60000)};localStorage.removeItem(GT_BLOCK);return false;}catch(e){return false;}}
+function setBlock(){localStorage.setItem(GT_BLOCK,JSON.stringify({ts:Date.now()}));addBlockHist();}
+
+/* Contador karaktè */
+function updateCharCount(){
+  const inp=document.getElementById('cfInput'),ctr=document.getElementById('cfCharCount');
+  if(!inp||!ctr)return;
+  const remaining=MAX_CHARS-inp.value.length;
+  ctr.textContent=`${remaining} / ${MAX_CHARS}`;
+  ctr.style.color=remaining<50?'rgba(239,68,68,.7)':remaining<100?'rgba(251,146,60,.6)':'rgba(255,255,255,.3)';
+}
+
+function updateBlockUI(){
+  const b=isBlocked(),inp=document.getElementById('cfInput'),btn=document.getElementById('cfSendBtn'),banner=document.getElementById('cfBlockBanner'),q=document.getElementById('cfQuick');
+  if(b){
+    if(inp){inp.disabled=true;inp.placeholder='Conversation suspendue...';}
+    if(btn)btn.disabled=true;
+    if(banner){banner.style.display='block';banner.textContent=`⏸ Suspendu — disponible dans ${b.remaining} min`;}
+    if(q)q.style.display='none';
+    setTimeout(updateBlockUI,60000);
+  }else{
+    if(inp){inp.disabled=false;inp.placeholder='Écrivez votre message (max 500 car.)...';}
+    if(btn)btn.disabled=false;
+    if(banner)banner.style.display='none';
+  }
+}
+
+function restoreChatUI(){
+  const msgs=document.getElementById('cfMsgs');if(!msgs)return;msgs.innerHTML='';
+  const bm=document.createElement('div');bm.className='msg bot';
+  if(chatHistory.length===0){
+    const mem=getCustMem();
+    if(mem&&mem.name)bm.textContent='Bon retour, '+mem.name+' ! Comment puis-je vous aider ?';
+    else bm.textContent='Bonjour 👋 Je représente l\'équipe GAROMS-TECH. Vous avez un projet ou une question ? Je suis là.';
+    msgs.appendChild(bm);return;
+  }
+  chatHistory.forEach(m=>{const div=document.createElement('div');div.className='msg '+(m.role==='user'?'usr':'bot');let txt=m.content.replace('###BLOCKED###','').trim();div.textContent=txt;if(txt)msgs.appendChild(div);});
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function showFloat(){
+  floatShown=true;
+  const b=document.getElementById('cfBubble');
+  if(b)setTimeout(()=>{b.style.display='none';},6000);
+}
+
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const p=document.getElementById('cfPanel'),b=document.getElementById('cfBubble');
+  if(p)p.style.display=chatOpen?'flex':'none';
+  if(b)b.style.display='none';
+  const n=document.querySelector('.cf-notif');if(n)n.style.display='none';
+  if(chatOpen){
+    updateBlockUI();
+    const i=document.getElementById('cfInput');
+    if(i&&!i.disabled){
+      i.setAttribute('maxlength',MAX_CHARS);
+      i.removeEventListener('input',updateCharCount);
+      i.addEventListener('input',updateCharCount);
+      updateCharCount();
+      setTimeout(()=>i.focus(),100);
+    }
+  }
+}
+
+function sendQuick(txt){
+  const inp=document.getElementById('cfInput');if(!inp||inp.disabled)return;
+  inp.value=txt;sendAI();
+  const q=document.getElementById('cfQuick');if(q)q.style.display='none';
+}
+
+async function sendAI(){
+  const inp=document.getElementById('cfInput'),msgs=document.getElementById('cfMsgs'),typ=document.getElementById('cfTyping');
+  const val=inp?inp.value.trim():'';
+  if(!val||!msgs||inp.disabled)return;
+  if(isBlocked()){updateBlockUI();return;}
+
+  /* --- ANTI-SPAM COOLDOWN --- */
+  const now=Date.now();
+  if(now-lastMsgTime<MSG_COOLDOWN){
+    const cd=document.createElement('div');cd.className='msg bot';
+    cd.textContent='⏳ Un instant — attends quelques secondes avant d\'envoyer un autre message.';
+    msgs.appendChild(cd);msgs.scrollTop=msgs.scrollHeight;
+    return;
+  }
+
+  /* --- LIMITE MESAJ PA SESYON --- */
+  const userMsgCount=chatHistory.filter(m=>m.role==='user').length;
+  if(userMsgCount>=MAX_SESSION_MSGS){
+    const lm=document.createElement('div');lm.className='msg bot';
+    lm.textContent='Nous avons atteint la limite de cette session 😊 Pour continuer, contactez-nous directement sur WhatsApp : +509 43111054 ou +509 41773549.';
+    msgs.appendChild(lm);msgs.scrollTop=msgs.scrollHeight;
+    if(inp){inp.disabled=true;inp.placeholder='Limite atteinte — Contactez-nous sur WhatsApp';}
+    const btn=document.getElementById('cfSendBtn');if(btn)btn.disabled=true;
+    return;
+  }
+
+  lastMsgTime=Date.now();
+
+  /* --- Limite karaktè (sekirite anplis) --- */
+  const safeVal=val.slice(0,MAX_CHARS);
+
+  const um=document.createElement('div');um.className='msg usr';um.textContent=safeVal;msgs.appendChild(um);
+  inp.value='';updateCharCount();msgs.scrollTop=msgs.scrollHeight;
+  chatHistory.push({role:'user',content:safeVal});
+  saveCH();
+  const q=document.getElementById('cfQuick');if(q)q.style.display='none';
+  if(typ)typ.style.display='flex';
+  const bm=document.createElement('div');bm.className='msg bot';
+  try{
+    const custCtx={...getCustMem(),wasBlocked:wasBlockedBefore(),blockCount:getBlockHist().length};
+    const res=await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatHistory.slice(-20),customer:custCtx})});
+    const data=await res.json();
+    let reply=data.reply||"Je n'ai pas pu répondre. WhatsApp : +509 43 11 10 54.";
+    const isBlock=reply.includes('###BLOCKED###');
+    reply=reply.replace('###BLOCKED###','').trim();
+    chatHistory.push({role:'assistant',content:reply});
+    saveCH();
+    bm.textContent=reply;
+    if(isBlock){setBlock();updateBlockUI();}
+  }catch(e){
+    bm.textContent="Connexion interrompue. Contactez-nous : +509 43 11 10 54.";
+  }
+  if(typ)typ.style.display='none';
+  msgs.appendChild(bm);msgs.scrollTop=msgs.scrollHeight;
+}
+
+/* DEMO CHAT */
+function sendDemo(){
+  const inp=document.getElementById('demoInput'),body=document.getElementById('chatDemo');
+  const val=inp?inp.value.trim():'';
+  if(!val||!body)return;
+  const m=document.createElement('div');m.className='msg usr';m.textContent=val;body.appendChild(m);
+  inp.value='';body.scrollTop=body.scrollHeight;
+  setTimeout(()=>{const bm=document.createElement('div');bm.className='msg bot';bm.textContent='Merci ! Notre agent IA traite votre demande. Pour une démonstration complète, contactez-nous sur WhatsApp au +509 41 77 35 49.';body.appendChild(bm);body.scrollTop=body.scrollHeight;},900);
+}
+
+/* FAQ */
+function toggleFaq(el){
+  const item=el.parentElement;
+  document.querySelectorAll('.faq-item.open').forEach(i=>{if(i!==item){i.classList.remove('open');}});
+  item.classList.toggle('open');
+}
+
+/* CONTACT */
+async function sendContact(e){
+  e.preventDefault();
+  const btn=document.getElementById('cfSubmit');
+  if(btn){btn.disabled=true;btn.textContent='Envoi en cours...';}
+  const d={prenom:document.getElementById('cfPrenom').value,nom:document.getElementById('cfNom').value,email:document.getElementById('cfEmail').value,tel:document.getElementById('cfTel').value,service:document.getElementById('cfService').value,message:document.getElementById('cfMsg').value,source:'site_contact',created_at:new Date().toISOString()};
+  const ok=await sbPost('contact',d);
+  if(ok){
+    try{const leads=JSON.parse(localStorage.getItem('gt_leads')||'[]');leads.push({name:d.prenom+' '+d.nom,email:d.email,service:d.service,saved:Date.now()});localStorage.setItem('gt_leads',JSON.stringify(leads.slice(-10)));}catch(_){}
+    if(d.prenom)setCustMem({name:d.prenom,email:d.email});
+    document.getElementById('cfForm').style.display='none';
+    const okEl=document.getElementById('cfOk');if(okEl)okEl.style.display='block';
+  }else{
+    if(btn){btn.disabled=false;btn.textContent='Envoyer le message →';}
+    alert('Erreur lors de l\'envoi. Contactez-nous directement sur WhatsApp ou par email.');
+  }
+}
+function sendContactWA(){
+  const p=document.getElementById('cfPrenom').value||'';
+  const s=document.getElementById('cfService').value||'';
+  const m=document.getElementById('cfMsg').value||'';
+  const txt=encodeURIComponent(`Bonjour GAROMS-TECH !\n\nPrénom : ${p}\nService souhaité : ${s}\n\nMessage : ${m}`);
+  window.open(`https://wa.me/50941773549?text=${txt}`,'_blank');
+}
+
+/* NEWSLETTER */
+const GT_NL_KEY='gt_nl_subs';
+function nlAlreadySub(em){try{const a=JSON.parse(localStorage.getItem(GT_NL_KEY)||'[]');return a.includes(em.toLowerCase().trim());}catch(e){return false;}}
+function nlSaveSub(em){try{const a=JSON.parse(localStorage.getItem(GT_NL_KEY)||'[]');if(!a.includes(em.toLowerCase().trim())){a.push(em.toLowerCase().trim());localStorage.setItem(GT_NL_KEY,JSON.stringify(a));}}catch(e){}}
+async function subNL(e){
+  e.preventDefault();
+  const em=(document.getElementById('nlEmail').value||'').trim();
+  const btn=document.getElementById('nlBtn');
+  if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){if(btn){btn.textContent='Email invalide';setTimeout(()=>{btn.textContent='S\'abonner →';},2500);}return;}
+  if(nlAlreadySub(em)){if(btn){btn.textContent='Déjà abonné ✓';setTimeout(()=>{btn.textContent='S\'abonner →';},3000);}document.getElementById('nlEmail').value='';return;}
+  if(btn){btn.disabled=true;btn.textContent='...';}
+  const ok=await sbUpsert('newsletter',{email:em,source:'index_top',created_at:new Date().toISOString()},'email');
+  if(ok){nlSaveSub(em);if(btn)btn.textContent='Abonné ✓';}
+  else{if(btn)btn.textContent='Erreur — Réessayez';}
+  document.getElementById('nlEmail').value='';
+  setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent='S\'abonner →';}},3000);
+}
+async function subNL2(e){
+  e.preventDefault();
+  const em=(document.getElementById('nlEmail2').value||'').trim();
+  const btn=document.getElementById('nlBtn2');
+  if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){if(btn){btn.textContent='Email invalide';setTimeout(()=>{btn.textContent='S\'abonner →';},2500);}return;}
+  if(nlAlreadySub(em)){if(btn){btn.textContent='Déjà abonné ✓';setTimeout(()=>{btn.textContent='S\'abonner →';},3000);}document.getElementById('nlEmail2').value='';return;}
+  if(btn){btn.disabled=true;btn.textContent='...';}
+  const ok=await sbUpsert('newsletter',{email:em,source:'index_bottom',created_at:new Date().toISOString()},'email');
+  if(ok){nlSaveSub(em);if(btn)btn.textContent='Abonné ✓';}
+  else{if(btn)btn.textContent='Erreur — Réessayez';}
+  document.getElementById('nlEmail2').value='';
+  setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent='S\'abonner →';}},3000);
+}
+async function sendForm2(e){
+  e.preventDefault();
+  const btn=document.getElementById('f2Btn');
+  if(btn){btn.disabled=true;btn.textContent='Envoi...';}
+  const d={prenom:document.getElementById('f2Prenom').value,email:document.getElementById('f2Email').value,message:document.getElementById('f2Msg').value,source:'idee_form',created_at:new Date().toISOString()};
+  const ok=await sbPost('contact',d);
+  if(ok){
+    document.getElementById('f2Form').style.display='none';
+    const okEl=document.getElementById('f2Ok');if(okEl)okEl.style.display='block';
+  }else{
+    if(btn){btn.disabled=false;btn.textContent='Envoyer →';}
+    alert('Erreur lors de l\'envoi. Contactez-nous sur WhatsApp au +509 43 11 10 54.');
+  }
+}
+
+/* Dev helper */
+window.clearGTChat=function(){
+  ['gt_chat_hist','gt_customer_mem','gt_chat_block','gt_block_hist','gt_p_claimed','gt_p_later','gt_leads'].forEach(k=>localStorage.removeItem(k));
+  sessionStorage.clear();location.reload();
+};
+
+document.addEventListener('DOMContentLoaded',()=>{
+  loadCH();restoreChatUI();updateBlockUI();
+  initLoad();
+});
+
+/* CSS animation toast */
+const style=document.createElement('style');
+style.textContent='@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}';
+document.head.appendChild(style);
