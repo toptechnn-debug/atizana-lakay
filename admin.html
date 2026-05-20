@@ -1,33 +1,30 @@
 <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Admin — GAROMS-TECH</title>
-  <style>
-  
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin — GAROMS-TECH</title>
+<style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--p:#E85D04;--p2:#FB923C;--dark:#0A0A0A;--card:#111;--border:rgba(232,93,4,.15);--txt:#F5F5F5;--muted:#888;--green:#22C55E;--red:#EF4444;--yellow:#FACC15;}
 html,body{min-height:100vh;background:var(--dark);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;}
 
-/* LOGIN */
 #loginWrap{display:flex;align-items:center;justify-content:center;min-height:100vh;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(232,93,4,.1) 0%,transparent 70%);}
 .login-box{width:100%;max-width:380px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2.2rem 1.8rem;}
-.login-title{font-size:1.2rem;font-weight:700;text-align:center;margin-bottom:1.4rem;background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.login-title{font-size:1.2rem;font-weight:700;text-align:center;margin-bottom:.4rem;background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.login-sub{font-size:.75rem;color:var(--muted);text-align:center;margin-bottom:1.2rem;}
 .inp{width:100%;padding:.75rem 1rem;background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--txt);font-size:.9rem;outline:none;margin-bottom:.9rem;}
 .inp:focus{border-color:var(--p);}
 .btn-login{width:100%;padding:.8rem;background:linear-gradient(135deg,var(--p),var(--p2));border:none;border-radius:10px;color:#fff;font-weight:700;font-size:.95rem;cursor:pointer;}
 .err{color:#FCA5A5;font-size:.8rem;text-align:center;margin-top:.5rem;display:none;}
 
-/* DASHBOARD */
 #app{display:none;min-height:100vh;}
 .topbar{background:rgba(10,10,10,.95);border-bottom:1px solid var(--border);padding:.8rem 1.5rem;display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:100;}
 .topbar h1{font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex:1;}
 .btn-out{padding:.35rem .8rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--muted);font-size:.78rem;cursor:pointer;}
 .main{max-width:1100px;margin:0 auto;padding:1.5rem;}
 
-/* Stats */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-bottom:1.5rem;}
 @media(min-width:600px){.stats{grid-template-columns:repeat(4,1fr);}}
 .scard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;}
@@ -38,16 +35,14 @@ html,body{min-height:100vh;background:var(--dark);color:var(--txt);font-family:'
 .yellow{color:var(--yellow);}
 .blue{color:#60A5FA;}
 
-/* Tabs */
 .tabs{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;}
 .tab{padding:.5rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;font-size:.8rem;cursor:pointer;color:var(--muted);}
 .tab.active{background:rgba(232,93,4,.15);border-color:rgba(232,93,4,.4);color:var(--p2);}
 .panel{display:none;}
 .panel.active{display:block;}
 
-/* Table */
 .tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.tbl-hdr{padding:.9rem 1.1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem;}
+.tbl-hdr{padding:.9rem 1.1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;}
 .tbl-hdr h3{font-size:.88rem;font-weight:700;flex:1;}
 .badge{background:rgba(232,93,4,.15);color:var(--p2);border-radius:999px;padding:.15rem .55rem;font-size:.7rem;font-weight:700;}
 .tbl-scroll{overflow-x:auto;}
@@ -66,27 +61,42 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .refresh-btn{padding:.3rem .7rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:7px;color:var(--muted);font-size:.75rem;cursor:pointer;}
 .refresh-btn:hover{color:var(--txt);}
 
-  /* Login email field */
-  .inp-email,.inp{width:100%;padding:.75rem 1rem;background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--txt);font-size:.9rem;outline:none;margin-bottom:.9rem;}
-  .inp-email:focus,.inp:focus{border-color:var(--p);outline:none;} .inp-email,.inp{margin-bottom:.75rem;color:#fff;font-size:.9rem;}
-  .login-sub{font-size:.75rem;color:var(--muted);text-align:center;margin-bottom:1rem;}
-  </style>
-  </head>
-  <body>
+/* ADD AMBASSADOR FORM */
+.amb-form{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1rem;}
+.amb-form h3{font-size:.88rem;font-weight:700;margin-bottom:1rem;color:var(--p2);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+@media(max-width:500px){.form-grid{grid-template-columns:1fr;}}
+.form-inp{width:100%;padding:.65rem .9rem;background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:8px;color:var(--txt);font-size:.85rem;outline:none;}
+.form-inp:focus{border-color:var(--p);}
+.btn-add{padding:.7rem 1.4rem;background:linear-gradient(135deg,var(--p),var(--p2));border:none;border-radius:9px;color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;margin-top:.7rem;}
+.btn-add:disabled{opacity:.5;cursor:not-allowed;}
+.form-msg{font-size:.78rem;margin-top:.6rem;padding:.5rem .8rem;border-radius:7px;display:none;}
+.form-msg.ok{background:rgba(34,197,94,.1);color:var(--green);display:block;}
+.form-msg.err{background:rgba(239,68,68,.1);color:#FCA5A5;display:block;}
 
-  <!-- LOGIN -->
-  <div id="loginWrap">
-    <div class="login-box">
-      <div class="login-title">GAROMS-TECH — Admin</div>
-      <p style="font-size:.75rem;color:#888;text-align:center;margin-bottom:1rem;">Connexion sécurisée via Supabase</p>
-      <input id="aEmail" class="inp" type="email" placeholder="Adresse e-mail admin" autocomplete="email" style="margin-bottom:.9rem;" />
-      <input id="aPwd" class="inp" type="password" placeholder="Mot de passe" autocomplete="current-password">
-      <button class="btn-login" id="btnLogin" onclick="doLogin()">Accéder →</button>
-      <div class="err" id="aErr"></div>
-    </div>
+/* PORTAL KEY DISPLAY */
+.key-box{background:#0d0d0d;border:1px solid rgba(232,93,4,.3);border-radius:8px;padding:.7rem 1rem;margin-top:.7rem;display:none;}
+.key-box .key-lbl{font-size:.7rem;color:var(--muted);margin-bottom:.3rem;}
+.key-val{font-family:monospace;font-size:1rem;color:var(--p2);letter-spacing:.05em;word-break:break-all;}
+.btn-wa{display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;padding:.6rem 1.1rem;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);border-radius:8px;color:#25D366;font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:none;}
+.btn-copy{display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;margin-left:.5rem;padding:.6rem 1.1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--muted);font-size:.82rem;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginWrap">
+  <div class="login-box">
+    <div class="login-title">GAROMS-TECH — Admin</div>
+    <p class="login-sub">Connexion sécurisée via Supabase</p>
+    <input id="aEmail" class="inp" type="email" placeholder="Adresse e-mail admin" autocomplete="email">
+    <input id="aPwd" class="inp" type="password" placeholder="Mot de passe" autocomplete="current-password">
+    <button class="btn-login" id="btnLogin" onclick="doLogin()">Accéder →</button>
+    <div class="err" id="aErr"></div>
   </div>
+</div>
 
-  <!-- APP -->
+<!-- APP -->
 <div id="app">
   <div class="topbar">
     <h1>GAROMS-TECH — Dashboard Admin</h1>
@@ -94,15 +104,13 @@ tr:hover td{background:rgba(255,255,255,.02);}
   </div>
   <div class="main">
 
-    <!-- Stats -->
     <div class="stats">
       <div class="scard"><div class="scard-label">Newsletter</div><div class="scard-val orange" id="sNL">—</div></div>
       <div class="scard"><div class="scard-label">Leads Chat</div><div class="scard-val green" id="sLeads">—</div></div>
       <div class="scard"><div class="scard-label">Contacts</div><div class="scard-val yellow" id="sContacts">—</div></div>
-      <div class="scard"><div class="scard-label">Prospects Amb.</div><div class="scard-val blue" id="sProspects">—</div></div>
+      <div class="scard"><div class="scard-label">Ambassadeurs</div><div class="scard-val blue" id="sAmb">—</div></div>
     </div>
 
-    <!-- Tabs -->
     <div class="tabs">
       <div class="tab active" onclick="switchTab('nl')">📧 Newsletter</div>
       <div class="tab" onclick="switchTab('leads')">💬 Leads Chat</div>
@@ -135,7 +143,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
       </div>
     </div>
 
-    <!-- PROSPECTS AMBASSADEURS -->
+    <!-- PROSPECTS -->
     <div class="panel" id="panel-prospects">
       <div class="tbl-wrap">
         <div class="tbl-hdr"><h3>Prospects soumis par les ambassadeurs</h3><span class="badge" id="badgeProspects">0</span><button class="refresh-btn" onclick="loadProspects()">↻ Actualiser</button></div>
@@ -145,57 +153,82 @@ tr:hover td{background:rgba(255,255,255,.02);}
 
     <!-- AMBASSADEURS -->
     <div class="panel" id="panel-ambassadors">
+
+      <!-- FORMULAIRE AJOUTER AMBASSADEUR -->
+      <div class="amb-form">
+        <h3>➕ Ajouter un nouvel ambassadeur</h3>
+        <div class="form-grid">
+          <input id="ambNom" class="form-inp" type="text" placeholder="Nom complet *">
+          <input id="ambEmail" class="form-inp" type="email" placeholder="Email *">
+          <input id="ambTel" class="form-inp" type="tel" placeholder="WhatsApp (ex: +50943111054)">
+          <input id="ambPays" class="form-inp" type="text" placeholder="Pays (ex: Haïti)">
+        </div>
+        <button class="btn-add" id="btnAddAmb" onclick="addAmbassador()">Créer l'ambassadeur →</button>
+        <div class="form-msg" id="ambMsg"></div>
+
+        <!-- CLE PORTAIL GENEREE -->
+        <div class="key-box" id="keyBox">
+          <div class="key-lbl">🔑 Clé d'accès au portail ambassadeur :</div>
+          <div class="key-val" id="keyVal"></div>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-top:.5rem;">
+            <button class="btn-copy" onclick="copyKey()">📋 Copier la clé</button>
+            <a class="btn-wa" id="waLink" href="#" target="_blank">💬 Envoyer sur WhatsApp</a>
+          </div>
+          <p style="font-size:.72rem;color:var(--muted);margin-top:.6rem;">Lien portail : <span id="portalLink" style="color:var(--p2)"></span></p>
+        </div>
+      </div>
+
+      <!-- LISTE AMBASSADEURS -->
       <div class="tbl-wrap">
         <div class="tbl-hdr"><h3>Réseau Ambassadeurs</h3><span class="badge" id="badgeAmb">0</span><button class="refresh-btn" onclick="loadAmb()">↻ Actualiser</button></div>
-        <div class="tbl-scroll"><table><thead><tr><th>Nom</th><th>Email</th><th>Code</th><th>Pays</th><th>Points</th><th>Statut</th><th>Depuis</th></tr></thead><tbody id="tbAmb"><tr><td colspan="7" class="empty"><span class="spin"></span>Chargement…</td></tr></tbody></table></div>
+        <div class="tbl-scroll"><table><thead><tr><th>Nom</th><th>Email</th><th>Code/Clé</th><th>WhatsApp</th><th>Pays</th><th>Points</th><th>Statut</th><th>Portail</th><th>Depuis</th></tr></thead><tbody id="tbAmb"><tr><td colspan="9" class="empty"><span class="spin"></span>Chargement…</td></tr></tbody></table></div>
       </div>
     </div>
 
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SB_URL='https://boelpuehvvuvddyyphpe.supabase.co';
+const SB_KEY='sb_publishable_tOjmLT97b3y2ou2P62a4vA_nlperttq';
+const sb=supabase.createClient(SB_URL,SB_KEY);
 
+/* AUTH */
+async function doLogin(){
+  const email=document.getElementById('aEmail').value.trim();
+  const pwd=document.getElementById('aPwd').value;
+  const btn=document.getElementById('btnLogin');
+  const err=document.getElementById('aErr');
+  err.style.display='none';
+  btn.textContent='Connexion…';btn.disabled=true;
+  const{error}=await sb.auth.signInWithPassword({email,password:pwd});
+  if(error){
+    err.textContent='Identifiants incorrects. Vérifiez email/mot de passe.';
+    err.style.display='block';
+    btn.textContent='Accéder →';btn.disabled=false;
+  }else{showDash();}
+}
+async function doLogout(){await sb.auth.signOut();location.reload();}
+function showDash(){
+  document.getElementById('loginWrap').style.display='none';
+  document.getElementById('app').style.display='block';
+  loadAll();
+}
+sb.auth.getSession().then(({data})=>{if(data.session)showDash();});
+sb.auth.onAuthStateChange((_e,session)=>{
+  if(!session){document.getElementById('app').style.display='none';document.getElementById('loginWrap').style.display='flex';}
+});
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('aPwd').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+  document.getElementById('aEmail').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('aPwd').focus();});
+});
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script>
-  const SB_URL = 'https://boelpuehvvuvddyyphpe.supabase.co';
-  const SB_KEY = 'sb_publishable_tOjmLT97b3y2ou2P62a4vA_nlperttq';
-  const sb = supabase.createClient(SB_URL, SB_KEY);
-
-  async function doLogin() {
-    const email = document.getElementById('aEmail').value.trim();
-    const pwd   = document.getElementById('aPwd').value;
-    const btn   = document.getElementById('btnLogin');
-    const err   = document.getElementById('aErr');
-    err.style.display = 'none';
-    btn.textContent = 'Connexion…'; btn.disabled = true;
-    const { error } = await sb.auth.signInWithPassword({ email, password: pwd });
-    if (error) {
-      err.textContent = 'Identifiants incorrects.';
-      err.style.display = 'block';
-      btn.textContent = 'Accéder →'; btn.disabled = false;
-    } else { showDash(); }
-  }
-  async function doLogout() { await sb.auth.signOut(); location.reload(); }
-  function showDash() {
-    document.getElementById('loginWrap').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    loadAll();
-  }
-  sb.auth.getSession().then(({ data }) => { if (data.session) showDash(); });
-  sb.auth.onAuthStateChange((_e, session) => {
-    if (!session) { document.getElementById('app').style.display='none'; document.getElementById('loginWrap').style.display='flex'; }
-  });
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('aPwd').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-    document.getElementById('aEmail').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('aPwd').focus(); });
-  });
-
-  /* ── SUPABASE GET (utilise le JWT authentifié, pas l'anon key) ── */
+/* SUPABASE GET (avec JWT authentifié) */
 async function sbGet(table,order='created_at'){
   try{
-    const { data:{session} } = await sb.auth.getSession();
-    const token = session?.access_token || SB_KEY;
+    const{data:{session}}=await sb.auth.getSession();
+    const token=session?.access_token||SB_KEY;
     const r=await fetch(`${SB_URL}/rest/v1/${table}?order=${order}.desc&limit=500`,{
       headers:{'apikey':SB_KEY,'Authorization':`Bearer ${token}`,'Content-Type':'application/json'}
     });
@@ -203,7 +236,20 @@ async function sbGet(table,order='created_at'){
   }catch{return[];}
 }
 
-/* ── TABS ── */
+async function sbInsert(table,data){
+  try{
+    const{data:{session}}=await sb.auth.getSession();
+    const token=session?.access_token||SB_KEY;
+    const r=await fetch(`${SB_URL}/rest/v1/${table}`,{
+      method:'POST',
+      headers:{'apikey':SB_KEY,'Authorization':`Bearer ${token}`,'Content-Type':'application/json','Prefer':'return=minimal'}
+      ,body:JSON.stringify(data)
+    });
+    return r.ok;
+  }catch{return false;}
+}
+
+/* TABS */
 function switchTab(id){
   document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',['nl','leads','contacts','prospects','ambassadors'][i]===id);});
   document.querySelectorAll('.panel').forEach(p=>{p.classList.toggle('active',p.id==='panel-'+id);});
@@ -211,12 +257,17 @@ function switchTab(id){
   if(loaders[id])loaders[id]();
 }
 
-/* ── HELPERS ── */
+/* HELPERS */
 function esc(s){if(!s)return'—';const d=document.createElement('div');d.textContent=String(s);return d.innerHTML;}
 function fmtDate(s){if(!s)return'—';return new Date(s).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'2-digit',hour:'2-digit',minute:'2-digit'});}
 function statusPill(s){const m={active:'active',inactive:'inactive',pending:'pending',signed:'active',rejected:'inactive',qualified:'pending'};return`<span class="pill ${m[s]||'pending'}">${esc(s)}</span>`;}
+function genCode(nom){
+  const base=nom.toUpperCase().replace(/[^A-Z]/g,'').substring(0,4)||'AMB';
+  const rnd=Math.random().toString(36).substring(2,6).toUpperCase();
+  return`GT-${base}-${rnd}`;
+}
 
-/* ── LOADERS ── */
+/* LOADERS */
 async function loadAll(){await Promise.all([loadNL(),loadLeads(),loadContacts(),loadProspects(),loadAmb()]);}
 
 async function loadNL(){
@@ -239,17 +290,66 @@ async function loadContacts(){
 }
 async function loadProspects(){
   const rows=await sbGet('gt_ambassador_prospects');
-  document.getElementById('sProspects').textContent=rows.length;
   document.getElementById('badgeProspects').textContent=rows.length;
   document.getElementById('tbProspects').innerHTML=rows.length?rows.map(r=>`<tr><td>${esc(r.ambassador_name||r.ambassador_code)}</td><td>${esc(r.client_name)}</td><td>${esc(r.client_company)}</td><td>${esc(r.service)}</td><td>${r.ca_mensuel?'$'+r.ca_mensuel:'—'}</td><td>${r.budget_disponible?'$'+r.budget_disponible:'—'}</td><td>${statusPill(r.status)}</td><td>${fmtDate(r.created_at)}</td></tr>`).join(''):'<tr><td colspan="8" class="empty">Aucun prospect ambassadeur</td></tr>';
 }
 async function loadAmb(){
   const rows=await sbGet('gt_ambassadors');
+  document.getElementById('sAmb').textContent=rows.length;
   document.getElementById('badgeAmb').textContent=rows.length;
-  document.getElementById('tbAmb').innerHTML=rows.length?rows.map(r=>`<tr><td>${esc(r.nom)}</td><td>${esc(r.email)}</td><td style="font-family:monospace;color:var(--p2)">${esc(r.code)}</td><td>${esc(r.pays)}</td><td style="color:var(--yellow)">${r.points||0} pts</td><td>${statusPill(r.statut)}</td><td>${fmtDate(r.created_at)}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">Aucun ambassadeur</td></tr>';
+  const portalBase=window.location.origin+'/ambassadeur-portail.html';
+  document.getElementById('tbAmb').innerHTML=rows.length?rows.map(r=>{
+    const lien=`${portalBase}?cle=${encodeURIComponent(r.code)}`;
+    return`<tr><td>${esc(r.nom)}</td><td>${esc(r.email)}</td><td style="font-family:monospace;color:var(--p2)">${esc(r.code)}</td><td>${esc(r.tel||'—')}</td><td>${esc(r.pays)}</td><td style="color:var(--yellow)">${r.points||0} pts</td><td>${statusPill(r.statut)}</td><td><a href="${lien}" target="_blank" style="color:var(--p2);font-size:.75rem;">Voir portail</a></td><td>${fmtDate(r.created_at)}</td></tr>`;
+  }).join(''):'<tr><td colspan="9" class="empty">Aucun ambassadeur</td></tr>';
 }
 
-  
-  </script>
+/* AJOUTER AMBASSADEUR */
+let lastGeneratedKey='';
+async function addAmbassador(){
+  const nom=document.getElementById('ambNom').value.trim();
+  const email=document.getElementById('ambEmail').value.trim();
+  const tel=document.getElementById('ambTel').value.trim();
+  const pays=document.getElementById('ambPays').value.trim();
+  const btn=document.getElementById('btnAddAmb');
+  const msg=document.getElementById('ambMsg');
+  const keyBox=document.getElementById('keyBox');
+  msg.className='form-msg';msg.style.display='none';keyBox.style.display='none';
+  if(!nom||!email){msg.textContent='Nom et email sont obligatoires.';msg.className='form-msg err';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='Email invalide.';msg.className='form-msg err';return;}
+  btn.disabled=true;btn.textContent='Création en cours…';
+  const code=genCode(nom);
+  const ok=await sbInsert('gt_ambassadors',{
+    nom,email,tel:tel||null,pays:pays||null,code,
+    statut:'active',points:0,created_at:new Date().toISOString()
+  });
+  if(ok){
+    lastGeneratedKey=code;
+    // Affiche la cle
+    document.getElementById('keyVal').textContent=code;
+    const portalUrl=`${window.location.origin}/ambassadeur-portail.html?cle=${encodeURIComponent(code)}`;
+    document.getElementById('portalLink').textContent=portalUrl;
+    // Lien WhatsApp
+    const waTxt=encodeURIComponent(`Bonjour ${nom} !\n\nFelicitations — ou fè pati rezo Ambassadè GAROMS-TECH !\n\nKle portay ou a : *${code}*\n\nLyen pou konekte : ${portalUrl}\n\nMèsi pou konfyans ou — Ekip GAROMS-TECH`);
+    const waNum=tel?tel.replace(/[^0-9]/g,''):'';
+    document.getElementById('waLink').href=waNum?`https://wa.me/${waNum}?text=${waTxt}`:`https://wa.me/?text=${waTxt}`;
+    keyBox.style.display='block';
+    msg.textContent=`✓ Ambassadeur ${nom} créé avec succès !`;msg.className='form-msg ok';
+    // Reset form
+    document.getElementById('ambNom').value='';
+    document.getElementById('ambEmail').value='';
+    document.getElementById('ambTel').value='';
+    document.getElementById('ambPays').value='';
+    loadAmb();
+  }else{
+    msg.textContent='Erreur lors de la création. Email peut-être déjà utilisé.';msg.className='form-msg err';
+  }
+  btn.disabled=false;btn.textContent='Créer l\'ambassadeur →';
+}
+
+function copyKey(){
+  if(lastGeneratedKey){navigator.clipboard.writeText(lastGeneratedKey).then(()=>alert('Clé copiée !'));}
+}
+</script>
 </body>
-  </html>
+</html>
